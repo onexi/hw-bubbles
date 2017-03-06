@@ -1,4 +1,5 @@
 var exercise = {};
+var shell = require('shelljs');
 
 exercise.one = function(){
     // -----------------------------------------------
@@ -11,6 +12,128 @@ exercise.one = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+
+    //JM added:
+
+    startPages = [
+        "m1",
+        "m2",
+        "m3",
+        "m4",
+        "m5",
+        "m6",
+        "m7",
+        "m8",
+        "m9",
+        "m10",
+        "m11",
+        "m12",
+        "m14",
+        "m15",
+        "m16",
+        "m17",
+        "m18",
+        "m20",
+        "m21",
+        "m21A",
+        "mCMS",
+        "m21W",
+        "m21G",
+        "m21H",
+        "m21L",
+        "M21M",
+        "mWGS",
+        "m22",
+        "m24",
+        "mCC",
+        "mCSB",
+        "mEC",
+        "mEM",
+        "mES",
+        "mHST",
+        "mIDS",
+        "mMAS",
+        "mSCM",
+        "mAS",
+        "mMS",
+        "mNS",
+        "mSTS",
+        "mSWE",
+        "mSP"
+    ];
+
+    // make array full of permedPages (some pages will be invalid)
+    var permedPages = [];
+    startPages.forEach(function(element) {
+        exercise.suffixMaker(element).forEach(function(permedPage){
+            permedPages.push(permedPage);
+        });
+    });
+
+    // make full URL
+    var fullURLs = [];
+    var urlBase = 'http://student.mit.edu/catalog/';
+    var urlEnding = '.html';
+
+    permedPages.forEach(function(element) {    
+        fullURLs.push(urlBase + element + urlEnding);
+    });
+
+    return fullURLs;
+};
+
+
+exercise.suffixMaker = function(base){
+    //JM added:
+    permutations = [
+        'a',
+        'b',
+        'c',
+        'd',
+        'e',
+        'f',
+        'g',
+        'h',
+        'i'
+        ];
+    builtPageNames = [];
+    permutations.forEach(function(element) {
+        var pageName = base + element; 
+        builtPageNames.push(pageName);
+    });
+    return builtPageNames;
+};
+
+
+exercise.returnAfterSlash = function(url){
+    // JM added
+    // return just stuff coming after the last '/'
+    //  given:  http://student.mit.edu/catalog/m12i.html,
+    //  return: m12i.html
+    return url.slice(url.lastIndexOf('/'), url.length);
+};
+
+exercise.downloadURL = function(url){
+    // JM added
+    // fetch each URL and save the page locally
+    saveDir = "catalog"
+    destFile = exercise.returnAfterSlash(url)
+    curlURL = "curl " + url + " -o " + saveDir + destFile;
+
+    var isValid = function(urlToCheck){
+        //see if server returns a 404 error
+        if (shell.exec('curl -i -s ' + urlToCheck).stdout.indexOf("404 Not Found") == '-1'){
+            return true;
+        } else {return false};
+    };
+
+    //see if page gives 404
+    if (isValid(url)){
+        shell.exec(curlURL);
+    };
+    
+    //shell.exec('curl -i -s http://student.mit.edu/catalog/m12i.html').stdout.indexOf("404 Not Found");
+    return;
 };
 
 exercise.two = function(){
@@ -26,7 +149,13 @@ exercise.two = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+
+    // JM added
+    var fullURLs = exercise.one();
+    fullURLs.forEach(exercise.downloadURL);
+    return fullURLs;
 };
+
 
 exercise.three = function(){
     // -----------------------------------------------
