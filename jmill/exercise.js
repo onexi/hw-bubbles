@@ -1,5 +1,8 @@
 var exercise = {};
-var shell = require('shelljs');
+//var shell = require('shelljs/global');
+var request = require('request');
+var fs = require('fs');
+
 
 exercise.one = function(){
     // -----------------------------------------------
@@ -110,31 +113,96 @@ exercise.returnAfterSlash = function(url){
     // return just stuff coming after the last '/'
     //  given:  http://student.mit.edu/catalog/m12i.html,
     //  return: m12i.html
-    return url.slice(url.lastIndexOf('/'), url.length);
+    return url.slice(url.lastIndexOf('/')+1, url.length);
 };
 
-exercise.downloadURL = function(url){
+// //alt with requests
+// exercise.downloadURLRequest = function(url){
+//     // JM added
+//     // fetch each URL and save the page locally
+//     var pageBody = "";
+//     function callback(error, response, body){
+//         if(!error){
+//             pageBody = body;
+//         };
+//     };
+//     request(url, callback);
+
+//     saveDir = "catalog"
+//     destFile = exercise.returnAfterSlash(url)
+//     relativePath = saveDir+'/'+destFile;
+
+//     // save the file
+//     return exercise.save(pageBody, relativePath);
+// };
+
+//alt with requests based on example
+exercise.downloadURLRequests = function(url){
     // JM added
+    // set up destination
+    var saveDir = "catalog";
+    var destFile = exercise.returnAfterSlash(url);
+    var relativePath = saveDir+'/'+destFile;
+
     // fetch each URL and save the page locally
-    saveDir = "catalog"
-    destFile = exercise.returnAfterSlash(url)
-    curlURL = "curl " + url + " -o " + saveDir + destFile;
-
-    var isValid = function(urlToCheck){
-        //see if server returns a 404 error
-        if (shell.exec('curl -i -s ' + urlToCheck).stdout.indexOf("404 Not Found") == '-1'){
-            return true;
-        } else {return false};
-    };
-
-    //see if page gives 404
-    if (isValid(url)){
-        shell.exec(curlURL);
-    };
-    
-    //shell.exec('curl -i -s http://student.mit.edu/catalog/m12i.html').stdout.indexOf("404 Not Found");
-    return;
+    var page = exercise.get(url);
+    page.then(function(body){
+        return exercise.save(body, relativePath);
+    }).
+    then(function(msg){
+        console.log(msg);
+    });
 };
+
+exercise.get = function(url){
+    return new Promise(function(resolve, reject){
+        function callback(error, response, body){
+            if(!error && (response.statusCode != '404')){
+                resolve(body);
+            } else {
+                reject(error);
+            }
+        }
+        request(url, callback);
+    });
+};
+
+
+exercise.save = function(data, filename){
+    return new Promise(function(resolve, reject){
+        // write listings to file
+        fs.writeFile(filename, data, function(err) {
+            if(err) {
+                reject(error);
+            }
+            resolve('The ' + filename + ' was saved');
+        })
+    })
+};
+
+// //original with shelljs and curl
+// exercise.downloadURL = function(url){
+//     // JM added
+//     // fetch each URL and save the page locally
+//     saveDir = "catalog"
+//     destFile = exercise.returnAfterSlash(url)
+//     curlURL = "curl " + url + " -o " + saveDir + destFile;
+
+//     var isValid = function(urlToCheck){
+//         //see if server returns a 404 error
+//         if (shell.exec('curl -i -s ' + urlToCheck).stdout.indexOf("404 Not Found") == '-1'){
+//             return true;
+//         } else {return false};
+//     };
+
+//     //see if page gives 404
+//     if (isValid(url)){
+//         shell.exec(curlURL);
+//     };
+    
+//     //shell.exec('curl -i -s http://student.mit.edu/catalog/m12i.html').stdout.indexOf("404 Not Found");
+//     return;
+// };
 
 exercise.two = function(){
     // -----------------------------------------------
@@ -152,24 +220,42 @@ exercise.two = function(){
 
     // JM added
     var fullURLs = exercise.one();
-    fullURLs.forEach(exercise.downloadURL);
+    fullURLs.forEach(exercise.downloadURLRequests);
     return fullURLs;
 };
 
 
-exercise.three = function(){
-    // -----------------------------------------------
-    //   YOUR CODE
-    //
-    //  Combine all files into one,
-    //  save to "your_folder/catalog/catalog.txt"
-    //
-    //  You can use the file system API,
-    //  https://nodejs.org/api/fs.html
-    //
-    //  See homework guide document for more info.
-    // -----------------------------------------------
-};
+// exercise.three = function(){
+//     // -----------------------------------------------
+//     //   YOUR CODE
+//     //
+//     //  Combine all files into one,
+//     //  save to "your_folder/catalog/catalog.txt"
+//     //
+//     //  You can use the file system API,
+//     //  https://nodejs.org/api/fs.html
+//     //
+//     //  See homework guide document for more info.
+//     // -----------------------------------------------
+
+//     //JM added
+//     // from https://www.youtube.com/watch?v=UxOpmMrZBto
+//     // ref https://nodejs.org/api/fs.html#fs_fs_appendfile_file_data_options_callback
+//     //PICKUP HERE HERE HERE HERE
+//     var fs = require('fs');
+
+//     function ReadAppend(file, appendFile){
+//         fs.readFile(appendFile, function (err, data){
+//             if (err) throw err;
+//             console.log('File was read');
+//         });
+
+//         fs.appendFile(file, data, function(err) {
+//             if (err) throw err:
+//                 console.log('The data to append was appended to file');
+//         });
+//     };
+// };
 
 exercise.four = function(){
     // -----------------------------------------------
