@@ -225,37 +225,56 @@ exercise.two = function(){
 };
 
 
-// exercise.three = function(){
-//     // -----------------------------------------------
-//     //   YOUR CODE
-//     //
-//     //  Combine all files into one,
-//     //  save to "your_folder/catalog/catalog.txt"
-//     //
-//     //  You can use the file system API,
-//     //  https://nodejs.org/api/fs.html
-//     //
-//     //  See homework guide document for more info.
-//     // -----------------------------------------------
+exercise.three = function(){
+    // -----------------------------------------------
+    //   YOUR CODE
+    //
+    //  Combine all files into one,
+    //  save to "your_folder/catalog/catalog.txt"
+    //
+    //  You can use the file system API,
+    //  https://nodejs.org/api/fs.html
+    //
+    //  See homework guide document for more info.
+    // -----------------------------------------------
 
-//     //JM added
-//     // from https://www.youtube.com/watch?v=UxOpmMrZBto
-//     // ref https://nodejs.org/api/fs.html#fs_fs_appendfile_file_data_options_callback
-//     //PICKUP HERE HERE HERE HERE
-//     var fs = require('fs');
+    //JM added
+    // from https://www.youtube.com/watch?v=UxOpmMrZBto
+    // ref https://nodejs.org/api/fs.html#fs_fs_appendfile_file_data_options_callback
+    //PICKUP HERE HERE HERE HERE
 
-//     function ReadAppend(file, appendFile){
-//         fs.readFile(appendFile, function (err, data){
-//             if (err) throw err;
-//             console.log('File was read');
-//         });
+    function ReadAppend(file, appendFile){
+        console.log(file + ' ' + appendFile);
 
-//         fs.appendFile(file, data, function(err) {
-//             if (err) throw err:
-//                 console.log('The data to append was appended to file');
-//         });
-//     };
-// };
+        var content;
+        content = fs.readFileSync(appendFile);
+        // fs.readFile(appendFile, function (err, data){
+        //     if (err) throw err;
+        //     //console.log('File was read');
+        //     content = data;
+        // });
+
+        fs.appendFile(file, content, function(err) {
+            if (err) throw err;
+            //console.log('The data to append was appended to file');
+        });    
+    };
+
+    //read dir to collect all filenames
+    baseDir = "./catalog/";
+    var dir = fs.readdirSync(baseDir);
+    //get rid of the first filename, the hidden one with the dot.
+    //!!This is Mac-only right NOW!!
+    dir.shift();
+
+    consolidationFile = "catalog.txt"
+
+    dir.forEach(function(page){
+        return ReadAppend(baseDir+consolidationFile, baseDir+page);
+    });
+
+    return "done";
+};
 
 exercise.four = function(){
     // -----------------------------------------------
