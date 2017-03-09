@@ -104,6 +104,7 @@ exercise.three = function(){
 var fs = require ('fs');
 
 function AppendFiles (File, AppendFile) {
+
     var p = new Promise (function (resolve, reject){  
         fs.readFile(AppendFile, (err, data) => {
             if (err) reject (err);
@@ -230,7 +231,7 @@ exercise.seven = function(){
     // -----------------------------------------------
 
     var filter = titles.map(function(item) {
-        var fil = item.replace(/and |a |the |of |at |in |on |the |The |for |in | I | II| III|, |[J]|[0-9]|\.|\[|\]|\-|\:/g, "");
+        var fil = item.replace(/and |a |m |the |of |at |in |on |the |The |for |in | I | II| III|, |[J]|[0-9]|\.|\[|\]|\-|\:/g, "");
        var fil2 = fil.split('.'|'[]').join("");
        // console.log('Q6: filtered:    ' + fil2);
         return (fil);
