@@ -166,11 +166,20 @@ exercise.three = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-// for each file in /catalog folder, read the file
-// append the content to an output file called catalog.txt contained within the catalog folder
-
-    //use write and readfile
+    // for each file in /catalog folder, read the file
+    // get filenames in catalog folder
+    var fs = require('fs');
+    var files = fs.readdirSync('./catalog');
+    var content = '';
+    for (var i=0;i<files.length;i++) {
+        var f = files[i];
+        var body = fs.readFileSync('./catalog/'+f, 'UTF8');
+        content += body;
+    }
+    fs.writeFileSync('./catalog/catalog.txt', content);
+   console.log(content);
 };
+
 
 exercise.four = function(){
     // -----------------------------------------------
@@ -185,6 +194,11 @@ exercise.four = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    var fs = require('fs');
+    var content = fs.readFileSync('./catalog/catalog.txt');
+    var minify = require('html-minifier').minify;
+    var minifiedText = minify(content, 'UTF8');
+    return minifiedText;
 };
 
 exercise.five = function(){
@@ -200,6 +214,19 @@ exercise.five = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    var cheerio = require('cheerio');
+    var courses = require('./catalog/catalog.txt');
+    var $ = cheerio.load(courses);
+
+    // use cheerio to get course titles
+    exercise.getCourseTitles = function(){
+    var courseTitles = [];
+    $('h3').each(function(i,element){
+        courseTitles.push($(element).text());
+    });
+
+    return courseTitles;
+};
 };
 
 exercise.six = function(){
@@ -212,6 +239,9 @@ exercise.six = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    var text = excercise.five();
+    var expression = /<h3>(.*?)<br><I>/g;
+    var titles = text.match(expression);
 };
 
 exercise.seven = function(){
@@ -225,6 +255,11 @@ exercise.seven = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    exercise.getWords = function(titles){
+    var words = titles.map(function(title){
+    return title.toLowerCase().match(/([a-z]+)/g);
+});
+    return words;
 };
 
 exercise.eight = function(){
@@ -252,7 +287,7 @@ exercise.nine = function(){
     var words = exercise.eight();
 
     //count the occurance of each word
-    var result = words.reduce(functoin(previous,current){
+    var result = words.reduce(function(previous,current){
         if (current in previous){
             previous[current] += 1;
         }
