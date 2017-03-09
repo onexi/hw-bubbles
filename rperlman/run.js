@@ -2,7 +2,9 @@ var exercise = require('./exercise.js');
 
 exercise.one();
 
-/*exercise.two();
+exercise.two();
+
+/*
 
 exercise.three();
 

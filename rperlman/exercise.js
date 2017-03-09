@@ -1,3 +1,6 @@
+var request = require('request');
+var fs = require('fs');
+
 var exercise = {};
 
 exercise.one = function(){
@@ -117,25 +120,39 @@ exercise.two = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    var exercise = require('./requirefile.js');
     urls = exercise.one();
 
     urls.forEach(function(url,i){
-        var page = exercise.get(url);
-        page.then(function(body){
-            console.log(body);
+        // var page = request.get(url);
+        // page.then(function(body){
+        //     console.log(body);
+        //     var filename = 'catalog/data' + i + '.txt';
+        //   });
+
+        var page = request.get(url, function(err, response, body) {
             var filename = 'catalog/data' + i + '.txt';
-            return exercise.save(body, filename);
+            exercise.save(filename, body);
         });
-        then(function(msg){
-            console.log(msg);
+    });
+};
+
+exercise.save = function(filename, data) {
+
+    return new Promise(function(resolve, reject) {
+
+        fs.writeFile(filename, data, function(err) {
+            if (err) {
+                reject(err);
+            }
+            else {
+                resolve(true);
+            }
         });
 
     });
 
-
-
 };
+
 
 exercise.three = function(){
     // -----------------------------------------------
@@ -149,6 +166,10 @@ exercise.three = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+// for each file in /catalog folder, read the file
+// append the content to an output file called catalog.txt contained within the catalog folder
+
+    //use write and readfile
 };
 
 exercise.four = function(){
@@ -228,7 +249,18 @@ exercise.nine = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-};
+    var words = exercise.eight();
 
+    //count the occurance of each word
+    var result = words.reduce(functoin(previous,current){
+        if (current in previous){
+            previous[current] += 1;
+        }
+        else{
+            previous[current] = 1;
+        }
+        return previous;
+    }, []);
+    return result;
 
 module.exports = exercise;
