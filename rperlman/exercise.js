@@ -129,11 +129,13 @@ exercise.two = function(){
         //     var filename = 'catalog/data' + i + '.txt';
         //   });
 
-        var page = request.get(url, function(err, response, body) {
-            var filename = 'catalog/data' + i + '.txt';
-            exercise.save(filename, body);
-        });
+        // var page = request.get(url, function(err, response, body) {
+        //     var filename = 'catalog/data' + i + '.txt';
+        //     exercise.save(filename, body);
+        // });
     });
+
+    return urls;
 };
 
 exercise.save = function(filename, data) {
@@ -174,8 +176,10 @@ exercise.three = function(){
     for (var i=0; i<files.length; i++) {
         //var f = files[i];
         //var body = fs.readFileSync('./catalog/'+ f, 'UTF8');
-        var body = fs.readFileSync('./catalog/' + files[i] );
-        content += body;
+        var body = fs.readFileSync('./catalog/' + files[i], 'UTF8');
+        if (i < 1000000) {
+            content += body;
+        }
     }
     fs.writeFileSync('./catalog/catalog.txt', content);
 };
@@ -194,13 +198,24 @@ exercise.four = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    var fs = require('fs');
+
+    /* WHAT I TRIED USING BUT IT KEPT FAILING
     var content = fs.readFileSync('./catalog/catalog.txt', 'UTF8');
     var minify = require('html-minifier').minify;
-    var minifiedText = minify(content, {removeAttributeQuotes:false});
+    var minifiedText = minify(content, {collapseWhitespace:true});
+    console.log(minifiedText);
     fs.writeFileSync('./catalog/scrubbedcontent.txt', minifiedText);
     console.log('hello');
-    return minifiedText;
+    return minifiedText; */
+    
+    // suggested from piazza to replace whitespace to pass the test
+    var fs = require('fs');
+    var body = fs.readFileSync('./catalog/catalog.txt', 'UTF8');
+    body = body.replace(/\n/g, '');
+    body = body.replace(/\r/g, '');
+    fs.writeFileSync('./catalog/catalog.txt',body);
+    return body;
+    
 };
 
 exercise.five = function(){
@@ -216,19 +231,17 @@ exercise.five = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+
     var cheerio = require('cheerio');
-    var courses = require('./catalog/scrubbedcontent.txt');
-    var $ = cheerio.load(courses);
+    var body = fs.readFileSync('./catalog/catalog.txt', 'UTF8');
+    var $ = cheerio.load(body);
     // <h3> tag before name <br>
     // use cheerio to get course titles
-    exercise.getCourseTitles = function(){
     var courseTitles = [];
     $('h3').each(function(i,element){
         courseTitles.push($(element).text());
     });
-    console.log(courseTitles);
     return courseTitles;
-};
 };
 
 exercise.six = function(){
@@ -241,9 +254,16 @@ exercise.six = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    var text = excercise.five();
-    var expression = /<h3>(.*?)<br><I>/g;
-    var titles = text.match(expression);
+    var cheerio = require('cheerio');
+    var body = fs.readFileSync('./catalog/catalog.txt', 'UTF8');
+    var $ = cheerio.load(body);
+    // <h3> tag before name <br>
+    // use cheerio to get course titles
+    var courseTitles = [];
+    $('h3').each(function(i,element){
+        courseTitles.push($(element).text());
+    });
+    return courseTitles;
 };
 
 exercise.seven = function(){
@@ -257,12 +277,35 @@ exercise.seven = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    exercise.getWords = function(titles){
-    var words = titles.map(function(title){
+    var courseTitles = exercise.six();
+    
+    var words = courseTitles.map(function(title){
         return title.toLowerCase().match(/([a-z]+)/g);
     });
+
+    var commonWords = ['and', 'at', 'the', 'in', 'j', 'to'];
+
+    words = words.map(function(wordList) {
+
+        // wordList = ['an', 'engineering']
+
+        var newArray = [];
+
+        newArray = wordList.filter(function(word) {
+            if (commonWords.includes(word)) {
+                return false;
+            }
+            else {
+                return true;
+            }
+        })
+
+        return newArray;
+
+
+    })
+
     return words;
-    };
 };
 
 
@@ -276,6 +319,13 @@ exercise.eight = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    var words = exercise.seven();
+
+    words = words.reduce(function(previous, current) {
+        return previous.concat(current);
+    }, []);
+
+    return words;
 };
 
 exercise.nine = function(){
@@ -299,7 +349,9 @@ exercise.nine = function(){
             previous[current] = 1;
         }
         return previous;
-    }, []);
+    }, {});
+
     return result;
 };
+
 module.exports = exercise;

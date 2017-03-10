@@ -5,7 +5,7 @@
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP/Spring
 2017 Military Science</title>
-<meta http-equiv="expires" content="09 MAR 2017" >
+<meta http-equiv="expires" content="10 MAR 2017" >
 <meta name="DEPARTMENT" content="  MS" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -194,6 +194,6 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 08-MAR-2017 06:17 AM</font>
+<br><font size="-1">Produced: 09-MAR-2017 05:10 PM</font>
 </body>
 </html>

@@ -5,7 +5,7 @@
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP/Spring
 2017 Course 22: Nuclear Science and Engineering</title>
-<meta http-equiv="expires" content="09 MAR 2017" >
+<meta http-equiv="expires" content="10 MAR 2017" >
 <meta name="DEPARTMENT" content="  22" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -349,7 +349,7 @@ alt="Search" align="middle" />
 <a name="22.S902"></a><a name="22.S903"></a><a name="22.S904"></a><a name="22.S905"></a>
 <p><h3>22.S902-22.S905 Special Subject in Nuclear Science and Engineering
 <br><img alt="______" src="/icns/hr.gif"></h3>
-<img width=16 height=16 align="bottom" alt="Graduate" title="Graduate" src="/icns/grad.gif">  (<img width=16 height=16 align="bottom" alt="Fall" title="Fall" src="/icns/fall.gif">, <img width=16 height=16 align="bottom" alt="IAP" title="IAP" src="/icns/iap.gif">, <img width=16 height=16 align="bottom" alt="Spring" title="Spring" src="/icns/spring.gif">, <img width=16 height=16 align="bottom" alt="Summer" title="Summer" src="/icns/summer.gif">) <img src="/icns/repeat.gif" alt="Can be repeated for credit" title="Can be repeated for credit" width=16 height=16 align="bottom"><br>Not offered regularly; consult department
+<img width=16 height=16 align="bottom" alt="Graduate" title="Graduate" src="/icns/grad.gif">  (<img width=16 height=16 align="bottom" alt="Spring" title="Spring" src="/icns/spring.gif">) <img src="/icns/repeat.gif" alt="Can be repeated for credit" title="Can be repeated for credit" width=16 height=16 align="bottom">
 <br>Prereq: Permission of instructor
 <br>Units arranged
 <br><img align="bottom" width=16 height=16 alt="Subject Cancelled" title="Subject Cancelled" src="/icns/buttonx.gif"> <i><b>22.S902 Cancelled</b></i>  <!--s--><br><img align="bottom" width=16 height=16 alt="Subject Cancelled" title="Subject Cancelled" src="/icns/buttonx.gif"> <i><b>22.S903 Cancelled</b></i>  <!--s--><br><img align="bottom" width=16 height=16 alt="Subject Cancelled" title="Subject Cancelled" src="/icns/buttonx.gif"> <i><b>22.S904 Cancelled</b></i>  <!--s--><br><img align="bottom" width=16 height=16 alt="Subject Cancelled" title="Subject Cancelled" src="/icns/buttonx.gif"> <i><b>22.S905 Cancelled</b></i>  <!--s-->
@@ -406,6 +406,6 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 08-MAR-2017 06:17 AM</font>
+<br><font size="-1">Produced: 09-MAR-2017 05:10 PM</font>
 </body>
 </html>
