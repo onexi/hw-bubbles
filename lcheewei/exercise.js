@@ -148,12 +148,10 @@ exercise.four = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
     var fs = require ('fs');
-    var minify = require('html-minifier').minify;
+    //  var minify = require('html-minifier').minify;
     var catFile = './catalog/catalog.txt';
     
         var text = fs.readFileSync(catFile, encoding='utf8');
-
-        var str = text.toString()+'';
 /*
         var min = minify(str, {
             removeEmptyElements: true,
@@ -163,14 +161,14 @@ exercise.four = function(){
         });
 */
 
-    var min = str.replace(/\s+/g, " ");
-
+        var min = text.replace(/\s+/g, " ");
+        //  var min = text.replace(/\r\n/g, "");
         fs.writeFile(catFile, min, function(err) {
             if(!err) 
-            {//console.log("Q4-3: File saved successfully! "); 
+            {console.log("Q4-3: File saved successfully! "); 
         }
-        });
-   
+    });
+    return min; 
 };
 
 exercise.five = function(){
