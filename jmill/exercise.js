@@ -472,6 +472,19 @@ exercise.nine = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    // JM added below
+    ///?????
+    var flattenedWordArray = exercise.eight();
+
+    var wordcount = [];
+    flattenedWordArray.forEach(function(word){
+        if (wordcount[word]){ 
+            wordcount[word] += 1;
+        } else {
+            wordcount[word] = 1;
+        };
+        return wordcount;
+    });
 };
 
 
