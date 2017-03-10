@@ -449,6 +449,17 @@ exercise.eight = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    // JM added below
+    var titlesAsCleanWordGroups = exercise.seven();
+
+    var flattenedWordArray = [];
+
+    titlesAsCleanWordGroups.forEach(function(wordGroup){
+        wordGroup.forEach(function(word){
+            flattenedWordArray.push(word);
+        });
+    });
+    return flattenedWordArray;
 };
 
 exercise.nine = function(){
