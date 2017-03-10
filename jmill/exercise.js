@@ -2,6 +2,8 @@ var exercise = {};
 //var shell = require('shelljs/global');
 var request = require('request');
 var fs = require('fs');
+//var minify = require('html-minifier').minify;
+var cheerio = require('cheerio');
 
 
 exercise.one = function(){
@@ -146,6 +148,16 @@ exercise.downloadURLRequests = function(url){
 
     // fetch each URL and save the page locally
     var page = exercise.get(url);
+
+    //filter out some stuff
+    // var $ = cheerio.load(page);
+    // var titles = [];
+    // $('h3').each(function(i, title){
+    //     titles.push($(title).text());
+    // });
+
+    //
+
     page.then(function(body){
         return exercise.save(body, relativePath);
     }).
@@ -243,6 +255,7 @@ exercise.three = function(){
     // ref https://nodejs.org/api/fs.html#fs_fs_appendfile_file_data_options_callback
     //PICKUP HERE HERE HERE HERE
 
+
     function ReadAppend(file, appendFile){
         console.log(file + ' ' + appendFile);
 
@@ -254,10 +267,12 @@ exercise.three = function(){
         //     content = data;
         // });
 
-        fs.appendFile(file, content, function(err) {
-            if (err) throw err;
-            //console.log('The data to append was appended to file');
-        });    
+
+        fs.appendFileSync(file, content);
+        // fs.appendFileSync(file, content, function(err) {
+        //     if (err) throw err;
+        //     //console.log('The data to append was appended to file');
+        // });    
     };
 
     //read dir to collect all filenames
@@ -268,10 +283,15 @@ exercise.three = function(){
     dir.shift();
 
     consolidationFile = "catalog.txt"
+    // initialize empty catalog.txt
+    fs.writeFile(baseDir+consolidationFile, '');
 
     dir.forEach(function(page){
         return ReadAppend(baseDir+consolidationFile, baseDir+page);
     });
+    // dir.forEach(function(page){
+    //     return ReadAppend(baseDir+consolidationFile, baseDir+page);
+    // });
 
     return "done";
 };
