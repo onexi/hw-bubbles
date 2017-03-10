@@ -100,7 +100,7 @@ exercise.three = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-
+/*
 var fs = require ('fs');
 var request = require('shelljs/global');
 
@@ -131,7 +131,7 @@ function Merge (item, counter, array){
 
 var file = './catalog/catalog.txt';
 url.forEach(Merge);
-
+*/
 };
 
 exercise.four = function(){
