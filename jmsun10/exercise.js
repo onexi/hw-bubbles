@@ -103,10 +103,10 @@ exercise.two = function(){
 };
 
 
-exercise.read = function(url){
+exercise.read = function(i){
 	// return new Promise(function(resolve, reject){
     var content = fs.readFileSync ('catalog/'+ i +'.html','utf-8');
-    // console.log(content);
+    // console.log(i);
     content = fs.appendFileSync('catalog/catalog.txt', content);
 };
 
@@ -125,10 +125,9 @@ exercise.three = function(){
     // exercise.read();
     var urls = exercise.one();
     // console.log(urls);
-    urls.forEach(function(url,i){
-        // console.log(i);
-    exercise.read(i);
-    });
+    for(var i=0; i< urls.length;i++){
+        exercise.read(i);
+    }
 };
 
 
@@ -275,21 +274,38 @@ exercise.eight = function(){
 
 
 exercise.nine = function(){
-  data = exercise.eight();
-  return data.reduce(function(prev, c) {
-    if (prev.has(c)) {  // use `has` and `set` operations on Map objects
-      prev.set(c, prev.get(c) + 1);
-    } else {
-      prev.set(c, 1);
+//   data = exercise.eight();
+//   return data.reduce(function(prev, c) {
+//     if (prev.has(c)) {  // use `has` and `set` operations on Map objects
+//       prev.set(c, prev.get(c) + 1);
+//     } else {
+//       prev.set(c, 1);
+//     }
+//     return prev;    // return the map, so it will be prev for the next iteration
+//   }, new Map());    // Set the initial value to a new Map object
+    data = exercise.eight();
+    // console.log(data.length);
+    var freq = {};
+    for (var i=0; i<data.length;i++) {
+        var character = data[i];
+        if (freq[character]) {
+           freq[character]++;
+        } else {
+           freq[character] = 1;
+        }
     }
-    return prev;    // return the map, so it will be prev for the next iteration
-  }, new Map());    // Set the initial value to a new Map object
-
+    console.log(freq);
+    var size = Object.keys(freq).length;
+    
+    freq = fs.writeFileSync('catalog_data.js', JSON.stringify(freq));
+    return freq;
 };
 // console.log(exercise.nine());
+
 module.exports = exercise;
 
 //How to return string? no need to call the readfile every time. 
 //After filting out the spaces, why can we split title by " "?
 //callback.
-//wordcount array
+//wordcount array(we should use object;)
+//how to add to data_catalog not by hand??
