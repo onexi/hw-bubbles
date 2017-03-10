@@ -104,11 +104,12 @@ exercise.two = function(){
 
 
 exercise.read = function(url){
-
-    fs.readFile ('catalog/'+ i +'.html','utf-8',function read(err, data){
+	// return new Promise(function(resolve, reject){
+    fs.readFileSync ('catalog/'+ i +'.html','utf-8',function read(err, data){
     if(err){
-        throw err;
+        reject(err);
     }
+    // resolve('done')
     content = data;
     // console.log(content);
     fs.appendFile('catalog/catalog.txt', content, function(err) {
