@@ -309,6 +309,25 @@ exercise.four = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    
+    //JM added below
+    var consolidatedFilePath = "./catalog/catalog.txt";
+    var consolidatedContent = fs.readFileSync(consolidatedFilePath, "utf-8"); 
+
+    consolidatedContent = consolidatedContent.replace(/\n/g, '');
+    consolidatedContent = consolidatedContent.replace(/\r/g, '');    
+
+    fs.writeFileSync(consolidatedFilePath, consolidatedContent);
+    
+    //// (minifier doesn't work)
+    // var result = minify(consolidatedContent, {
+    //     collapseWhitespace: true,
+    //     preserveLineBreaks: false,
+    //     trimCustomFragments: true,
+    //     removeEmptyAttributes: true
+    // });
+
+    return consolidatedContent;
 };
 
 exercise.five = function(){
@@ -324,6 +343,14 @@ exercise.five = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    // JM added below    
+    // load scrubbed HTML into DOM
+    var content = exercise.four();
+
+    // get courses
+    var expression = /<h3>(.*?)<br><I>/g;
+    var courses = content.match(expression);
+    return courses;
 };
 
 exercise.six = function(){
@@ -336,9 +363,19 @@ exercise.six = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    // JM added below    
+    // load scrubbed HTML into DOM
+    var $ = cheerio.load(exercise.four());
+
+    // get titles
+    var titles = [];
+    $('h3').each(function(i, element){
+        titles.push($(element).text());
+    });
+    return titles;
 };
 
-exercise.seven = function(){
+exercise.seven = function(){ 
     // -----------------------------------------------
     //   YOUR CODE
     //
@@ -349,6 +386,51 @@ exercise.seven = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    // JM added below    
+    // load scrubbed HTML into DOM
+    var titles = exercise.six();
+    titlesAsWords = exercise.getWords(titles);
+    commonWords = [
+        'and',
+        'the',
+        'for',
+        'in',
+        'of',
+        's',
+        'a',
+        ',',
+        '.',
+        ':'
+    ];
+
+    //
+    var keepItClean = function(wordGroup){
+        var cleanWords = wordGroup.filter(function(word){
+            return (commonWords.indexOf(word) == -1);
+        });
+        return cleanWords;
+    };
+    
+    // create empty array
+    var titlesAsCleanWordGroups = [];
+
+    titlesAsWords.forEach(function(wordGroup){
+        result = keepItClean(wordGroup);
+        titlesAsCleanWordGroups.push(result)
+        return titlesAsCleanWordGroups;
+    });
+    return titlesAsCleanWordGroups;
+    
+};
+
+exercise.getWords = function(titles){
+    // return 'Error: getWords function not implemented';
+    //JM added (based on parse/03_getWords):
+    var words = titles.map(function(title){
+        // normalize the data.
+        return title.toLowerCase().match(/([a-z]+)/g);
+    });
+    return words;
 };
 
 exercise.eight = function(){
