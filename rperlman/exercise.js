@@ -171,13 +171,13 @@ exercise.three = function(){
     var fs = require('fs');
     var files = fs.readdirSync('./catalog');
     var content = '';
-    for (var i=0;i<files.length;i++) {
-        var f = files[i];
-        var body = fs.readFileSync('./catalog/'+f, 'UTF8');
+    for (var i=0; i<files.length; i++) {
+        //var f = files[i];
+        //var body = fs.readFileSync('./catalog/'+ f, 'UTF8');
+        var body = fs.readFileSync('./catalog/' + files[i] );
         content += body;
     }
     fs.writeFileSync('./catalog/catalog.txt', content);
-   console.log(content);
 };
 
 
