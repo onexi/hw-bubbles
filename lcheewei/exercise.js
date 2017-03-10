@@ -102,6 +102,7 @@ exercise.three = function(){
     // -----------------------------------------------
 
 var fs = require ('fs');
+var request = require('shelljs/global');
 
 function AppendFiles (File, AppendFile) {
 
@@ -153,16 +154,21 @@ exercise.four = function(){
         var text = fs.readFileSync(catFile, encoding='utf8');
 
         var str = text.toString()+'';
-        var min = minify('./catalog/catalog.txt', {
+/*
+        var min = minify(str, {
             removeEmptyElements: true,
             removeTagWhitespace: true,
             collapseInlineTagWhitespace: true,
             collapseWhitespace: true
         });
+*/
+
+    var min = str.replace(/\s+/g, " ");
 
         fs.writeFile(catFile, min, function(err) {
-            if(!err) {//console.log("Q4-3: File saved successfully! "); 
-            }
+            if(!err) 
+            {//console.log("Q4-3: File saved successfully! "); 
+        }
         });
    
 };
@@ -186,9 +192,9 @@ exercise.five = function(){
     var text = fs.readFileSync(catFile, encoding='utf8'); 
     var matches = [];
 
-    var expression = /<br><I>(.*?)<\/I><br>/g;
+    var expression = /<h3>(.*?)<I>/g;
     matches = text.match(expression);
-    //console.log('matches: '+matches);
+   // console.log('matches: '+matches[1]);
 
     return matches;   
  
@@ -231,7 +237,7 @@ exercise.seven = function(){
     // -----------------------------------------------
 
     var filter = titles.map(function(item) {
-        var fil = item.replace(/and |a |m |the |of |at |in |on |the |The |for |in | I | II| III|, |[J]|[0-9]|\.|\[|\]|\-|\:/g, "");
+        var fil = item.replace(/and | a |the |of |at |in |on |the |The |for |in | I | II| III|, |[J]|[0-9]|\.|\[|\]|\-|\:/g, "");
        var fil2 = fil.split('.'|'[]').join("");
        // console.log('Q6: filtered:    ' + fil2);
         return (fil);
@@ -259,7 +265,7 @@ exercise.eight = function(){
 
     var WordsArray = filtered.map(lowerC);
 
-   console.log('Q8: Words Array : '+WordsArray[2]);
+   //console.log('Q8: Words Array : '+WordsArray[2]);
 
 
     function flatten (item, counter, array){
@@ -270,7 +276,7 @@ exercise.eight = function(){
         curr.forEach(flatten);   
     }, []);
 
-   console.log('Q8: keywords : '+keywords[7]);
+  // console.log('Q8: keywords : '+keywords[7]);
    
 };
 
@@ -294,12 +300,12 @@ exercise.nine = function(){
         }
         freqMap[w] += 1;
     });
-    console.log('Q9 freqMap: ' +freqMap['systems'] );
+    //console.log('Q9 freqMap: ' +freqMap['systems'] );
 
 
     var str = 'var scores ='+ JSON.stringify(freqMap)+';';
 
-    console.log('Q9 Str: ' +str );
+   // console.log('Q9 Str: ' +str );
 
     fs.writeFile('./freqMap.js', str, function(err) {
             if(!err) {
