@@ -195,9 +195,11 @@ exercise.four = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
     var fs = require('fs');
-    var content = fs.readFileSync('./catalog/catalog.txt');
+    var content = fs.readFileSync('./catalog/catalog.txt', 'UTF8');
     var minify = require('html-minifier').minify;
-    var minifiedText = minify(content, 'UTF8');
+    var minifiedText = minify(content, {removeAttributeQuotes:false});
+    fs.writeFileSync('./catalog/scrubbedcontent.txt', minifiedText);
+    console.log('hello');
     return minifiedText;
 };
 
@@ -215,16 +217,16 @@ exercise.five = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
     var cheerio = require('cheerio');
-    var courses = require('./catalog/catalog.txt');
+    var courses = require('./catalog/scrubbedcontent.txt');
     var $ = cheerio.load(courses);
-
+    // <h3> tag before name <br>
     // use cheerio to get course titles
     exercise.getCourseTitles = function(){
     var courseTitles = [];
     $('h3').each(function(i,element){
         courseTitles.push($(element).text());
     });
-
+    console.log(courseTitles);
     return courseTitles;
 };
 };
@@ -257,10 +259,12 @@ exercise.seven = function(){
     // -----------------------------------------------
     exercise.getWords = function(titles){
     var words = titles.map(function(title){
-    return title.toLowerCase().match(/([a-z]+)/g);
-});
+        return title.toLowerCase().match(/([a-z]+)/g);
+    });
     return words;
+    };
 };
+
 
 exercise.eight = function(){
     // -----------------------------------------------
@@ -297,5 +301,5 @@ exercise.nine = function(){
         return previous;
     }, []);
     return result;
-
+};
 module.exports = exercise;
