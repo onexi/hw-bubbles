@@ -15,6 +15,7 @@ exercise.one = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
+    // Obtained list of URLS by manually clicking on course catalog links from website
     var urls= [
         'http://student.mit.edu/catalog/m1a.html',
         'http://student.mit.edu/catalog/m1b.html',
@@ -123,9 +124,9 @@ exercise.two = function(){
     urls = exercise.one();
 
     urls.forEach(function(url,i){
+        // COMMENTED OUT TO PREVENT REMAKING catalog.txt FILE OVER AND OVER
         // var page = request.get(url);
         // page.then(function(body){
-        //     console.log(body);
         //     var filename = 'catalog/data' + i + '.txt';
         //   });
 
@@ -138,20 +139,20 @@ exercise.two = function(){
     return urls;
 };
 
-exercise.save = function(filename, data) {
+    exercise.save = function(filename, data) {
 
-    return new Promise(function(resolve, reject) {
+        return new Promise(function(resolve, reject) {
 
-        fs.writeFile(filename, data, function(err) {
-            if (err) {
-                reject(err);
-            }
-            else {
-                resolve(true);
-            }
+            fs.writeFile(filename, data, function(err) {
+                if (err) {
+                    reject(err);
+                }
+                else {
+                    resolve(true);
+                }
+            });
+
         });
-
-    });
 
 };
 
@@ -174,8 +175,8 @@ exercise.three = function(){
     var files = fs.readdirSync('./catalog');
     var content = '';
     for (var i=0; i<files.length; i++) {
-        //var f = files[i];
-        //var body = fs.readFileSync('./catalog/'+ f, 'UTF8');
+        var f = files[i];
+        var body = fs.readFileSync('./catalog/'+ f, 'UTF8');
         var body = fs.readFileSync('./catalog/' + files[i], 'UTF8');
         if (i < 1000000) {
             content += body;
@@ -203,9 +204,7 @@ exercise.four = function(){
     var content = fs.readFileSync('./catalog/catalog.txt', 'UTF8');
     var minify = require('html-minifier').minify;
     var minifiedText = minify(content, {collapseWhitespace:true});
-    console.log(minifiedText);
     fs.writeFileSync('./catalog/scrubbedcontent.txt', minifiedText);
-    console.log('hello');
     return minifiedText; */
     
     // suggested from piazza to replace whitespace to pass the test
@@ -232,11 +231,12 @@ exercise.five = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
+    // use cheerio to get course titles
     var cheerio = require('cheerio');
     var body = fs.readFileSync('./catalog/catalog.txt', 'UTF8');
     var $ = cheerio.load(body);
-    // <h3> tag before name <br>
-    // use cheerio to get course titles
+
+    // make new array called courseTitles and add the titles, which are tagged with 'h3'
     var courseTitles = [];
     $('h3').each(function(i,element){
         courseTitles.push($(element).text());
@@ -254,11 +254,12 @@ exercise.six = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    // use cheerio to get course titles
     var cheerio = require('cheerio');
     var body = fs.readFileSync('./catalog/catalog.txt', 'UTF8');
     var $ = cheerio.load(body);
-    // <h3> tag before name <br>
-    // use cheerio to get course titles
+
+    // make new array called courseTitles and add the titles, which are tagged with 'h3'
     var courseTitles = [];
     $('h3').each(function(i,element){
         courseTitles.push($(element).text());
@@ -279,18 +280,24 @@ exercise.seven = function(){
     // -----------------------------------------------
     var courseTitles = exercise.six();
     
+    // eliminate punctuation and numbers by only using map to select letters
     var words = courseTitles.map(function(title){
         return title.toLowerCase().match(/([a-z]+)/g);
     });
-
-    var commonWords = ['and', 'at', 'the', 'in', 'j', 'to'];
+    
+    // create an array of common words and other junk that was present in the arrays
+    var commonWords = ['and', 'at', 'the', 'in', 'j', 'to', 'is', 'of', 'for', 'or', 'hst', 'by', 's', 'i', 'b', 'ii',
+    'on', 'd','t', 'm', 'th', 'tht', 'thu', 'ur', 'urg', 'iii', 'u', 'nmr', 'via', 'uap', 'uar', 'uat',
+    'urs', 'cmos', 'mthg', 'st', 'e', 'iv', 'it', 'p', 'q', 'g', 'un', 'k', 'v', 'vi', 'h', 'ec', 're',
+    'em', 'esg', 'es','scm', 'ms', 'sts', 'sp', 'xl', 'ns', 'cms', 'ce', 'f', 'els', 'dv', 'jr', 'ind'];
 
     words = words.map(function(wordList) {
 
         // wordList = ['an', 'engineering']
 
         var newArray = [];
-
+        
+        // use filter to eliminate the words contained in commonWords
         newArray = wordList.filter(function(word) {
             if (commonWords.includes(word)) {
                 return false;
@@ -299,9 +306,7 @@ exercise.seven = function(){
                 return true;
             }
         })
-
         return newArray;
-
 
     })
 
@@ -350,8 +355,11 @@ exercise.nine = function(){
         }
         return previous;
     }, {});
-
+    var fs = require('fs');
+    //fs.writeFileSync('./data_for_bubbles.txt', result);
+    console.log(result);
     return result;
 };
 
+// export the exercise
 module.exports = exercise;
