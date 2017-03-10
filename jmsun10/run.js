@@ -8,12 +8,12 @@ exercise.three();
 
 exercise.four();
 
-exercise.five();
+// exercise.five();
 
-exercise.six();
+// exercise.six();
 
-exercise.seven();
+// exercise.seven();
 
-exercise.eight();
+// exercise.eight();
 
-exercise.nine();
+// exercise.nine();

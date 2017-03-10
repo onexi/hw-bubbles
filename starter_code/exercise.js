@@ -105,17 +105,9 @@ exercise.two = function(){
 
 exercise.read = function(url){
 	// return new Promise(function(resolve, reject){
-    fs.readFileSync ('catalog/'+ i +'.html','utf-8',function read(err, data){
-    if(err){
-        reject(err);
-    }
-    // resolve('done')
-    content = data;
+    var content = fs.readFileSync ('catalog/'+ i +'.html','utf-8');
     // console.log(content);
-    fs.appendFile('catalog/catalog.txt', content, function(err) {
-	if(err) {throw err;}					
-});  
-});
+    content = fs.appendFileSync('catalog/catalog.txt', content);
 };
 
 exercise.three = function(){
@@ -130,9 +122,11 @@ exercise.three = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    exercise.read();
+    // exercise.read();
     var urls = exercise.one();
+    // console.log(urls);
     urls.forEach(function(url,i){
+        // console.log(i);
     exercise.read(i);
     });
 };
