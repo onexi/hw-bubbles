@@ -1,5 +1,5 @@
 var exercise = {};
-//var shell = require('shelljs/global');
+    
 var request = require('request');
 var fs = require('fs');
 //var minify = require('html-minifier').minify;
@@ -162,7 +162,7 @@ exercise.downloadURLRequests = function(url){
         return exercise.save(body, relativePath);
     }).
     then(function(msg){
-        console.log(msg);
+        //console.log(msg);
     });
 };
 
@@ -257,7 +257,7 @@ exercise.three = function(){
 
 
     function ReadAppend(file, appendFile){
-        console.log(file + ' ' + appendFile);
+        //console.log(file + ' ' + appendFile);
 
         var content;
         content = fs.readFileSync(appendFile);
