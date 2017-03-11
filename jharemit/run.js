@@ -17,3 +17,5 @@ exercise.seven();
 exercise.eight();
 
 exercise.nine();
+
+exercise.graph();
