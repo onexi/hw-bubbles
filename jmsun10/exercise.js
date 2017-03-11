@@ -164,7 +164,7 @@ exercise.four = function(){
 
     content = fs.readFileSync('catalog/catalog.txt','utf-8');
     content=content.replace(/\n/g,'');
-    content=content.replace(/\n/g,'');
+    content=content.replace(/\r\n/g,'');
     
     content = fs.writeFileSync('catalog/catalog.txt', content);
 
