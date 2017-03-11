@@ -286,7 +286,7 @@ exercise.seven = function(){
     });
     
     // create an array of common words and other junk that was present in the arrays
-    var commonWords = ['and', 'at', 'the', 'in', 'j', 'to', 'is', 'of', 'for', 'or', 'hst', 'by', 's', 'i', 'b', 'ii',
+    var commonWords = ['and', 'at', 'the', 'in', 'j', 'to', 'is', 'of', 'for', 'a', 'with', 'or', 'hst', 'by', 's', 'i', 'b', 'ii',
     'on', 'd','t', 'm', 'th', 'tht', 'thu', 'ur', 'urg', 'iii', 'u', 'nmr', 'via', 'uap', 'uar', 'uat',
     'urs', 'cmos', 'mthg', 'st', 'e', 'iv', 'it', 'p', 'q', 'g', 'un', 'k', 'v', 'vi', 'h', 'ec', 're',
     'em', 'esg', 'es','scm', 'ms', 'sts', 'sp', 'xl', 'ns', 'cms', 'ce', 'f', 'els', 'dv', 'jr', 'ind'];
@@ -357,7 +357,7 @@ exercise.nine = function(){
     }, {});
     var fs = require('fs');
     //fs.writeFileSync('./data_for_bubbles.txt', result);
-    console.log(result);
+    // this result appears in catalog_data.js, which is used to create the word frequency graphic
     return result;
 };
 
