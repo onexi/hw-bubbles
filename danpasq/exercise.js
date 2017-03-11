@@ -308,17 +308,50 @@ exercise.nine = function(){
     // -----------------------------------------------
     var frequency = {};
     var uniquewords = [];
+    var scores = [];
     var words = exercise.seven();
-    var uniquewords = words.reduce(function(previous,current){
-        if (previous !== current){
-            frequency.push(current);
+    uniquewords[0] = words[0];
+    function findUniquewords(item){
+        var included = 0;
+        for (i=0; i < uniquewords.length; i++) {
+            if (item === uniquewords[i]){
+                included = included + 1;
+            } else {
+                
+            }
         }
-    }, 0);
-    return uniquewords;
-    //I wasn't sure how to get exercise nine to work. I understand that once I have a
-    //dictionary with words and their frequencies, I needed to copy and paste the dictionary into the
-    //catalog_data.js file in order to get the graph to show.
-};
+        if (included > 0){
+            
+        } else {
+            uniquewords.push(item);
+        }
+    }
+    words.forEach(findUniquewords);
+    //console.log(uniquewords);
+    function score(item){
+        var wordscore = 0;
+        for (i=0; i < words.length; i++) {
+            if (item === words[i]){
+                wordscore = wordscore + 1;
+            } else {
+                
+            }
+        }
+        scores.push(wordscore);        
+        
+    }
+    uniquewords.forEach(score);
+    //console.log(scores);
+    function combine(){    
+        for (i=0; i<uniquewords.length; i++){
+            frequency[uniquewords[i]] = scores[i];
+        }
+    }
+    combine();
+    console.log(frequency);
 
+
+};
+//This new version of my HW4 submission has the frequency count and graph working.
 
 module.exports = exercise;
