@@ -1,0 +1,22 @@
+{
+  "name": "mcsmithalex",
+  "version": "1.0.0",
+  "description": "![curl logo](https://cdn.rawgit.com/curl/curl-www/master/logo/curl-logo.svg) [![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/63/badge)](https://bestpractices.coreinfrastructure.org/projects/63)",
+  "main": "Index.js",
+  "directories": {
+    "doc": "docs",
+    "test": "tests"
+  },
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "concat-files": "^0.1.1",
+    "html-minifier": "^3.4.0",
+    "request": "^2.81.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "MIT"
+}
