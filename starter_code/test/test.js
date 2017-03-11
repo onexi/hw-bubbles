@@ -3,6 +3,7 @@ var fs = require('fs');
 var ex = require('../exercise.js');
 
 describe('Catalog', function() {
+    this.timeout(30000);
 	it('Page Count', function() {
 		var links = ex.one();
 	    expect(links.length).to.be.at.least(80);
@@ -10,6 +11,7 @@ describe('Catalog', function() {
 });
 
 describe('Catalog Files', function() {
+    this.timeout(30000);
 	it('File Count', function() {
 		ex.two();
 		var files = fs.readdirSync('catalog');
@@ -18,6 +20,7 @@ describe('Catalog Files', function() {
 });
 
 describe('Combined Catalog File', function() {
+    this.timeout(30000);
 	it('File size', function() {
 		ex.three();
 		var stats = fs.statSync('catalog/catalog.txt');
@@ -27,6 +30,7 @@ describe('Combined Catalog File', function() {
 });
 
 describe('Whitespace', function() {
+    this.timeout(30000);
 	it('Whitespace and line breaks', function() {
 		ex.four();
 		var flag = false;
@@ -38,6 +42,7 @@ describe('Whitespace', function() {
 });
 
 describe('Courses', function() {
+    this.timeout(30000);
 	it('Course Count', function() {
 		var courses = ex.five();
 	    expect(courses.length).to.be.at.least(1000);
@@ -45,6 +50,7 @@ describe('Courses', function() {
 });
 
 describe('Titles', function() {
+    this.timeout(30000);
 	it('Title Count', function() {
 		var courses = ex.six();
 	    expect(courses.length).to.be.at.least(1000);
@@ -52,6 +58,7 @@ describe('Titles', function() {
 });
 
 describe('Clean Titles', function() {
+    this.timeout(30000);
 	it('Clean Count', function() {
 		var courses = ex.seven();
 	    expect(courses.length).to.be.at.least(1000);
