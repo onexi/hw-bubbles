@@ -167,10 +167,10 @@ exercise.four = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
     var output = "";
-    output=fs.readFileSync('./catalog/catalog.txt',"UTF8");
+    output=fs.readFileSync('catalog/catalog.txt',"UTF8");
     output=output.replace(/\r\n/g," ");
     output=output.replace(/\n/g," ");
-    fs.writeFileSync('./catalog/catalog.txt',output);
+    fs.writeFileSync('catalog/catalog.txt',output);
     return output;
 
 };
@@ -188,7 +188,7 @@ exercise.five = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    var str = fs.readFileSync('./catalog/catalog.txt', encoding='utf8'); 
+    var str = fs.readFileSync('catalog/catalog.txt', encoding='utf8'); 
     var output = str.match(/<h3>(.*?)<I>/g);
 
     return output;   
@@ -205,9 +205,9 @@ exercise.six = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
     var output=[];
-    var str = fs.readFileSync('./catalog/catalog.txt'); 
+    var str = fs.readFileSync('catalog/catalog.txt','UTF8'); 
     var $ = cheerio.load(str);
-    $("h3").each(function(i,elmt){
+    $('h3').each(function(i,elmt){
         output.push($(elmt).text());
     });
     return output;
@@ -224,22 +224,23 @@ exercise.seven = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    var isCommon=['i', 'ii','j', 'to', 'a', 'an', 'and','of' , 'in', 'the',  'for'];
-    var titles=exercise.six();
-    var output=titles.map(function(title){
-        return title.toLowerCase().match(/([a-z]+)/g);
-    });
-    output=output.map(function(arg){
-        return arg.filter(function(filtee){
-            if (isCommon.includes(filtee)){
-                return false;
-            }
-            else {
-                return true;
-            }
-        });
-    });
-    return output;
+    
+    // var isCommon=['i', 'ii','j', 'to', 'a', 'an', 'and','of' , 'in', 'the',  'for'];
+    // var titles=exercise.six();
+    // var output=titles.map(function(title){
+    //     return title.toLowerCase().match(/([a-z]+)/g);
+    // });
+    // output=output.map(function(arg){
+    //     return arg.filter(function(filtee){
+    //         if (isCommon.includes(filtee)){
+    //             return false;
+    //         }
+    //         else {
+    //             return true;
+    //         }
+    //     });
+    // });
+    // return output;
 };
 
 exercise.eight = function(){
@@ -252,12 +253,13 @@ exercise.eight = function(){
     //
     //  See homework guide document for more info.
     // ----------------------------------------------
-    var raw=exercise.seven();
-    var output=raw.reduce(function(elmt1,elmt2){
-        return elmt1+elmt2;
-    },[]);
+    
+    // var raw=exercise.seven();
+    // var output=raw.reduce(function(elmt1,elmt2){
+    //     return elmt1+elmt2;
+    // },[]);
 
-    return output;
+    // return output;
 };
 
 exercise.nine = function(){
@@ -270,17 +272,7 @@ exercise.nine = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-   var words = exercise.eight();
-    counts = {};
-    for (var i = 0; i < words.length; i++) {
-         if (typeof counts[words[i]] == 'undefined') {
-             counts[words[i]] = 1;
-         } else {
-             counts[words[i]] += 1;
-         };
-     };
-     console.log(counts);
-     return counts;
+   
 };
 
 
