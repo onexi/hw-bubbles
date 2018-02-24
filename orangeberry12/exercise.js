@@ -12,8 +12,16 @@ exercise.one = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
     //all the course links are in the <ul> element
+
+    //load mit course page
+    var xhr = new XMLHttpRequest();
+    xhr.onload = function(){
+        console.log(this.response.title);
+    };
+
+    //get all page links from course page
     var listElement = document.querySelectorAll('li');
-    var allPages = []
+    var allPages = [];
 
     var getUrls = function(item,index,array){
         var currentChild = item.children[0];
@@ -23,6 +31,8 @@ exercise.one = function(){
     }
 
     listElement.forEach(getUrls);
+
+    return allPages;
 };
 
 exercise.two = function(){
