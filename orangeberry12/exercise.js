@@ -13,14 +13,20 @@ exercise.one = function(){
     // -----------------------------------------------
     //all the course links are in the <ul> element
 
-    //load mit course page
+    //send http request to mit course page
+    /*
     var xhr = new XMLHttpRequest();
-    xhr.onload = function(){
-        console.log(this.response.title);
-    };
+    xhr.open("GET", "http://student.mit.edu/catalog/index.cgi");
+    xhr.responseType = "document";
+    xhr.send();
+    */
+
+    //resulting document
+    webPage = request.get('http://student.mit.edu/catalog/index.cgi');
+
 
     //get all page links from course page
-    var listElement = document.querySelectorAll('li');
+    var listElement = webPage.querySelectorAll('li');
     var allPages = [];
 
     var getUrls = function(item,index,array){
