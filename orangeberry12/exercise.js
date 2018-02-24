@@ -11,6 +11,18 @@ exercise.one = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    //all the course links are in the <ul> element
+    var listElement = document.querySelectorAll('li');
+    var allPages = []
+
+    var getUrls = function(item,index,array){
+        var currentChild = item.children[0];
+        if (currentChild !== undefined) {
+            allPages.push(item.children[0].href);
+        }
+    }
+
+    listElement.forEach(getUrls);
 };
 
 exercise.two = function(){
