@@ -379,18 +379,20 @@ exercise.nine = function(){
 
     var courseTitles = exercise.eight();
 
-    var list = courseTitles[1].reduce(function(previous, current){
-        if (current in previous){
-            previous[current] += 1;
-        }
 
-        else {
-            previous[current] = 1;
-        }
+    // var list = courseTitles[1].reduce(function(previous, current){
+    //     if (current in previous){
+    //         previous[current] += 1;
+    //     }
+    //
+    //     else {
+    //         previous[current] = 1;
+    //     }
+    //
+    // }, {});
 
-    }, {});
-
-    console.log(list);
+    console.log(courseTitles[1]);
+    console.log('idaly');
 
 };
 
