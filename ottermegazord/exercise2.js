@@ -1,3 +1,4 @@
+var exercise = {};
 var fs = require('fs');
 var minify = require('html-minifier').minify;
 var request = require('request');
@@ -17,6 +18,7 @@ exercise.one = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+
 
     var sites= [
         'http://student.mit.edu/catalog/m1a.html',
@@ -109,13 +111,9 @@ exercise.one = function(){
         'http://student.mit.edu/catalog/mSPa.html'
     ];
 
+    //console.log(sites);
     return sites;
 };
-
-// var sites = exercise.one();
-//
-// console.log(sites.length);
-
 
 exercise.two = function(){
     // -----------------------------------------------
@@ -130,8 +128,6 @@ exercise.two = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    //
-
 
     var fs = require('fs');
 
@@ -150,7 +146,7 @@ exercise.two = function(){
             //console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
             var extension = url.replace(redundant, '');
             var destination = "/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/" + extension;
-            console.log(destination);
+            //console.log(destination);
 
             fs.writeFile(destination, body, function(err) {
 
@@ -163,10 +159,20 @@ exercise.two = function(){
         });
     });
 
-
 };
 
 exercise.three = function(){
+    // // -----------------------------------------------
+    // //   YOUR CODE
+    // //
+    // //  Combine all files into one,
+    // //  save to "your_folder/catalog/catalog.txt"
+    // //
+    // //  You can use the file system API,
+    // //  https://nodejs.org/api/fs.html
+    // //
+    // //  See homework guide document for more info.
+    // // -----------------------------------------------
 
     var sites = exercise.one();
 
@@ -204,132 +210,122 @@ exercise.three = function(){
 
     });
 
-    var text = fs.readFileSync(address,'utf8');
-    console.log (text)
 
 
-    // -----------------------------------------------
-    //   YOUR CODE
-    //
-    //  Combine all files into one,
-    //  save to "your_folder/catalog/catalog.txt"
-    //
-    //  You can use the file system API,
-    //  https://nodejs.org/api/fs.html
-    //
-    //  See homework guide document for more info.
-    // -----------------------------------------------
 };
 
 exercise.four = function(){
-    // -----------------------------------------------
-    //   YOUR CODE
-    //
-    //  Remove line breaks and whitespaces
-    //  from the file. Return a string of
-    //  scrubbed HTML. In other words, HTML without
-    //  line breaks or whitespaces.
-    //
-    //  You can use the NPM package "html-minifier".
-    //
-    //  See homework guide document for more info.
-    // -----------------------------------------------
+    // // -----------------------------------------------
+    // //   YOUR CODE
+    // //
+    // //  Remove line breaks and whitespaces
+    // //  from the file. Return a string of
+    // //  scrubbed HTML. In other words, HTML without
+    // //  line breaks or whitespaces.
+    // //
+    // //  You can use the NPM package "html-minifier".
+    // //
+    // //  See homework guide document for more info.
+    // // -----------------------------------------------
 
     var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
     var input = fs.readFileSync(address, 'utf8');
     var output = input.replace(/\r/g, '');
     output = output.replace(/\n/g, '');
     fs.writeFileSync(address, output);
+    //console.log(output);
     return output;
 };
 
 exercise.five = function(){
-    // -----------------------------------------------
-    //   YOUR CODE
+    // // -----------------------------------------------
+    // //   YOUR CODE
+    // //
+    // //  Load your scrubbed HTML into the DOM.
+    // //  Use the DOM structure to get all the courses.
+    // //
+    // //  Return an array of courses.
+    // //
+    // //  You can use the NPM package "cheerio".
+    // //
+    // //  See homework guide document for more info.
+    // // -----------------------------------------------
     //
-    //  Load your scrubbed HTML into the DOM.
-    //  Use the DOM structure to get all the courses.
     //
-    //  Return an array of courses.
-    //
-    //  You can use the NPM package "cheerio".
-    //
-    //  See homework guide document for more info.
-    // -----------------------------------------------
+    var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
+    var body = fs.readFileSync(address, 'UTF8');
+    var $ = cheerio.load(body);
 
-    var courses = fs.readFileSync('./catalog/catalog.txt','utf8');
-    var $ = cheerio.load(courses);
-    var matches = [];
-
+    var courseTitles = [];
     $('h3').each(function(i,element){
-        matches.push($(element).text());
+        courseTitles.push($(element).text());
     });
 
-    return matches;
-
-    // var cheerio = require('cheerio');
-    // var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
-    // //var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/m1a.html';
-    // var body = fs.readFileSync(address, 'UTF8');
-    // var $ = cheerio.load(body);
-    //
-    // // make new array called courseTitles and add the titles, which are tagged with 'h3'
-    // var courseTitles = [];
-    // $('h3').each(function(i,element){
-    //     courseTitles[i] = $(element).text();
-    // });
-    //
-    // console.log(courseTitles);
-    // return courseTitles;
-
-
-
-   //  var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
-   //  var courses = [];
-   //  //var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/m1a.html';
-   //  var body = fs.readFileSync(address, 'UTF8');
-   //  var $ = cheerio.load(body);
-   //
-   //  // make new array called courseTitles and add the titles, which are tagged with 'h3'
-   //  var courseTitles = [];
-   //  $('h3').each(function(i,element){
-   //      courseTitles.push($(element).text());
-   //  });
-   //  return courseTitles;
-   //  //  var input = fs.readFileSync(address, 'utf-8');
-   // //  const $ = cheerio.load(input);
-   // //
-   // // $('h3').each(function(i, course){
-   // //     courses.push($(course).text());
-   // // });
-   // //
-   // // return courses;
+    console.log(courseTitles);
+    return courseTitles;
 
 };
 
 exercise.six = function(){
-    // -----------------------------------------------
-    //   YOUR CODE
-    //
-    //  Return an array of course titles.
-    //
-    //  You can use the NPM package cheerio.
-    //
-    //  See homework guide document for more info.
-    // -----------------------------------------------
+    // // -----------------------------------------------
+    // //   YOUR CODE
+    // //
+    // //  Return an array of course titles.
+    // //
+    // //  You can use the NPM package cheerio.
+    // //
+    // //  See homework guide document for more info.
+    // // -----------------------------------------------
+    var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
+    var body = fs.readFileSync(address, 'UTF8');
+    var $ = cheerio.load(body);
+
+    var courseTitles = [];
+    $('h3').each(function(i,element){
+        courseTitles.push($(element).text());
+    });
+
+    // console.log(courseTitles);
+    return courseTitles;
 };
 
 exercise.seven = function(){
-    // -----------------------------------------------
-    //   YOUR CODE
-    //
-    //  Filter out punctuation, numbers,
-    //  and common words like "and", "the", "a", etc.
-    //
-    //  Return clean array.
-    //
-    //  See homework guide document for more info.
-    // -----------------------------------------------
+    // // -----------------------------------------------
+    // //   YOUR CODE
+    // //
+    // //  Filter out punctuation, numbers,
+    // //  and common words like "and", "the", "a", etc.
+    // //
+    // //  Return clean array.
+    // //
+    // //  See homework guide document for more info.
+    // // -----------------------------------------------
+    var courseTitles = exercise.six();
+    var words = courseTitles.map(puncRemover);
+
+
+    function puncRemover(title){
+        var cleaned = title.toLowerCase().match(/([a-z]+)/g);
+        return cleaned;
+    }
+
+    // console.log(courseTitles.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,""));
+
+
+    words.forEach(removeCommonWords);
+
+    function removeCommonWords(words) {
+        var common = require('common-words');
+        common.forEach(function(obj) {
+            var word = obj.word;
+            while (words.indexOf(word) !== -1) {
+                words.splice(words.indexOf(word), 1);
+            }
+        });
+        return words;
+    };
+
+    return words;
 };
 
 exercise.eight = function(){
@@ -342,6 +338,33 @@ exercise.eight = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    var courseTitles = exercise.six();
+    var words = courseTitles.map(puncRemover);
+
+
+    function puncRemover(title){
+        var cleaned = title.toLowerCase().match(/([a-z]+)/g);
+        return cleaned;
+    }
+
+    // console.log(courseTitles.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,""));
+
+
+    words.forEach(removeCommonWords);
+
+    function removeCommonWords(words) {
+        var common = require('common-words');
+        common.forEach(function(obj) {
+            var word = obj.word;
+            while (words.indexOf(word) !== -1) {
+                words.splice(words.indexOf(word), 1);
+            }
+        });
+        return words;
+    };
+
+    return words;
+    console.log(words);
 };
 
 exercise.nine = function(){
@@ -354,6 +377,24 @@ exercise.nine = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+
+    var courseTitles = exercise.eight();
+
+
+    // var list = courseTitles[1].reduce(function(previous, current){
+    //     if (current in previous){
+    //         previous[current] += 1;
+    //     }
+    //
+    //     else {
+    //         previous[current] = 1;
+    //     }
+    //
+    // }, {});
+
+    console.log(courseTitles);
+    console.log('idaly');
+
 };
 
 
