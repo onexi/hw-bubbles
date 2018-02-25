@@ -226,6 +226,13 @@ exercise.four = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+
+    var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
+    var input = fs.readFileSync(address, 'utf8');
+    var output = input.replace(/\r/g, '');
+    output = output.replace(/\n/g, '');
+    fs.writeFileSync(address, output);
+    return output;
 };
 
 exercise.five = function(){
