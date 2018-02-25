@@ -17,7 +17,7 @@
     "devDependencies": {
         "eslint": "^3.15.0",
         "gulp": "^3.9.1",
-        "mocha": "^3.2.0",
+        "mocha": "^3.5.3",
         "mute": "^2.0.6",
         "q": "^1.4.1",
         "request": "^2.79.0"
@@ -25,7 +25,6 @@
     "dependencies": {
         "bluebird": "^3.5.0",
         "chai": "^3.5.0",
-        "html-minifier": "^3.5.9",
-        "mocha": "^3.2.0"
+        "html-minifier": "^3.5.9"
     }
 }
