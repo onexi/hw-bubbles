@@ -255,9 +255,9 @@ exercise.five = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    //var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
+    var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
     var courses = [];
-    var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/m1a.html';
+    //var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/m1a.html';
     var input = fs.readFileSync(address, 'utf-8');
     const $ = cheerio.load(input);
 
