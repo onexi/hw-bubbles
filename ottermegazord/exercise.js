@@ -322,9 +322,9 @@ exercise.seven = function(){
         return words;
     };
 
-    words = removeCommonWords(words, common);
+    removeCommonWords(words, common);
 
-    console.log(words);
+    console.log(removeCommonWords(words, common));
     console.log('idaly');
 };
 
