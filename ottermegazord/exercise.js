@@ -228,11 +228,7 @@ exercise.four = function(){
     // // -----------------------------------------------
 
     var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
-    // var input = fs.readFileSync(address, 'utf8');
-    var input = fs.readFile(address, 'utf8', function(err, contents) {
-        console.log(contents);
-        return contents;
-    });
+    var input = fs.readFileSync(address, 'utf8');
     // console.log(input);
     var output = input.replace(/\r/g, '');
     output = output.replace(/\n/g, '');
