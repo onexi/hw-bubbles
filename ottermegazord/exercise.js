@@ -325,12 +325,7 @@ exercise.seven = function(){
         return words;
     };
 
-
-
-    var test = removeCommonWords(words[8]);
-
-
-    console.log(test);
+    console.log(words);
     console.log('idaly');
 };
 
