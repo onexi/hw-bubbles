@@ -302,7 +302,6 @@ exercise.seven = function(){
     // // -----------------------------------------------
     var courseTitles = exercise.six();
     var words = courseTitles.map(puncRemover);
-    var common = require('common-words');
 
 
     function puncRemover(title){
@@ -312,7 +311,8 @@ exercise.seven = function(){
 
     // console.log(courseTitles.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,""));
 
-    function removeCommonWords(words, common) {
+    function removeCommonWords(words) {
+        var common = require('common-words');
         common.forEach(function(obj) {
             var word = obj.word;
             while (words.indexOf(word) !== -1) {
