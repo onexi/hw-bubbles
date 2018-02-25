@@ -234,12 +234,13 @@ exercise.four = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    //
-    // var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
-    // var input = fs.readFileSync(address, 'utf-8');
-    // var output = input.replace(/\s/g, "X");
-    // fs.writeFileSync(address, output);
-    // return output;
+
+    var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
+    var input = fs.readFileSync(address, 'utf8');
+    var output = input.replace(/\r/g, '');
+    output = output.replace(/\n/g, '');
+    fs.writeFileSync(address, output);
+    return output;
 };
 
 exercise.five = function(){
@@ -256,20 +257,30 @@ exercise.five = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
-    var cheerio = require('cheerio');
-    var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
-    var body = fs.readFileSync(address, 'UTF8');
-    var $ = cheerio.load(body);
-    console.log(body);
+    var courses = fs.readFileSync('./catalog/catalog.txt','utf8');
+    var $ = cheerio.load(courses);
+    var matches = [];
 
-    // make new array called courseTitles and add the titles, which are tagged with 'h3'
-    var courseTitles = [];
     $('h3').each(function(i,element){
-        courseTitles.push($(element).text());
+        matches.push($(element).text());
     });
 
-    console.log(courseTitles);
-    return courseTitles;
+    return matches;
+
+    // var cheerio = require('cheerio');
+    // var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
+    // //var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/m1a.html';
+    // var body = fs.readFileSync(address, 'UTF8');
+    // var $ = cheerio.load(body);
+    //
+    // // make new array called courseTitles and add the titles, which are tagged with 'h3'
+    // var courseTitles = [];
+    // $('h3').each(function(i,element){
+    //     courseTitles[i] = $(element).text();
+    // });
+    //
+    // console.log(courseTitles);
+    // return courseTitles;
 
 
 
