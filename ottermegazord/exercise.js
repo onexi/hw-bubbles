@@ -301,7 +301,10 @@ exercise.seven = function(){
     // //  See homework guide document for more info.
     // // -----------------------------------------------
     var courseTitles = exercise.six();
-    console.log(courseTitles);
+    var words = courseTitles.map(function(title){
+        return title.toLowerCase().match(/([a-z]+)/g);
+    });
+    console.log(words);
     // console.log(courseTitles.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,""));
 };
 
