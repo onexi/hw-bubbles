@@ -300,8 +300,8 @@ exercise.seven = function(){
     // //
     // //  See homework guide document for more info.
     // // -----------------------------------------------
-    // var courseTitles = exercise.six();
-    // console.log(courseTitles);
+    var courseTitles = exercise.six();
+    console.log(courseTitles + "666");
 };
 
 exercise.eight = function(){
