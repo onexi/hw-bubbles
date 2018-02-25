@@ -1,4 +1,3 @@
-var exercise = {};
 var fs = require('fs');
 var minify = require('html-minifier').minify;
 var request = require('request');
@@ -18,7 +17,6 @@ exercise.one = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-
 
     var sites= [
         'http://student.mit.edu/catalog/m1a.html',
@@ -114,6 +112,11 @@ exercise.one = function(){
     return sites;
 };
 
+// var sites = exercise.one();
+//
+// console.log(sites.length);
+
+
 exercise.two = function(){
     // -----------------------------------------------
     //   YOUR CODE
@@ -127,9 +130,84 @@ exercise.two = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    //
+
+
+    var fs = require('fs');
+
+    var sites = exercise.one();
+
+    var redundant = 'http://student.mit.edu/catalog/';
+
+    // console.log(sites[1].replace(redundant, ''));
+
+    var request = require('request');
+
+
+    sites.forEach(function(url){
+        request(url, function (error, response, body) {
+            //console.log('error:', error); // Print the error if one occurred
+            //console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+            var extension = url.replace(redundant, '');
+            var destination = "/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/" + extension;
+            console.log(destination);
+
+            fs.writeFile(destination, body, function(err) {
+
+                if(err) {
+                    //return console.log(extension);
+                }
+
+
+            });
+        });
+    });
+
+
 };
 
 exercise.three = function(){
+
+    var sites = exercise.one();
+
+    function pages(url){
+
+        var redundant = 'http://student.mit.edu/catalog/';
+        var extension = url.replace(redundant, '');
+        return extension;
+
+    }
+
+    var list = sites.map(pages);
+    var compiled = 0;
+
+    list.forEach(compiler);
+
+    function compiler(url){
+        var address = directory + url;
+        var text = fs.readFileSync(address,'utf8');
+        compiled += text;
+    }
+
+    // console.log(compiled);
+
+    var extension = 'catalog.txt';
+
+    var destination = directory + extension;
+
+    fs.writeFile(destination, compiled, function(err) {
+
+        if(err) {
+            //return console.log(extension);
+        }
+
+
+    });
+
+    var text = fs.readFileSync(address,'utf8');
+    console.log (text)
+
+
     // -----------------------------------------------
     //   YOUR CODE
     //
@@ -156,6 +234,13 @@ exercise.four = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+
+    var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
+    var input = fs.readFileSync(address, 'utf8');
+    var output = input.replace(/\r/g, '');
+    output = output.replace(/\n/g, '');
+    fs.writeFileSync(address, output);
+    return output;
 };
 
 exercise.five = function(){
@@ -171,6 +256,55 @@ exercise.five = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+
+    var courses = fs.readFileSync('./catalog/catalog.txt','utf8');
+    var $ = cheerio.load(courses);
+    var matches = [];
+
+    $('h3').each(function(i,element){
+        matches.push($(element).text());
+    });
+
+    return matches;
+
+    // var cheerio = require('cheerio');
+    // var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
+    // //var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/m1a.html';
+    // var body = fs.readFileSync(address, 'UTF8');
+    // var $ = cheerio.load(body);
+    //
+    // // make new array called courseTitles and add the titles, which are tagged with 'h3'
+    // var courseTitles = [];
+    // $('h3').each(function(i,element){
+    //     courseTitles[i] = $(element).text();
+    // });
+    //
+    // console.log(courseTitles);
+    // return courseTitles;
+
+
+
+   //  var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
+   //  var courses = [];
+   //  //var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/m1a.html';
+   //  var body = fs.readFileSync(address, 'UTF8');
+   //  var $ = cheerio.load(body);
+   //
+   //  // make new array called courseTitles and add the titles, which are tagged with 'h3'
+   //  var courseTitles = [];
+   //  $('h3').each(function(i,element){
+   //      courseTitles.push($(element).text());
+   //  });
+   //  return courseTitles;
+   //  //  var input = fs.readFileSync(address, 'utf-8');
+   // //  const $ = cheerio.load(input);
+   // //
+   // // $('h3').each(function(i, course){
+   // //     courses.push($(course).text());
+   // // });
+   // //
+   // // return courses;
+
 };
 
 exercise.six = function(){
