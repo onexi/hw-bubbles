@@ -322,12 +322,10 @@ exercise.seven = function(){
         return words;
     };
 
-    words = words.forEach(removeCommonWords);
-
-    //var test = removeCommonWords(words[1], common);
+    var test = removeCommonWords(words[1], common);
 
 
-    console.log(words);
+    console.log(test);
     console.log('idaly');
 };
 
