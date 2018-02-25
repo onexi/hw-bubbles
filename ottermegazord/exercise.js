@@ -248,17 +248,7 @@ exercise.five = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-
-    // var courses = fs.readFileSync('./catalog/catalog.txt','utf8');
-    // var $ = cheerio.load(courses);
-    // var matches = [];
-    //
-    // $('h3').each(function(i,element){
-    //     matches.push($(element).text());
-    // });
-    //
-    // console.log(matches);
-    // return matches;
+    
 
     var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
     var body = fs.readFileSync(address, 'UTF8');
