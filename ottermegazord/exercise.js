@@ -325,6 +325,7 @@ exercise.seven = function(){
     words = removeCommonWords(words, common);
 
     console.log(words);
+    console.log('idaly');
 };
 
 exercise.eight = function(){
