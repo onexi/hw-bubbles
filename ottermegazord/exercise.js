@@ -312,7 +312,17 @@ exercise.seven = function(){
 
     // console.log(courseTitles.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,""));
 
-    console.log(words[1]);
+    function removeCommonWords(words, common) {
+        common.forEach(function(obj) {
+            var word = obj.word;
+            while (words.indexOf(word) !== -1) {
+                words.splice(words.indexOf(word), 1);
+            }
+        });
+        return words;
+    };
+    var test = removeCommonWords(words[1], common);
+    console.log(test);
     console.log('idaly');
 };
 
