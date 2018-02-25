@@ -129,35 +129,35 @@ exercise.two = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
-    var fs = require('fs');
-
-    var sites = exercise.one();
-
-    var redundant = 'http://student.mit.edu/catalog/';
-
-    // console.log(sites[1].replace(redundant, ''));
-
-    var request = require('request');
-
-
-    sites.forEach(function(url){
-        request(url, function (error, response, body) {
-            //console.log('error:', error); // Print the error if one occurred
-            //console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-            var extension = url.replace(redundant, '');
-            var destination = "/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/" + extension;
-            console.log(destination);
-
-            fs.writeFile(destination, body, function(err) {
-
-                if(err) {
-                    //return console.log(extension);
-                }
-
-
-            });
-        });
-    });
+    // var fs = require('fs');
+    //
+    // var sites = exercise.one();
+    //
+    // var redundant = 'http://student.mit.edu/catalog/';
+    //
+    // // console.log(sites[1].replace(redundant, ''));
+    //
+    // var request = require('request');
+    //
+    //
+    // sites.forEach(function(url){
+    //     request(url, function (error, response, body) {
+    //         //console.log('error:', error); // Print the error if one occurred
+    //         //console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+    //         var extension = url.replace(redundant, '');
+    //         var destination = "/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/" + extension;
+    //         console.log(destination);
+    //
+    //         fs.writeFile(destination, body, function(err) {
+    //
+    //             if(err) {
+    //                 //return console.log(extension);
+    //             }
+    //
+    //
+    //         });
+    //     });
+    // });
 
 };
 
@@ -173,44 +173,44 @@ exercise.three = function(){
     // //
     // //  See homework guide document for more info.
     // // -----------------------------------------------
-    //
-    // var sites = exercise.one();
-    //
-    // function pages(url){
-    //
-    //     var redundant = 'http://student.mit.edu/catalog/';
-    //     var extension = url.replace(redundant, '');
-    //     return extension;
-    //
-    // }
-    //
-    // var list = sites.map(pages);
-    // var compiled = 0;
-    //
-    // list.forEach(compiler);
-    //
-    // function compiler(url){
-    //     var address = directory + url;
-    //     var text = fs.readFileSync(address,'utf8');
-    //     compiled += text;
-    // }
-    //
-    // // console.log(compiled);
-    //
-    // var extension = 'catalog.txt';
-    //
-    // var destination = directory + extension;
-    //
-    // fs.writeFile(destination, compiled, function(err) {
-    //
-    //     if(err) {
-    //         //return console.log(extension);
-    //     }
-    //
-    //
-    // });
-    //
-    //
+
+    var sites = exercise.one();
+
+    function pages(url){
+
+        var redundant = 'http://student.mit.edu/catalog/';
+        var extension = url.replace(redundant, '');
+        return extension;
+
+    }
+
+    var list = sites.map(pages);
+    var compiled = 0;
+
+    list.forEach(compiler);
+
+    function compiler(url){
+        var address = directory + url;
+        var text = fs.readFileSync(address,'utf8');
+        compiled += text;
+    }
+
+    // console.log(compiled);
+
+    var extension = 'catalog.txt';
+
+    var destination = directory + extension;
+
+    fs.writeFile(destination, compiled, function(err) {
+
+        if(err) {
+            //return console.log(extension);
+        }
+
+
+    });
+
+
 
 };
 
