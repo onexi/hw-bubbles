@@ -185,7 +185,7 @@ exercise.three = function(){
         compiled += text;
     }
 
-    console.log(compiled);
+    // console.log(compiled);
 
     var extension = 'catalog.txt';
 
