@@ -327,7 +327,7 @@ exercise.seven = function(){
 
 
 
-    var test = removeCommonWords(words[1]);
+    var test = removeCommonWords(words[8]);
 
 
     console.log(test);
