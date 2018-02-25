@@ -376,6 +376,22 @@ exercise.nine = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+
+    var courseTitles = exercise.eight();
+
+    var list = courseTitles[1].reduce(function(previous, current){
+        if (current in previous){
+            previous[current] += 1;
+        }
+
+        else {
+            previous[current] = 1;
+        }
+
+    }, {});
+
+    console.log(list);
+
 };
 
 
