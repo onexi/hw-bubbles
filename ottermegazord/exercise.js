@@ -298,6 +298,8 @@ exercise.seven = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    var courseTitles = exercise.six();
+    console.log(courseTitles);
 };
 
 exercise.eight = function(){
