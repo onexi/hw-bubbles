@@ -1,4 +1,5 @@
 var fs = require('fs');
+var minify = require('html-minifier').minify;
 var exercise = {};
 var directory = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/';
 
@@ -163,42 +164,42 @@ exercise.two = function(){
 };
 
 exercise.three = function(){
-
-    var sites = exercise.one();
-
-    function pages(url){
-
-        var redundant = 'http://student.mit.edu/catalog/';
-        var extension = url.replace(redundant, '');
-        return extension;
-
-    }
-
-    var list = sites.map(pages);
-    var compiled = 0;
-
-    list.forEach(compiler);
-
-    function compiler(url){
-        var address = directory + url;
-        var text = fs.readFileSync(address,'utf8');
-        compiled += text;
-    }
-
-    // console.log(compiled);
-
-    var extension = 'catalog.txt';
-
-    var destination = directory + extension;
-
-    fs.writeFile(destination, compiled, function(err) {
-
-        if(err) {
-            //return console.log(extension);
-        }
-
-
-    });
+    //
+    // var sites = exercise.one();
+    //
+    // function pages(url){
+    //
+    //     var redundant = 'http://student.mit.edu/catalog/';
+    //     var extension = url.replace(redundant, '');
+    //     return extension;
+    //
+    // }
+    //
+    // var list = sites.map(pages);
+    // var compiled = 0;
+    //
+    // list.forEach(compiler);
+    //
+    // function compiler(url){
+    //     var address = directory + url;
+    //     var text = fs.readFileSync(address,'utf8');
+    //     compiled += text;
+    // }
+    //
+    // // console.log(compiled);
+    //
+    // var extension = 'catalog.txt';
+    //
+    // var destination = directory + extension;
+    //
+    // fs.writeFile(destination, compiled, function(err) {
+    //
+    //     if(err) {
+    //         //return console.log(extension);
+    //     }
+    //
+    //
+    // });
 
     // var text = fs.readFileSync(address,'utf8');
     // console.log (text)
@@ -230,6 +231,11 @@ exercise.four = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+
+    var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
+    var input = fs.readFileSync(address, 'utf-8');
+    var output = input.replace(/\s/g, "X");
+    return output;
 };
 
 exercise.five = function(){
