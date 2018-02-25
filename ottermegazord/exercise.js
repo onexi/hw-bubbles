@@ -233,7 +233,7 @@ exercise.four = function(){
     var output = input.replace(/\r/g, '');
     output = output.replace(/\n/g, '');
     fs.writeFileSync(address, output);
-    console.log(output);
+    console.log('hey!');
     return output;
 };
 
