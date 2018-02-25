@@ -302,6 +302,7 @@ exercise.seven = function(){
     // // -----------------------------------------------
     var courseTitles = exercise.six();
     var words = courseTitles.map(puncRemover);
+    var common = require('common-words');
 
 
     function puncRemover(title){
