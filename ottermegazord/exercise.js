@@ -257,53 +257,19 @@ exercise.five = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
-    var courses = fs.readFileSync('./catalog/catalog.txt','utf8');
-    var $ = cheerio.load(courses);
-    var matches = [];
 
+    var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
+    var courses = [];
+    //var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/m1a.html';
+    var body = fs.readFileSync(address, 'UTF8');
+    var $ = cheerio.load(body);
+
+    // make new array called courseTitles and add the titles, which are tagged with 'h3'
+    var courseTitles = [];
     $('h3').each(function(i,element){
-        matches.push($(element).text());
+        courseTitles.push($(element).text());
     });
-
-    return matches;
-
-    // var cheerio = require('cheerio');
-    // var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
-    // //var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/m1a.html';
-    // var body = fs.readFileSync(address, 'UTF8');
-    // var $ = cheerio.load(body);
-    //
-    // // make new array called courseTitles and add the titles, which are tagged with 'h3'
-    // var courseTitles = [];
-    // $('h3').each(function(i,element){
-    //     courseTitles[i] = $(element).text();
-    // });
-    //
-    // console.log(courseTitles);
-    // return courseTitles;
-
-
-
-   //  var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
-   //  var courses = [];
-   //  //var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/m1a.html';
-   //  var body = fs.readFileSync(address, 'UTF8');
-   //  var $ = cheerio.load(body);
-   //
-   //  // make new array called courseTitles and add the titles, which are tagged with 'h3'
-   //  var courseTitles = [];
-   //  $('h3').each(function(i,element){
-   //      courseTitles.push($(element).text());
-   //  });
-   //  return courseTitles;
-   //  //  var input = fs.readFileSync(address, 'utf-8');
-   // //  const $ = cheerio.load(input);
-   // //
-   // // $('h3').each(function(i, course){
-   // //     courses.push($(course).text());
-   // // });
-   // //
-   // // return courses;
+    return courseTitles;
 
 };
 
