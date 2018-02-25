@@ -308,8 +308,22 @@ exercise.seven = function(){
         var cleaned = title.toLowerCase().match(/([a-z]+)/g);
         return cleaned;
     }
-    console.log(words);
+
     // console.log(courseTitles.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,""));
+
+    function removeCommonWords(words, common) {
+        common.forEach(function(obj) {
+            var word = obj.word;
+            while (words.indexOf(word) !== -1) {
+                words.splice(words.indexOf(word), 1);
+            }
+        });
+        return words;
+    };
+
+    words = removeCommonWords(words, common);
+
+    console.log(words);
 };
 
 exercise.eight = function(){
