@@ -321,8 +321,13 @@ exercise.seven = function(){
         });
         return words;
     };
-    var test = removeCommonWords(words[1], common);
-    console.log(test);
+
+    words = words.forEach(removeCommonWords);
+
+    //var test = removeCommonWords(words[1], common);
+
+
+    console.log(words);
     console.log('idaly');
 };
 
