@@ -365,6 +365,7 @@ exercise.eight = function(){
 
     return words;
     console.log(words);
+    //idaly ends here
 };
 
 exercise.nine = function(){
