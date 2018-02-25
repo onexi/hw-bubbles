@@ -301,7 +301,7 @@ exercise.seven = function(){
     // //  See homework guide document for more info.
     // // -----------------------------------------------
     var courseTitles = exercise.six();
-    console.log("666" + courseTitles + "666");
+    console.log(courseTitles.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,""));
 };
 
 exercise.eight = function(){
