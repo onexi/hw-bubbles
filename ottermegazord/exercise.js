@@ -276,17 +276,17 @@ exercise.six = function(){
     // //
     // //  See homework guide document for more info.
     // // -----------------------------------------------
-    // var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
-    // var body = fs.readFileSync(address, 'UTF8');
-    // var $ = cheerio.load(body);
-    //
-    // var courseTitles = [];
-    // $('h3').each(function(i,element){
-    //     courseTitles.push($(element).text());
-    // });
-    //
-    // // console.log(courseTitles);
-    // return courseTitles;
+    var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
+    var body = fs.readFileSync(address, 'UTF8');
+    var $ = cheerio.load(body);
+
+    var courseTitles = [];
+    $('h3').each(function(i,element){
+        courseTitles.push($(element).text());
+    });
+
+    // console.log(courseTitles);
+    return courseTitles;
 };
 
 exercise.seven = function(){
