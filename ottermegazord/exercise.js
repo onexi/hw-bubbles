@@ -248,6 +248,16 @@ exercise.five = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+
+    var courses = fs.readFileSync('./catalog/catalog.txt','utf8');
+    var $ = cheerio.load(courses);
+    var matches = [];
+
+    $('h3').each(function(i,element){
+        matches.push($(element).text());
+    });
+
+    return matches;
 };
 
 exercise.six = function(){
