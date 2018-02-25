@@ -1,5 +1,8 @@
 var fs = require('fs');
 var minify = require('html-minifier').minify;
+var request = require('request');
+var cheerio = require('cheerio');
+
 var exercise = {};
 var directory = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/';
 
@@ -252,6 +255,18 @@ exercise.five = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    //var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
+    var courses = [];
+    var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/m1a.html';
+    var input = fs.readFileSync(address, 'utf-8');
+    const $ = cheerio.load(input);
+
+   $('h3').each(function(i, course){
+       courses.push($(course).text());
+   });
+
+   return courses;
+
 };
 
 exercise.six = function(){
