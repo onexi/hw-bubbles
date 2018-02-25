@@ -311,6 +311,9 @@ exercise.seven = function(){
 
     // console.log(courseTitles.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,""));
 
+
+    words.forEach(removeCommonWords);
+
     function removeCommonWords(words) {
         var common = require('common-words');
         common.forEach(function(obj) {
@@ -321,6 +324,8 @@ exercise.seven = function(){
         });
         return words;
     };
+
+
 
     var test = removeCommonWords(words[1]);
 
