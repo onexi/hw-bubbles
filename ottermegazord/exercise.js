@@ -338,6 +338,32 @@ exercise.eight = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    var courseTitles = exercise.six();
+    var words = courseTitles.map(puncRemover);
+
+
+    function puncRemover(title){
+        var cleaned = title.toLowerCase().match(/([a-z]+)/g);
+        return cleaned;
+    }
+
+    // console.log(courseTitles.replace(/[.,\/#!$%\^&\*;:{}=\-_`~()]/g,""));
+
+
+    words.forEach(removeCommonWords);
+
+    function removeCommonWords(words) {
+        var common = require('common-words');
+        common.forEach(function(obj) {
+            var word = obj.word;
+            while (words.indexOf(word) !== -1) {
+                words.splice(words.indexOf(word), 1);
+            }
+        });
+        return words;
+    };
+
+    return words;
 };
 
 exercise.nine = function(){
