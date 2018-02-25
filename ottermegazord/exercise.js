@@ -135,10 +135,9 @@ exercise.two = function(){
 
     var redundant = 'http://student.mit.edu/catalog/';
 
-    // console.log(sites[1].replace(redundant, ''));
+    //console.log(sites[1].replace(redundant, ''));
 
     var request = require('request');
-
 
     sites.forEach(function(url){
         request(url, function (error, response, body) {
@@ -195,7 +194,7 @@ exercise.three = function(){
         compiled += text;
     }
 
-    // console.log(compiled);
+    //console.log(compiled);
 
     var extension = 'catalog.txt';
 
@@ -229,7 +228,12 @@ exercise.four = function(){
     // // -----------------------------------------------
 
     var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
-    var input = fs.readFileSync(address, 'utf8');
+    // var input = fs.readFileSync(address, 'utf8');
+    var input = fs.readFile(address, 'utf8', function(err, contents) {
+        console.log(contents);
+        return contents;
+    });
+    // console.log(input);
     var output = input.replace(/\r/g, '');
     output = output.replace(/\n/g, '');
     fs.writeFileSync(address, output);
@@ -391,9 +395,6 @@ exercise.nine = function(){
     //     }
     //
     // }, {});
-
-    console.log(courseTitles);
-    console.log('idaly');
 
 };
 
