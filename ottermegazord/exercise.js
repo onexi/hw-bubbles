@@ -234,12 +234,12 @@ exercise.four = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-
-    var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
-    var input = fs.readFileSync(address, 'utf-8');
-    var output = input.replace(/\s/g, "X");
-    fs.writeFileSync(address, output);
-    return output;
+    //
+    // var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
+    // var input = fs.readFileSync(address, 'utf-8');
+    // var output = input.replace(/\s/g, "X");
+    // fs.writeFileSync(address, output);
+    // return output;
 };
 
 exercise.five = function(){
@@ -255,17 +255,44 @@ exercise.five = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+
+    var cheerio = require('cheerio');
     var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
-    var courses = [];
-    //var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/m1a.html';
-    var input = fs.readFileSync(address, 'utf-8');
-    const $ = cheerio.load(input);
+    var body = fs.readFileSync(address, 'UTF8');
+    var $ = cheerio.load(body);
+    console.log(body);
 
-   $('h3').each(function(i, course){
-       courses.push($(course).text());
-   });
+    // make new array called courseTitles and add the titles, which are tagged with 'h3'
+    var courseTitles = [];
+    $('h3').each(function(i,element){
+        courseTitles.push($(element).text());
+    });
 
-   return courses;
+    console.log(courseTitles);
+    return courseTitles;
+
+
+
+   //  var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
+   //  var courses = [];
+   //  //var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/m1a.html';
+   //  var body = fs.readFileSync(address, 'UTF8');
+   //  var $ = cheerio.load(body);
+   //
+   //  // make new array called courseTitles and add the titles, which are tagged with 'h3'
+   //  var courseTitles = [];
+   //  $('h3').each(function(i,element){
+   //      courseTitles.push($(element).text());
+   //  });
+   //  return courseTitles;
+   //  //  var input = fs.readFileSync(address, 'utf-8');
+   // //  const $ = cheerio.load(input);
+   // //
+   // // $('h3').each(function(i, course){
+   // //     courses.push($(course).text());
+   // // });
+   // //
+   // // return courses;
 
 };
 
