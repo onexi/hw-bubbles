@@ -391,7 +391,7 @@ exercise.nine = function(){
     //
     // }, {});
 
-    console.log(courseTitles[1]);
+    console.log(courseTitles);
     console.log('idaly');
 
 };
