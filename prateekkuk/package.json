@@ -20,7 +20,7 @@
         "mocha": "^3.2.0",
         "mute": "^2.0.6",
         "q": "^1.4.1",
-        "request": "^2.79.0"
+        "request": "^2.83.0"
     },
     "dependencies": {
         "bluebird": "^3.5.0",

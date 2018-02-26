@@ -1,6 +1,8 @@
 var exercise = {};
 var urls = [];
 var fetch = require('node-fetch');
+var cheerio = require('cheerio');
+var request = require('request');
 var fs = require('fs');
 
 exercise.one = function(){
@@ -15,8 +17,7 @@ exercise.one = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
-    var urls = [];
-    
+
 
 
 
