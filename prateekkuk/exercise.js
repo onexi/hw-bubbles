@@ -1,4 +1,7 @@
 var exercise = {};
+var urls = [];
+var fetch = require('node-fetch');
+var fs = require('fs');
 
 exercise.one = function(){
     // -----------------------------------------------
@@ -11,6 +14,12 @@ exercise.one = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+
+    var urls = [];
+    
+
+
+
 };
 
 exercise.two = function(){
