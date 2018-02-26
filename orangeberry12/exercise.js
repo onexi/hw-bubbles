@@ -22,6 +22,8 @@ exercise.one = function(){
     */
 
     //resulting document
+    const request = require("request");
+
     webPage = request.get('http://student.mit.edu/catalog/index.cgi');
 
 
