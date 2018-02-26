@@ -110,7 +110,7 @@ exercise.one = function(){
         'http://student.mit.edu/catalog/mSPa.html'
     ];
 
-    console.log(sites);
+    //console.log(sites);
     return sites;
 };
 
@@ -254,13 +254,13 @@ exercise.five = function(){
     var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
     var body = fs.readFileSync(address, 'UTF8');
     var $ = cheerio.load(body);
-    console.log(body);
+    //console.log(body);
     var courseTitles = [];
     $('h3').each(function(i,element){
         courseTitles.push($(element).text());
     });
 
-    console.log(courseTitles);
+    //console.log(courseTitles);
     return courseTitles;
 
 };
