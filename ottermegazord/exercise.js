@@ -172,41 +172,43 @@ exercise.three = function(){
     // //  See homework guide document for more info.
     // // -----------------------------------------------
 
-    var sites = exercise.one();
+    //UNCOMMENT TO CREATE CATALOG.TXT
 
-    function pages(url){
+    // var sites = exercise.one();
 
-        var redundant = 'http://student.mit.edu/catalog/';
-        var extension = url.replace(redundant, '');
-        return extension;
+    // function pages(url){
 
-    }
+    //     var redundant = 'http://student.mit.edu/catalog/';
+    //     var extension = url.replace(redundant, '');
+    //     return extension;
 
-    var list = sites.map(pages);
-    var compiled = 0;
+    // }
 
-    list.forEach(compiler);
+    // var list = sites.map(pages);
+    // var compiled = 0;
 
-    function compiler(url){
-        var address = directory + url;
-        var text = fs.readFileSync(address,'utf8');
-        compiled += text;
-    }
+    // list.forEach(compiler);
 
-    //console.log(compiled);
+    // function compiler(url){
+    //     var address = directory + url;
+    //     var text = fs.readFileSync(address,'utf8');
+    //     compiled += text;
+    // }
 
-    var extension = 'catalog.txt';
+    // //console.log(compiled);
 
-    var destination = directory + extension;
+    // var extension = 'catalog.txt';
 
-    fs.writeFile(destination, compiled, function(err) {
+    // var destination = directory + extension;
 
-        if(err) {
-            //return console.log(extension);
-        }
+    // fs.writeFile(destination, compiled, function(err) {
+
+    //     if(err) {
+    //         //return console.log(extension);
+    //     }
 
 
-    });
+    // });
 
 
 
@@ -228,7 +230,6 @@ exercise.four = function(){
 
     var address = '/Users/idaly666/Desktop/onexi/hw-bubbles/ottermegazord/catalog/catalog.txt';
     var input = fs.readFileSync(address, 'utf8');
-    // console.log(input);
     var output = input.replace(/\r/g, '');
     output = output.replace(/\n/g, '');
     fs.writeFileSync(address, output);
@@ -284,7 +285,7 @@ exercise.six = function(){
         courseTitles.push($(element).text());
     });
 
-    console.log(courseTitles);
+    //console.log(courseTitles);
     return courseTitles;
 };
 
@@ -324,6 +325,7 @@ exercise.seven = function(){
         return words;
     };
 
+    //console.log(words);
     return words;
 };
 
