@@ -417,8 +417,9 @@ exercise.nine = function(){
 
 var singleArrayOfTitles = concatArrayer(courseTitles);
 var wordCount = compiler(singleArrayOfTitles);
-var a = ['a', 'b'];
-var b = ['a', 'b'];
+
+var fs = require('fs');
+fs.writeFileSync('./word_catalog.txt', wordCount);
 
 return wordCount;
 };
