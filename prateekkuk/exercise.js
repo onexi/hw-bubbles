@@ -7,6 +7,8 @@ var minify = require('html-minifier').minify;
 var path = require('path'); 
 var fs = require('fs');
 
+var urls = [];
+
 exercise.one = function(){
     // -----------------------------------------------
     //   YOUR CODE
@@ -72,7 +74,7 @@ exercise.one = function(){
     var indexPageData = fs.readFileSync(path.join(__dirname,'index-clean.html') ,{encoding: 'utf-8'});
     var $ = cheerio.load(indexPageData);
     links = $('a');
-    var urls = [];
+    //var urls = [];
     $(links).each(function(index, link){
         if($(link).attr('href').toString().startsWith("m")){
             urls.push($(link).attr('href').toString());
@@ -84,7 +86,7 @@ exercise.one = function(){
         urls[index] = "http://student.mit.edu/catalog/" + url;
     });
 
-    console.log(urls);
+    return urls;
 
 };
 
@@ -101,8 +103,15 @@ exercise.two = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-};
+    urls.forEach((url, index, urls) => {
+        var firstcut = "http://student.mit.edu/catalog/".length;
+        var name = url.slice(firstcut,url.length);
+        console.log(name + ":" + url);
+        var eachPageRequest = request(url).pipe(fs.createWriteStream('catalog/'+ name));
+    });
 
+};
+    
 exercise.three = function(){
     // -----------------------------------------------
     //   YOUR CODE
