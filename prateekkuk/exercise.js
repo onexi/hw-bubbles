@@ -53,19 +53,18 @@ exercise.one = function(){
     
     
     ///2. using normal request
-    // var urls = [];
     // var indexPageRequest = request('http://student.mit.edu/catalog/index.cgi', function(error, response, body){
     //     console.log('error:', error);
     //     console.log('statusCode:', response.statuscode);
-    //     return response;
-    //     // $ = cheerio.load(body);
-    //     // links = $('a');
-    //     // $(links).each(function(index, link){
-    //     //     if($(link).attr('href').toString().startsWith("m")){
-    //     //         urls.push($(link).attr('href').toString());
-    //     //     }
-    //     //   });
+    //     $ = cheerio.load(body);
+    //     links = $('a');
+    //     $(links).each(function(index, link){
+    //         if($(link).attr('href').toString().startsWith("m")){
+    //             urls.push($(link).attr('href').toString());
+    //         }
+    //       });
     // });
+     
     
 
 
@@ -103,6 +102,7 @@ exercise.two = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+
     urls.forEach((url, index, urls) => {
         var firstcut = "http://student.mit.edu/catalog/".length;
         var name = url.slice(firstcut,url.length);
