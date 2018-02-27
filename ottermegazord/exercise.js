@@ -387,6 +387,16 @@ exercise.nine = function(){
 
     //compiler to count no of words in each line
 
+    function concatArrayer(list){
+        var sublist = list.reduce(concatArray, [])
+        return sublist;
+    };
+
+    function concatArray(previous, current) {
+        return previous.concat(current);
+        
+};
+
     function compiler(list) {
         
         var sublist = list.reduce(function(previous, current){
@@ -405,7 +415,12 @@ exercise.nine = function(){
     return sublist;
 };
 
-    console.log(compiler(courseTitles[1]));
+var singleArrayOfTitles = concatArrayer(courseTitles);
+var wordCount = compiler(singleArrayOfTitles);
+var a = ['a', 'b'];
+var b = ['a', 'b'];
+
+    console.log(wordCount);
 };
 
 
