@@ -18,6 +18,8 @@ exercise.one = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
+    //COMPLETE THIS WITH CHEERIO
+
 
     var sites= [
         'http://student.mit.edu/catalog/m1a.html',
@@ -383,16 +385,18 @@ exercise.nine = function(){
 
     //INCOMPLETE
 
-    // var list = courseTitles[1].reduce(function(previous, current){
-    //     if (current in previous){
-    //         previous[current] += 1;
-    //     }
+    var list = courseTitles[1].reduce(function(previous, current){
+        if (current in previous){
+            previous[current] += 1;
+        }
     
-    //     else {
-    //         previous[current] = 1;
-    //     }
+        else {
+            previous[current] = 1;
+        }
     
-    // }, {});
+    }, {});
+
+    console.log(list);
 
 };
 
