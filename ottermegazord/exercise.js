@@ -420,7 +420,7 @@ var wordCount = compiler(singleArrayOfTitles);
 var a = ['a', 'b'];
 var b = ['a', 'b'];
 
-    console.log(wordCount);
+return wordCount;
 };
 
 
