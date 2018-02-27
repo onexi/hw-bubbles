@@ -1,8 +1,10 @@
 var exercise = {};
-var urls = [];
 var fetch = require('node-fetch');
 var cheerio = require('cheerio');
 var request = require('request');
+var rp = require('request-promise');
+var minify = require('html-minifier').minify;
+var path = require('path'); 
 var fs = require('fs');
 
 exercise.one = function(){
@@ -17,9 +19,72 @@ exercise.one = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
+    ///////// trying to do it without relying on local file changes ///////
+
+    //1. using promises
+    // var indexPageUrls = [];
+    // var indexPageRequestOptions = {
+    //     uri: 'http://student.mit.edu/catalog/index.cgi',
+    //     transform: function(body){
+    //         return cheerio.load(body);
+    //     }
+    // };
+
+    // rp(indexPageRequestOptions)
+    //     .then(function($){
+    //         var urls = [];
+    //         links = $('a');
+
+    //         $(links).each(function(index, link){
+    //             if($(link).attr('href').toString().startsWith("m")){
+    //                 urls.push($(link).attr('href').toString());
+    //             }
+    //         });
+    //         indexPageUrls = urls;
+    //         return urls;
+    //     })
+    //     .catch(function(){
+    //         console.log("request-promise failed");
+    //     });
+
+    //     console.log(indexPageUrls); //prints "[]" (an empty array)
+    
+    
+    ///2. using normal request
+    // var urls = [];
+    // var indexPageRequest = request('http://student.mit.edu/catalog/index.cgi', function(error, response, body){
+    //     console.log('error:', error);
+    //     console.log('statusCode:', response.statuscode);
+    //     return response;
+    //     // $ = cheerio.load(body);
+    //     // links = $('a');
+    //     // $(links).each(function(index, link){
+    //     //     if($(link).attr('href').toString().startsWith("m")){
+    //     //         urls.push($(link).attr('href').toString());
+    //     //     }
+    //     //   });
+    // });
+    
 
 
+    ////3. using local files and after removing the copy right symbol //////
+    //var indexPageRequest = request('http://student.mit.edu/catalog/index.cgi').pipe(fs.createWriteStream('index.html'));
+    var indexPageData = fs.readFileSync(path.join(__dirname,'index-clean.html') ,{encoding: 'utf-8'});
+    var $ = cheerio.load(indexPageData);
+    links = $('a');
+    var urls = [];
+    $(links).each(function(index, link){
+        if($(link).attr('href').toString().startsWith("m")){
+            urls.push($(link).attr('href').toString());
+        }
+    });
 
+    urls.pop();
+    urls.forEach((url, index,urls) => {
+        urls[index] = "http://student.mit.edu/catalog/" + url;
+    });
+
+    console.log(urls);
 
 };
 
