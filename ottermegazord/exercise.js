@@ -418,10 +418,12 @@ exercise.nine = function(){
 var singleArrayOfTitles = concatArrayer(courseTitles);
 var wordCount = compiler(singleArrayOfTitles);
 
-var fs = require('fs');
+//uncomment to print JSON catalog of words 
 
-var printout = "var scores = " + JSON.stringify(wordCount) + ";";
-fs.writeFileSync('./word_catalog.js', printout);
+// var fs = require('fs');
+
+// var printout = "var scores = " + JSON.stringify(wordCount) + ";";
+// fs.writeFileSync('./word_catalog.js', printout);
 
 return wordCount;
 };
