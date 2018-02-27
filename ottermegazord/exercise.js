@@ -419,7 +419,9 @@ var singleArrayOfTitles = concatArrayer(courseTitles);
 var wordCount = compiler(singleArrayOfTitles);
 
 var fs = require('fs');
-fs.writeFileSync('./word_catalog.txt', wordCount);
+
+var printout = "var scores = " + JSON.stringify(wordCount) + ";";
+fs.writeFileSync('./word_catalog.js', printout);
 
 return wordCount;
 };
