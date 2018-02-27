@@ -385,7 +385,11 @@ exercise.nine = function(){
 
     //INCOMPLETE
 
-    var list = courseTitles[1].reduce(function(previous, current){
+    //compiler to count no of words in each line
+
+    function compiler(list) {
+        
+        var sublist = list.reduce(function(previous, current){
         if (current in previous){
             previous[current] += 1;
         }
@@ -393,11 +397,15 @@ exercise.nine = function(){
         else {
             previous[current] = 1;
         }
+
+        return previous;
     
     }, {});
 
-    console.log(list);
+    return sublist;
+};
 
+    console.log(compiler(courseTitles[1]));
 };
 
 
