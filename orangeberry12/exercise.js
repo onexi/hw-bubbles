@@ -17,10 +17,10 @@ exercise.one = function(){
     const request = require('request');
     const cheerio = require('cheerio');
     var miturl = 'http://student.mit.edu/catalog/index.cgi';
-
+    var allUrls = [];
     request(miturl, function(err, res, body){
         var webPage = body;
-        var allUrls = [];
+        
         //console.log(webPage);
     
         $ = cheerio.load(webPage);
@@ -30,9 +30,9 @@ exercise.one = function(){
             allUrls[i] = 'http://student.mit.edu/catalog/' + $(this).children().attr('href');
             //console.log($(this).children().attr('href'));
         });
-        return allUrls;
+        
     });
-
+    return allUrls;
 
 };
 
