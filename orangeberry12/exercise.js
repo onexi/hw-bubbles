@@ -39,9 +39,9 @@ exercise.one = function(){
             //console.log($(this).children().attr('href'));
         });
         //console.log(allUrls);
+        return allUrls;
     });   
-    console.log(allUrls);
-    return allUrls;
+    
 
     /*
     request(miturl, function(err, res, body){
