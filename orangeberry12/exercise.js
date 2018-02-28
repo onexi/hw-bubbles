@@ -13,26 +13,33 @@ exercise.one = function(){
     // -----------------------------------------------
     //all the course links are in the <ul> element
 
-    //resulting document
     const request = require('request');
     const cheerio = require('cheerio');
     var miturl = 'http://student.mit.edu/catalog/index.cgi';
-    var allUrls = [];
+    allUrls = [];
+
     request(miturl, function(err, res, body){
         var webPage = body;
-        
-        //console.log(webPage);
     
         $ = cheerio.load(webPage);
     
         //get everything that's a list item
         $('li').each(function(i,elem) {
-            allUrls[i] = 'http://student.mit.edu/catalog/' + $(this).children().attr('href');
-            //console.log($(this).children().attr('href'));
-        });
+        	//grab the links
+        	currentLink = $(this).children().attr('href');
+        	//add defined links to the array of urls
+        	if (currentLink !== undefined){
+        		allUrls.push('http://student.mit.edu/catalog/' + currentLink);
+        	};
         
+
+        // how do I assign the output to a permanent variable?
+    	//return allUrls;
+        });
+        console.log(allUrls);
+        return allUrls;
     });
-    return allUrls;
+	
 
 };
 
