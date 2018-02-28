@@ -13,34 +13,27 @@ exercise.one = function(){
     // -----------------------------------------------
     //all the course links are in the <ul> element
 
-    //send http request to mit course page
-    /*
-    var xhr = new XMLHttpRequest();
-    xhr.open("GET", "http://student.mit.edu/catalog/index.cgi");
-    xhr.responseType = "document";
-    xhr.send();
-    */
-
     //resulting document
-    const request = require("request");
+    const request = require('request');
+    const cheerio = require('cheerio');
+    var miturl = 'http://student.mit.edu/catalog/index.cgi';
 
-    webPage = request.get('http://student.mit.edu/catalog/index.cgi');
+    request(miturl, function(err, res, body){
+        var webPage = body;
+        var allUrls = [];
+        //console.log(webPage);
+    
+        $ = cheerio.load(webPage);
+    
+        //get everything that's a list item
+        $('li').each(function(i,elem) {
+            allUrls[i] = 'http://student.mit.edu/catalog/' + $(this).children().attr('href');
+            //console.log($(this).children().attr('href'));
+        });
+        return allUrls;
+    });
 
 
-    //get all page links from course page
-    var listElement = webPage.querySelectorAll('li');
-    var allPages = [];
-
-    var getUrls = function(item,index,array){
-        var currentChild = item.children[0];
-        if (currentChild !== undefined) {
-            allPages.push(item.children[0].href);
-        }
-    }
-
-    listElement.forEach(getUrls);
-
-    return allPages;
 };
 
 exercise.two = function(){
