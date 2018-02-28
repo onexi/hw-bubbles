@@ -1971,7 +1971,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Course 12: Earth, Atmospheric, and Planetary Sciences</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content="  12" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -3056,7 +3056,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -3066,7 +3066,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Course 14: Economics</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content="  14" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -3148,7 +3148,7 @@ alt="Search" align="middle" />
 <img width=16 height=16 align="bottom" alt="Undergrad" title="Undergrad" src="/icns/under.gif">  (<img width=16 height=16 align="bottom" alt="Fall" title="Fall" src="/icns/fall.gif">, <img width=16 height=16 align="bottom" alt="Spring" title="Spring" src="/icns/spring.gif">) <img src="/icns/hassS.gif" alt="HASS Social Sciences" title="HASS Social Sciences" width="16" height="16" align="bottom">
 <br>Prereq: None
 <br>Units: 3-0-9
-<br><b>Lecture:</b> <i>MW2</i> (<a href="http://whereis.mit.edu/map-jpg?mapterms=32">32-123</a>) <b>Recitation:</b> <i>F2</i> (<a href="http://whereis.mit.edu/map-jpg?mapterms=4">4-270</a>) or <i>R4</i> (<a href="http://whereis.mit.edu/map-jpg?mapterms=3">3-442</a>) <i><b>+final</b></i><!--s-->
+<br><b>Lecture:</b> <i>MW2</i> (<a href="http://whereis.mit.edu/map-jpg?mapterms=32">32-123</a>) <b>Recitation:</b> <i>F2</i> (<a href="http://whereis.mit.edu/map-jpg?mapterms=4">4-270</a>) or <i>F1</i> (<a href="http://whereis.mit.edu/map-jpg?mapterms=10">10-250</a>) <i><b>+final</b></i><!--s-->
 <br><img alt="______" src="/icns/hr.gif">
 <br>Provides an overview of macroeconomic issues including the determination of national income, economic growth, unemployment, inflation, interest rates, and exchange rates.  Introduces basic macroeconomic models and illustrates key principles through applications to the experience of the US and other economies. Explores a range of current policy debates, such as the economic effects of monetary and fiscal policy, the causes and consequences of the 2008 global financial crisis, and the factors that influence long-term growth in living standards. Lectures are recorded and available for students with scheduling conflicts.
 <br>Fall: <I>R. Caballero</I><br>Spring: <I>J. Poterba</I><br><a href="javascript:PopUpHelp('http://eduapps.mit.edu/textbook/books.html?Term=2018SP&Subject=14.02');" >Textbooks (Spring 2018)</a></font>
@@ -3818,7 +3818,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -4873,7 +4873,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Course 16: Aeronautics and Astronautics</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content="  16" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -5685,7 +5685,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -5695,7 +5695,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Course 17: Political Science</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content="  17" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -5788,10 +5788,10 @@ alt="Search" align="middle" />
 <br>(Same subject as <A HREF="m24a.html#24.04">24.04[J]</A>)
 <br>Prereq: None
 <br>Units: 3-0-9
-<br><b>Lecture:</b> <i>MW11</i> (<a href="http://whereis.mit.edu/map-jpg?mapterms=32">32-124</a>) <b>Recitation:</b> <i>F10</i> (<a href="http://whereis.mit.edu/map-jpg?mapterms=56">56-167</a>) or <i>F11</i> (<a href="http://whereis.mit.edu/map-jpg?mapterms=56">56-167</a>) or <i>F12</i> (<a href="http://whereis.mit.edu/map-jpg?mapterms=56">56-167</a>)<!--s-->
+<br><img align="bottom" width=16 height=16 alt="Subject Cancelled" title="Subject Cancelled" src="/icns/buttonx.gif"> <i><b>Subject Cancelled</b></i> <!--s-->
 <br><img alt="______" src="/icns/hr.gif">
 <br>An examination of alternative theories of justice&#8212;utilitarianism, rights theories, social contract theory, and communitarianism&#8212;and the implications of those theories for problems of liberty, equality, and community. Readings drawn principally from the work of contemporary political philosophers, including Rawls, Nozick, Dworkin, Walzer, MacIntyre, and Buchanan.
-<br><I>S. Hahn</I><br><a href="javascript:PopUpHelp('http://eduapps.mit.edu/textbook/books.html?Term=2018SP&Subject=17.01&Source=24.04');" >Textbooks (Spring 2018)</a></font>
+<br>Staff<br><a href="javascript:PopUpHelp('http://eduapps.mit.edu/textbook/books.html?Term=2018SP&Subject=17.01&Source=24.04');" >Textbooks (Spring 2018)</a></font>
 </p><!--end-->
 <a name="17.021"></a>
 <p><h3>17.021[J] Philosophy of Law
@@ -6395,7 +6395,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -7728,7 +7728,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Course 1: Civil and Environmental Engineering</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content="   1" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -8543,7 +8543,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -8553,7 +8553,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Course 20: Biological Engineering</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content="  20" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -9563,7 +9563,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -9573,7 +9573,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Course 21A: Anthropology</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content=" 21A" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -10424,7 +10424,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -10434,7 +10434,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Course 21G: Global Studies and Languages</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content=" 21G" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -10984,7 +10984,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -11673,7 +11673,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Course 21L: Literature</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content=" 21L" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -12852,7 +12852,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -13682,7 +13682,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Course 21W: Writing</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content=" 21W" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -14193,7 +14193,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -14695,7 +14695,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Course 24: Linguistics and Philosophy</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content="  24" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -14797,10 +14797,10 @@ alt="Search" align="middle" />
 <br>(Same subject as <A HREF="m17a.html#17.01">17.01[J]</A>)
 <br>Prereq: None
 <br>Units: 3-0-9
-<br><b>Lecture:</b> <i>MW11</i> (<a href="http://whereis.mit.edu/map-jpg?mapterms=32">32-124</a>) <b>Recitation:</b> <i>F10</i> (<a href="http://whereis.mit.edu/map-jpg?mapterms=56">56-167</a>) or <i>F11</i> (<a href="http://whereis.mit.edu/map-jpg?mapterms=56">56-167</a>) or <i>F12</i> (<a href="http://whereis.mit.edu/map-jpg?mapterms=56">56-167</a>)<!--s-->
+<br><img align="bottom" width=16 height=16 alt="Subject Cancelled" title="Subject Cancelled" src="/icns/buttonx.gif"> <i><b>Subject Cancelled</b></i> <!--s-->
 <br><img alt="______" src="/icns/hr.gif">
 <br>An examination of alternative theories of justice&#8212;utilitarianism, rights theories, social contract theory, and communitarianism&#8212;and the implications of those theories for problems of liberty, equality, and community. Readings drawn principally from the work of contemporary political philosophers, including Rawls, Nozick, Dworkin, Walzer, MacIntyre, and Buchanan.
-<br><I>S. Hahn</I><br><a href="javascript:PopUpHelp('http://eduapps.mit.edu/textbook/books.html?Term=2018SP&Subject=24.04');" >Textbooks (Spring 2018)</a></font>
+<br>Staff<br><a href="javascript:PopUpHelp('http://eduapps.mit.edu/textbook/books.html?Term=2018SP&Subject=24.04');" >Textbooks (Spring 2018)</a></font>
 </p><!--end-->
 <a name="24.05"></a>
 <p><h3>24.05 Philosophy of Religion
@@ -15511,7 +15511,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -15521,7 +15521,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Course 2: Mechanical Engineering</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content="   2" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -16401,7 +16401,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -16411,7 +16411,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Course 3: Materials Science and Engineering</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content="   3" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -17297,7 +17297,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -21134,7 +21134,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Course 8: Physics</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content="   8" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -21768,7 +21768,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -21778,7 +21778,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Course 9: Brain and Cognitive Sciences</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content="   9" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -22417,7 +22417,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -22427,7 +22427,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Aerospace Studies</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content="  AS" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -22726,7 +22726,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -24765,7 +24765,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Edgerton Center</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content="  EC" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -25555,7 +25555,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -25565,7 +25565,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Engineering Management</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content="  EM" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -25761,7 +25761,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -27286,7 +27286,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Institute for Data, Systems and Society</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content=" IDS" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -28157,7 +28157,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -28167,7 +28167,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Media Arts and Sciences</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content=" MAS" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -28961,7 +28961,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -29166,7 +29166,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Naval Science</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content="  NS" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -29409,7 +29409,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -29419,7 +29419,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Supply Chain Management</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content=" SCM" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -29798,7 +29798,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -29808,7 +29808,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Special Programs</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content=" PXL" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -29993,7 +29993,7 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -30900,7 +30900,7 @@ alt="Search" align="middle" />
 <link rel=stylesheet href="/cgi-data/styles/registrar_mini.css" Type="text/css">
 <title>IAP / Spring
 2018 Women's and Gender Studies Program</title>
-<meta http-equiv="expires" content="28 FEB 2018" >
+<meta http-equiv="expires" content="01 MAR 2018" >
 <meta name="DEPARTMENT" content=" WGS" >
 <script language="JavaScript">
 <!-- hide from non-JavaScript browsers 
@@ -31575,6 +31575,6 @@ alt="Search" align="middle" />
  </td></tr>
 </table>
 </div></div></font>
-<br><font size="-1">Produced: 27-FEB-2018 05:10 PM</font>
+<br><font size="-1">Produced: 28-FEB-2018 06:33 AM</font>
 </body>
 </html>

@@ -43,33 +43,17 @@ exercise.one = function(){
     //                 urls.push($(link).attr('href').toString());
     //             }
     //         });
-    //         flag = 1;
-    //         sendData();
     //     })
     //     .catch(function(){
     //         console.log("request-promise failed");
     //     });
-    
-    // var sendData = function(){
-    //     urls.pop();
-    //     urls.forEach((url, index,urls) => {
-    //         urls[index] = "http://student.mit.edu/catalog/" + url;
-    //     });
-    //     console.log(flag);
-    //     return urls;
-    // }
-    // console.log(flag);  
-    // if(flag == 1){
-    //     console.log(flag);
-    //     var returnUrls = sendData();
-    //      console.log(returnUrls);
-    // }
-    //runs before sendData has anything to return, how do get the value
-    //out of SendData() or ensure I call it when it has the value?
+    //how would i return urls after the request has completed?
+    //runs before it has anything, how do get the value or ensure I call it when it has the value
+    //when will urls actually populate so I can return it from exercise.one
 
 
-    
-    ///2. using normal request
+     ///2. using normal request
+
     // var indexPageRequest = request('http://student.mit.edu/catalog/index.cgi',function(error, response, body){
     //     console.log('error:', error);
     //     console.log('statusCode:', response.statuscode);
@@ -90,21 +74,22 @@ exercise.one = function(){
 
     ////3. using local files and after removing the copy right symbol //////
     //var indexPageRequest = request('http://student.mit.edu/catalog/index.cgi').pipe(fs.createWriteStream('index.html'));
-    // var indexPageData = fs.readFileSync(path.join(__dirname,'index-clean.html') ,{encoding: 'utf-8'});
-    // var $ = cheerio.load(indexPageData);
-    // links = $('a');
-    // $(links).each(function(index, link){
-    //     if($(link).attr('href').toString().startsWith("m")){
-    //         urls.push($(link).attr('href').toString());
-    //     }
-    // });
+    //TODO: remove the troublesome line of text from index and save over it
 
-    // urls.pop();
-    // urls.forEach((url, index,urls) => {
-    //     urls[index] = "http://student.mit.edu/catalog/" + url;
-    // });
+    var indexPageData = fs.readFileSync('index.html',{encoding: 'utf-8'});
+    var $ = cheerio.load(indexPageData);
+    links = $('a');
+    $(links).each(function(index, link){
+        if($(link).attr('href').toString().startsWith("m")){
+            urls.push($(link).attr('href').toString());
+        }
+    });
 
-    // return urls;
+    urls.pop();
+    urls.forEach((url, index,urls) => {
+        urls[index] = "http://student.mit.edu/catalog/" + url;
+    });
+    return urls;
 
 };
 
@@ -121,13 +106,37 @@ exercise.two = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-
+    
+    //my method
     // urls.forEach((url, index, urls) => {
     //     var firstcut = "http://student.mit.edu/catalog/".length;
     //     var name = url.slice(firstcut,url.length);
     //     console.log(name + ":" + url);
     //     var eachPageRequest = request(url).pipe(fs.createWriteStream('catalog/'+ name));
     // });
+
+    //in-class method
+    // const writeFile = (path, data, opts = 'utf8') =>
+    //     new Promise((res, rej) => {
+    //         fs.writeFile(path, data, opts, (err) => {
+    //             if (err) rej(err)
+    //             else res()
+    //     })
+    // })
+
+    // var makeRequest = async function (url,counter) {
+    //     var res = await fetch(url);
+    //     var firstcut = "http://student.mit.edu/catalog/".length;
+    //     var name = url.slice(firstcut,url.length);
+    //     await writeFile('catalog/' + name, await res.text());
+    //     return 'done - ' + name;        
+    // };  
+
+    // urls.forEach(function(url,i){
+    //     makeRequest(url,i).then((result) =>{
+    //         console.log(result);
+    //     });    
+    // })
 
 };
     
@@ -146,17 +155,15 @@ exercise.three = function(){
 
     //create empty file 
     //read each file in directory and append to file
-    fs.writeFileSync('catalog/catalog.txt',"");
-    fs.readdirSync('catalog').forEach((file) => {
-        if(file[file.length-1] == 'l'){//only get files that end in html
-            var fileString = "";
-            fileString = fs.readFileSync('catalog/'+file,{encoding: 'utf-8'});
-            console.log(fileString);
-            fs.appendFileSync('catalog/catalog.txt',fileString);
-        } 
+    // fs.writeFileSync('catalog/catalog.txt',"");
+    // fs.readdirSync('catalog').forEach((file) => {
+    //     if(file[file.length-1] == 'l'){//only get files that end in html
+    //         var fileString = "";
+    //         fileString = fs.readFileSync('catalog/'+file,{encoding: 'utf-8'});
+    //         fs.appendFileSync('catalog/catalog.txt',fileString);
+    //     } 
 
-    })
-
+    // })
 
 
 };
@@ -174,6 +181,10 @@ exercise.four = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+     var catalog = fs.readFileSync('catalog/catalog.txt',{encoding: 'utf-8'});
+     var catalogScrubbed = minify(catalog,{collapseWhitespace:true});
+    
+     return catalogScrubbed;
 };
 
 exercise.five = function(){
@@ -189,6 +200,13 @@ exercise.five = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    var courses = [];
+    var catalogScrubbed = exercise.four();
+    var $ = cheerio.load(catalogScrubbed);
+    $('h3').each(function(index, course){
+            courses.push($(course).text());
+        });
+    return courses;
 };
 
 exercise.six = function(){
@@ -201,6 +219,15 @@ exercise.six = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    
+    var courses = exercise.five();
+    var courseTitles = courses.map((course, index, courses) => {
+        return course.toLowerCase().match(/([a-z]+)/g);
+    });
+
+
+
+
 };
 
 exercise.seven = function(){
