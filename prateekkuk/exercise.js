@@ -24,17 +24,18 @@ exercise.one = function(){
     ///////// trying to do it without relying on local file changes ///////
 
     //1. using promises
+    // var flag = 0;
     // var indexPageUrls = [];
     // var indexPageRequestOptions = {
     //     uri: 'http://student.mit.edu/catalog/index.cgi',
     //     transform: function(body){
     //         return cheerio.load(body);
-    //     }
+    //     },
+    //     async:false
     // };
 
     // rp(indexPageRequestOptions)
     //     .then(function($){
-    //         var urls = [];
     //         links = $('a');
 
     //         $(links).each(function(index, link){
@@ -42,18 +43,34 @@ exercise.one = function(){
     //                 urls.push($(link).attr('href').toString());
     //             }
     //         });
-    //         indexPageUrls = urls;
-    //         return urls;
+    //         flag = 1;
+    //         sendData();
     //     })
     //     .catch(function(){
     //         console.log("request-promise failed");
     //     });
-
-    //     console.log(indexPageUrls); //prints "[]" (an empty array)
     
+    // var sendData = function(){
+    //     urls.pop();
+    //     urls.forEach((url, index,urls) => {
+    //         urls[index] = "http://student.mit.edu/catalog/" + url;
+    //     });
+    //     console.log(flag);
+    //     return urls;
+    // }
+    // console.log(flag);  
+    // if(flag == 1){
+    //     console.log(flag);
+    //     var returnUrls = sendData();
+    //      console.log(returnUrls);
+    // }
+    //runs before sendData has anything to return, how do get the value
+    //out of SendData() or ensure I call it when it has the value?
+
+
     
     ///2. using normal request
-    // var indexPageRequest = request('http://student.mit.edu/catalog/index.cgi', function(error, response, body){
+    // var indexPageRequest = request('http://student.mit.edu/catalog/index.cgi',function(error, response, body){
     //     console.log('error:', error);
     //     console.log('statusCode:', response.statuscode);
     //     $ = cheerio.load(body);
@@ -63,29 +80,31 @@ exercise.one = function(){
     //             urls.push($(link).attr('href').toString());
     //         }
     //       });
-    // });
+    // },function(){passingURLS();});
      
-    
+    // var passingURLS = function(){
+    //     console.log(urls);
+    // }
 
+    // console.log(urls); //prints undefined - how do I know when a request is complete so I can do this
 
     ////3. using local files and after removing the copy right symbol //////
     //var indexPageRequest = request('http://student.mit.edu/catalog/index.cgi').pipe(fs.createWriteStream('index.html'));
-    var indexPageData = fs.readFileSync(path.join(__dirname,'index-clean.html') ,{encoding: 'utf-8'});
-    var $ = cheerio.load(indexPageData);
-    links = $('a');
-    //var urls = [];
-    $(links).each(function(index, link){
-        if($(link).attr('href').toString().startsWith("m")){
-            urls.push($(link).attr('href').toString());
-        }
-    });
+    // var indexPageData = fs.readFileSync(path.join(__dirname,'index-clean.html') ,{encoding: 'utf-8'});
+    // var $ = cheerio.load(indexPageData);
+    // links = $('a');
+    // $(links).each(function(index, link){
+    //     if($(link).attr('href').toString().startsWith("m")){
+    //         urls.push($(link).attr('href').toString());
+    //     }
+    // });
 
-    urls.pop();
-    urls.forEach((url, index,urls) => {
-        urls[index] = "http://student.mit.edu/catalog/" + url;
-    });
+    // urls.pop();
+    // urls.forEach((url, index,urls) => {
+    //     urls[index] = "http://student.mit.edu/catalog/" + url;
+    // });
 
-    return urls;
+    // return urls;
 
 };
 
@@ -103,12 +122,12 @@ exercise.two = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
-    urls.forEach((url, index, urls) => {
-        var firstcut = "http://student.mit.edu/catalog/".length;
-        var name = url.slice(firstcut,url.length);
-        console.log(name + ":" + url);
-        var eachPageRequest = request(url).pipe(fs.createWriteStream('catalog/'+ name));
-    });
+    // urls.forEach((url, index, urls) => {
+    //     var firstcut = "http://student.mit.edu/catalog/".length;
+    //     var name = url.slice(firstcut,url.length);
+    //     console.log(name + ":" + url);
+    //     var eachPageRequest = request(url).pipe(fs.createWriteStream('catalog/'+ name));
+    // });
 
 };
     
@@ -124,6 +143,11 @@ exercise.three = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+
+    //create empty file 
+    //read each file in directory and append to file
+    fs.writeFileSync('catalog/catalog.txt',"");
+
 };
 
 exercise.four = function(){
