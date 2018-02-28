@@ -40,7 +40,7 @@ exercise.one = function(){
         });
         //console.log(allUrls);
     });   
-
+    console.log(allUrls);
     return allUrls;
 
     /*
