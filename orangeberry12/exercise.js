@@ -17,7 +17,33 @@ exercise.one = function(){
     const cheerio = require('cheerio');
     var miturl = 'http://student.mit.edu/catalog/index.cgi';
     allUrls = [];
+    
+    var fetch = require('node-fetch');
+    var allUrls =[]
 
+    var makeRequest = async function (url) {
+        var response = await fetch(url);
+        var text     = await response.text();
+        return text;
+    };  
+
+    makeRequest(miturl).then((text) =>{
+        $ = cheerio.load(text);
+
+        //get everything that's a list item
+        $('li').each(function(i,elem) {
+            currentLink = $(this).children().attr('href');
+            if (currentLink !== undefined){
+                allUrls.push('http://student.mit.edu/catalog/' + currentLink)
+            }
+            //console.log($(this).children().attr('href'));
+        });
+        //console.log(allUrls);
+    });   
+
+    return allUrls;
+
+    /*
     request(miturl, function(err, res, body){
         var webPage = body;
     
@@ -39,7 +65,7 @@ exercise.one = function(){
         console.log(allUrls);
         return allUrls;
     });
-	
+	*/
 
 };
 
