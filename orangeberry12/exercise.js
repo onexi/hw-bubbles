@@ -14,6 +14,7 @@ exercise.one = function(){
     //all the course links are in the <ul> element
 
     const request = require('request');
+    const fetch =require('node-fetch');
     const cheerio = require('cheerio');
     var miturl = 'http://student.mit.edu/catalog/index.cgi';
     allUrls = [];
