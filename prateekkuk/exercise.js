@@ -147,6 +147,17 @@ exercise.three = function(){
     //create empty file 
     //read each file in directory and append to file
     fs.writeFileSync('catalog/catalog.txt',"");
+    fs.readdirSync('catalog').forEach((file) => {
+        if(file[file.length-1] == 'l'){//only get files that end in html
+            var fileString = "";
+            fileString = fs.readFileSync('catalog/'+file,{encoding: 'utf-8'});
+            console.log(fileString);
+            fs.appendFileSync('catalog/catalog.txt',fileString);
+        } 
+
+    })
+
+
 
 };
 
