@@ -16,10 +16,10 @@ exercise.one = function(){
     const request = require('request');
     const cheerio = require('cheerio');
     var miturl = 'http://student.mit.edu/catalog/index.cgi';
-    const allUrls = [];
+    //allUrls = [];
     
     var fetch = require('node-fetch');
-    var allUrls =[]
+    var allUrls =[];
 
     var makeRequest = async function (url) {
         var response = await fetch(url);
@@ -39,7 +39,8 @@ exercise.one = function(){
             //console.log($(this).children().attr('href'));
         });
         //console.log(allUrls);
-        return allUrls; 
+        // return allUrls;
+        return 0; 
     });   
     
 
