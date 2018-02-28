@@ -16,7 +16,7 @@ exercise.one = function(){
     const request = require('request');
     const cheerio = require('cheerio');
     var miturl = 'http://student.mit.edu/catalog/index.cgi';
-    allUrls = [];
+    const allUrls = [];
     
     var fetch = require('node-fetch');
     var allUrls =[]
