@@ -300,7 +300,8 @@ exercise.nine = function(){
         }
         return accumulator;
     },{});
-    console.log(wordsCountObj);
+    var scores = JSON.stringify(wordsCountObj);
+    fs.writeFileSync('catalogSample/catalog_data.js','var scores='+scores,'utf8');
 };
 
 
