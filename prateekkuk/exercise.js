@@ -222,12 +222,16 @@ exercise.six = function(){
     
     var courses = exercise.five();
     var courseTitles = courses.map((course, index, courses) => {
-        return course.toLowerCase().match(/([a-z]+)/g);
+        return course.match(/\s([a-zA-Z]+)/g);
+    });
+    courseTitles = courseTitles.filter(function(title){
+        return title != null;
     });
 
-
-
-
+    courseTitles.forEach(function(title,i,array){
+        courseTitles[i] = courseTitles[i].join(" ");
+    });
+    return courseTitles;
 };
 
 exercise.seven = function(){
@@ -241,6 +245,12 @@ exercise.seven = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+
+    var courseTitles = exercise.six();
+    var cleanCourseTitles = courseTitles.map((value,i,arr)=>{
+        return value.toLowerCase().replace(/ \bis\s|\band\s|\bof\s|\bin\s|\bthe\s|\ba\s|\bto\s|\bfor\s|\bi\S\W|\btopics\s/g,"")
+    });
+    console.log(cleanCourseTitles);
 };
 
 exercise.eight = function(){
