@@ -291,6 +291,16 @@ exercise.nine = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    var wordsArray = exercise.eight();
+    var wordsCountObj = wordsArray.reduce((accumulator,current)=>{
+        if(current in accumulator){
+            accumulator[current] +=1;
+        }else{
+            accumulator[current]=1;
+        }
+        return accumulator;
+    },{});
+    console.log(wordsCountObj);
 };
 
 
