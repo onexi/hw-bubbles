@@ -13,62 +13,37 @@ exercise.one = function(){
     // -----------------------------------------------
     //all the course links are in the <ul> element
 
-    const request = require('request');
-    const cheerio = require('cheerio');
-    var miturl = 'http://student.mit.edu/catalog/index.cgi';
-    //allUrls = [];
+    // get all the normal numbers first
+    var suffixes = []
+    for (var i = 1; i < 22; i++){
+        suffixes.push('m'+i+'a.html')
+    };
+
+    //console.log(suffixes);
     
-    var fetch = require('node-fetch');
-    var allUrls =[];
+    var otherSuffixes = ['m21Aa.html','mCMSa.html','m21Wa.html',
+    'm21Ga.html','m21Ha.html','m21La.html','m21Ma.html','mWGSa.html',
+    'm22a.html','m24a.html','mCCa.html','mCSBa.html','mECa.html',
+    'mEMa.html','mESa.html','mHSTa.html','mIDSa.html','mMASa.html',
+    'mSCMa.html','mASa.html','mMSa.html','mNSa.html','mSTSa.html',
+    'mSWEa.html','mSPa.html',];
 
-    var makeRequest = async function (url) {
-        var response = await fetch(url);
-        var text     = await response.text();
-        return text;
-    };  
+    var allSuffixes = suffixes.concat(otherSuffixes);
 
-    makeRequest(miturl).then((text) =>{
-        $ = cheerio.load(text);
+    var completeLinks = []
+    var url = 'http://student.mit.edu/catalog/'
 
-        //get everything that's a list item
-        $('li').each(function(i,elem) {
-            currentLink = $(this).children().attr('href');
-            if (currentLink !== undefined){
-                allUrls.push('http://student.mit.edu/catalog/' + currentLink)
-            }
-            //console.log($(this).children().attr('href'));
-        });
-        //console.log(allUrls);
-        // return allUrls;
-        return 0; 
-    });   
-    
-
-    /*
-    request(miturl, function(err, res, body){
-        var webPage = body;
-    
-        $ = cheerio.load(webPage);
-    
-        //get everything that's a list item
-        $('li').each(function(i,elem) {
-        	//grab the links
-        	currentLink = $(this).children().attr('href');
-        	//add defined links to the array of urls
-        	if (currentLink !== undefined){
-        		allUrls.push('http://student.mit.edu/catalog/' + currentLink);
-        	};
-        
-
-        // how do I assign the output to a permanent variable?
-    	//return allUrls;
-        });
-        console.log(allUrls);
-        return allUrls;
+    allSuffixes.forEach((element, index, array)=>{
+        let address = url + element;
+        completeLinks.push(address);
     });
-	*/
+
+    return completeLinks;
+
 
 };
+exercise.one()
+
 
 exercise.two = function(){
     // -----------------------------------------------
