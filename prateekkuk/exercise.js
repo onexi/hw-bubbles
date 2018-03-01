@@ -250,7 +250,7 @@ exercise.seven = function(){
     var cleanCourseTitles = courseTitles.map((value,i,arr)=>{
         return value.toLowerCase().replace(/ \bis\s|\band\s|\bof\s|\bin\s|\bthe\s|\ba\s|\bto\s|\bfor\s|\bi\S\W|\btopics\s/g,"")
     });
-    console.log(cleanCourseTitles);
+    return cleanCourseTitles;
 };
 
 exercise.eight = function(){
@@ -263,6 +263,22 @@ exercise.eight = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    var cleanCourseTitles = exercise.seven();
+
+    //code below splits the titles into an array of words
+    var wordsArray = cleanCourseTitles.map((value,i,arr) => {
+        return value.split(" ");
+    });
+    //the code below converts it from being an array of arrays to one big array
+    var wordsFlat = wordsArray.reduce(function(previous, current) {
+        return previous.concat(current);
+    }, []);
+
+    //code below removes the empty strings that results from the split
+    var finalWordsArray = wordsFlat.filter((value,i,arr) => {
+        return value != "" && (value != "i" || value !="ii" || value != "iii");
+    });
+    return finalWordsArray;
 };
 
 exercise.nine = function(){
