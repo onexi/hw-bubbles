@@ -4,7 +4,7 @@ var cheerio = require('cheerio');
 var request = require('request');
 var rp = require('request-promise');
 var minify = require('html-minifier').minify;
-var path = require('path'); 
+var request_sync = require('sync-request');
 var fs = require('fs');
 
 var urls = [];
@@ -21,7 +21,8 @@ exercise.one = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
-    ///////// trying to do it without relying on local file changes ///////
+    ///////// Note: I did excerise.one 3 different ways to learn each way ///////
+    ////Instead of pushing urls to an array manually, I chose to scrape the index page
 
     //1. using promises
     // var flag = 0;
@@ -47,12 +48,10 @@ exercise.one = function(){
     //     .catch(function(){
     //         console.log("request-promise failed");
     //     });
-    //how would i return urls after the request has completed?
-    //runs before it has anything, how do get the value or ensure I call it when it has the value
-    //when will urls actually populate so I can return it from exercise.one
+    
 
 
-     ///2. using normal request
+     ///2. using callbacks 
 
     // var indexPageRequest = request('http://student.mit.edu/catalog/index.cgi',function(error, response, body){
     //     console.log('error:', error);
@@ -70,11 +69,10 @@ exercise.one = function(){
     //     console.log(urls);
     // }
 
-    // console.log(urls); //prints undefined - how do I know when a request is complete so I can do this
-
-    ////3. using local files and after removing the copy right symbol //////
-    //var indexPageRequest = request('http://student.mit.edu/catalog/index.cgi').pipe(fs.createWriteStream('index.html'));
-    //TODO: remove the troublesome line of text from index and save over it
+    ////3. using sync request  //////
+    console.log("problem 1");
+    var indexPageRequestData = request_sync('GET','http://student.mit.edu/catalog/index.cgi')
+    fs.writeFileSync('index.html',indexPageRequestData.getBody().toString());
 
     var indexPageData = fs.readFileSync('index.html',{encoding: 'utf-8'});
     var $ = cheerio.load(indexPageData);
@@ -107,15 +105,17 @@ exercise.two = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
     
-    //my method
-    // urls.forEach((url, index, urls) => {
-    //     var firstcut = "http://student.mit.edu/catalog/".length;
-    //     var name = url.slice(firstcut,url.length);
-    //     console.log(name + ":" + url);
-    //     var eachPageRequest = request(url).pipe(fs.createWriteStream('catalog/'+ name));
-    // });
+    //sync method
+    console.log("problem 2");
+    urls.forEach((url, index, urls) => {
+        var firstcut = "http://student.mit.edu/catalog/".length;
+        var name = url.slice(firstcut,url.length);
+        console.log(name + ":" + url);
+        var eachPageRequestData = request_sync('GET',url);
+        fs.writeFileSync('catalog/'+ name,eachPageRequestData.getBody().toString());
+    });
 
-    //in-class method
+    //aysnc method
     // const writeFile = (path, data, opts = 'utf8') =>
     //     new Promise((res, rej) => {
     //         fs.writeFile(path, data, opts, (err) => {
@@ -152,18 +152,18 @@ exercise.three = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-
+    console.log("problem 3")
     //create empty file 
     //read each file in directory and append to file
-    // fs.writeFileSync('catalog/catalog.txt',"");
-    // fs.readdirSync('catalog').forEach((file) => {
-    //     if(file[file.length-1] == 'l'){//only get files that end in html
-    //         var fileString = "";
-    //         fileString = fs.readFileSync('catalog/'+file,{encoding: 'utf-8'});
-    //         fs.appendFileSync('catalog/catalog.txt',fileString);
-    //     } 
+    fs.writeFileSync('catalog/catalog.txt',"");
+    fs.readdirSync('catalog').forEach((file) => {
+        if(file[file.length-1] == 'l'){//only get files that end in html
+            var fileString = "";
+            fileString = fs.readFileSync('catalog/'+file,{encoding: 'utf-8'});
+            fs.appendFileSync('catalog/catalog.txt',fileString);
+        } 
 
-    // })
+    })
 
 
 };
@@ -181,10 +181,17 @@ exercise.four = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    console.log("problem 4");
      var catalog = fs.readFileSync('catalog/catalog.txt',{encoding: 'utf-8'});
-     var catalogScrubbed = minify(catalog,{collapseWhitespace:true});
-    
-     return catalogScrubbed;
+     var catalogScrubbed = minify(catalog,{
+         collapseWhitespace:true,
+         minifyCSS:true,
+         minifyJS:true
+    });
+    var catalogScrubbed_clean = catalogScrubbed.replace(/'/g,'')
+    fs.writeFileSync('catalog/catalog_clean.txt',catalogScrubbed_clean);
+
+    return catalogScrubbed_clean;
 };
 
 exercise.five = function(){
@@ -200,6 +207,7 @@ exercise.five = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    console.log("problem 5");
     var courses = [];
     var catalogScrubbed = exercise.four();
     var $ = cheerio.load(catalogScrubbed);
@@ -219,7 +227,7 @@ exercise.six = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    
+    console.log("problem 6");
     var courses = exercise.five();
     var courseTitles = courses.map((course, index, courses) => {
         return course.match(/\s([a-zA-Z]+)/g);
@@ -245,7 +253,7 @@ exercise.seven = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-
+    console.log("problem 7");
     var courseTitles = exercise.six();
     var cleanCourseTitles = courseTitles.map((value,i,arr)=>{
         return value.toLowerCase().replace(/ \bis\s|\band\s|\bof\s|\bin\s|\bthe\s|\ba\s|\bto\s|\bfor\s|\bi\S\W|\btopics\s/g,"")
@@ -263,6 +271,7 @@ exercise.eight = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    console.log("problem 8");
     var cleanCourseTitles = exercise.seven();
 
     //code below splits the titles into an array of words
@@ -291,6 +300,7 @@ exercise.nine = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+    console.log("problem 9");
     var wordsArray = exercise.eight();
     var wordsCountObj = wordsArray.reduce((accumulator,current)=>{
         if(current in accumulator){
@@ -302,6 +312,7 @@ exercise.nine = function(){
     },{});
     var scores = JSON.stringify(wordsCountObj);
     fs.writeFileSync('catalogSample/catalog_data.js','var scores='+scores,'utf8');
+    return scores;
 };
 
 
