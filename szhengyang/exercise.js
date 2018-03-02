@@ -2,7 +2,7 @@ var request = require('sync-request');
 var minify = require('html-minifier').minify;
 var cheerio = require('cheerio');
 var fs = require('fs');
-
+var createdir = require('mkdirp');
 
 var exercise = {};
 
@@ -77,6 +77,8 @@ exercise.one = function(){
         console.log('--- QUESTION 02 ---')
 
         var urls = exercise.one();
+
+        createdir('./catalog');
         
         urls.forEach(function(url,index){
             var res = request('GET',url);
