@@ -219,17 +219,20 @@ exercise.six = function(titles = exercise.five(), regex = exercise.course_regex)
   });
 };
 
-exercise.seven = function(){
-    // -----------------------------------------------
-    //   YOUR CODE
-    //
-    //  Filter out punctuation, numbers,
-    //  and common words like "and", "the", "a", etc.
-    //
-    //  Return clean array.
-    //
-    //  See homework guide document for more info.
-    // -----------------------------------------------
+/**
+ * Filter out common words
+ *
+ * @param {titles=} an array of course titles
+ * @return {array} a array of strings of course titles
+ */
+exercise.seven = function(titles = exercise.six()){
+  return titles.map(function (title){
+    return title
+      .toLowerCase()
+      .split(" ")
+      .filter(word => ["to","of","in","for","on","with","at","by","from","up","about","into","over","after", "and"].includes(word))
+      .join(" ");
+  });
 };
 
 exercise.eight = function(){
