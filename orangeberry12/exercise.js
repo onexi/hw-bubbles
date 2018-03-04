@@ -62,37 +62,16 @@ exercise.two = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    //var fetch = require('node-fetch');
-    var fs = require('fs');
+
 
     //get urls from part 1
     var urls = exercise.one();
-    /*
-    const writeFile = (path, data, opts = 'utf8') =>
-    new Promise((res, rej) => {
-        fs.writeFile(path, data, opts, (err) => {
-            if (err) rej(err)
-            else res()
-        })
-    })
-
-    var makeRequest = async function (url,counter) {
-        var res = await fetch(url);
-        await writeFile('./catalog/' + counter + '.html', await res.text());
-        return 'done - ' + counter;        
-    };  
     
-    urls.forEach(function(url,i){
-        makeRequest(url,i).then((result) =>{
-            console.log(result);
-        });    
+    urls.forEach(function(url,counter){
+        var res = request('GET',url);
+        var filename = './catalog/' + counter  + '.html';
+        fs.writeFileSync(filename,res.getBody().toString());
     })
-    */
-   urls.forEach(function(url,counter){
-       var res = request('GET',url);
-       var filename = './catalog/' + counter  + '.html';
-       fs.writeFileSync(filename,res.getBody().toString());
-   })
 
 };
 //exercise.two();
@@ -110,20 +89,12 @@ exercise.three = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
-    //var fs = require('fs');
 
     //get all the files in the catalog directory
     //exclude catalog.txt if it has already been made
     var catalogDirectory = './catalog/';
     var files = fs.readdirSync(catalogDirectory,'utf8');
     var filePaths = [];
-    /*
-    files.forEach((file,index,array)=>{
-        if (file!== 'catalog.txt'){
-            filePaths.push(catalogDirectory+file);
-        }   
-    });
-    */
 
     files.forEach((file)=>{
         var fLength = file.length;
@@ -168,8 +139,6 @@ exercise.four = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
-    //var minify = require('html-minifier').minify;
-    //var fs = require('fs');
     
     var filePath = './catalog/catalog.txt';
     var oldFileContents = fs.readFileSync(filePath,'utf8');
@@ -202,8 +171,6 @@ exercise.five = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    //var cheerio = require('cheerio');
-    //var fs = require('fs');
 
     var filePath = './catalog/catalog.txt';
     var myPage = fs.readFileSync(filePath,'utf8');
@@ -249,8 +216,7 @@ exercise.seven = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    //var fs = require('fs');
-
+    
     //first filter out non-letters
     var allTitles = exercise.six();
     console.log(allTitles);
