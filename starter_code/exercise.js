@@ -1,3 +1,4 @@
+const cheerio = require('cheerio');
 var fs = require('fs-extra');
 var minify = require('html-minifier').minify;
 var request = require('sync-request');
@@ -170,19 +171,33 @@ exercise.four = function(clean = exercise.catalog_clean_file, catalog = exercise
   return cleaned_contents;
 };
 
-exercise.five = function(){
-    // -----------------------------------------------
-    //   YOUR CODE
-    //
-    //  Load your scrubbed HTML into the DOM.
-    //  Use the DOM structure to get all the courses.
-    //
-    //  Return an array of courses.
-    //
-    //  You can use the NPM package "cheerio".
-    //
-    //  See homework guide document for more info.
-    // -----------------------------------------------
+/**
+ * Parses the h3 tags for course titles
+ *
+ * @param {clean=} a filename of where to find the cleaned catalog file
+ * @param {directory=} a path of where to find the downloaded files.
+ * @return {array} a array of strings of the h3 title tags from the cleaned file
+ */
+exercise.five = function(clean = exercise.catalog_clean_file, directory = exercise.catalog_path){
+  // Early exit if no existing catalog exists
+  let catalog_path = `${directory}/${clean}`;
+  if (!fs.existsSync(catalog_path)) {
+    throw new Error(`${catalog_path} doesn't exist, no file to clean up.`);
+  }
+
+  let courses = [];
+
+  try {
+    let catalog_contents = fs.readFileSync(`${directory}/${clean}`, 'utf8');
+    var $ = cheerio.load(catalog_contents);
+    $('h3').each(function(i,element){
+      courses.push($(element).text());
+    });
+  } catch (err) {
+    exercise.error_handeler(err);
+  }
+
+  return courses;
 };
 
 exercise.six = function(){
