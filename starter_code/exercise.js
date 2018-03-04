@@ -6,6 +6,7 @@ var zpad = require('zpad');
 
 var exercise = {};
 
+exercise.course_regex = /(\d\.\S+) (.+)/;
 exercise.catalog_file = 'catalog.txt';
 exercise.catalog_clean_file = 'clean.txt';
 exercise.catalog_path = './catalog';
@@ -200,16 +201,22 @@ exercise.five = function(clean = exercise.catalog_clean_file, directory = exerci
   return courses;
 };
 
-exercise.six = function(){
-    // -----------------------------------------------
-    //   YOUR CODE
-    //
-    //  Return an array of course titles.
-    //
-    //  You can use the NPM package cheerio.
-    //
-    //  See homework guide document for more info.
-    // -----------------------------------------------
+/**
+ * Generate list of course titles
+ *
+ * @param {titles=} an array of raw course titles
+ * @param {regex=} a regular expression to parse out titles
+ * @return {array} a array of strings of course titles
+ */
+exercise.six = function(titles = exercise.five(), regex = exercise.course_regex){
+  return titles.map(function (title){
+    let matches = title.match(regex);
+    if (matches){
+      return matches[2];
+    } else{
+      return null;
+    }
+  });
 };
 
 exercise.seven = function(){
