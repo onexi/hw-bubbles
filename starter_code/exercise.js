@@ -1,5 +1,5 @@
 var fs = require('fs');
-var request = require('request');
+var request = require('sync-request');
 var zpad = require('zpad');
 
 var exercise = {};
@@ -7,7 +7,7 @@ var exercise = {};
 exercise.catalog_path = './catalog';
 exercise.error_handeler = function(error){
   // A client-side or network error occurred. Handle it accordingly.
-  console.error('An error occurred:', error.error.message);
+  console.error('An error occurred:', error.message);
 }
 
 /**
@@ -81,11 +81,12 @@ exercise.two = function(urls = exercise.one(), directory = exercise.catalog_path
 
   // Download each catalog file
   urls.forEach((url,index)=>{
-    return request
-      .get(url)
-      .on('error', exercise.error_handeler)
-      .pipe(fs.createWriteStream(`${directory}/${zpad(index)}.html`))
-      .on('error', exercise.error_handeler);
+    try{
+        let contents = request("GET", url);
+        fs.writeFileSync(`${directory}/${zpad(index)}.html`, contents.getBody().toString());
+    }catch(err){
+        exercise.error_handeler(err);
+    }
   });
 };
 
