@@ -1,16 +1,16 @@
+var fs = require('fs');
+var request = require('request');
+var zpad = require('zpad');
+
 var exercise = {};
 
+exercise.catalog_path = './catalog';
+exercise.error_handeler = function(error){
+  // A client-side or network error occurred. Handle it accordingly.
+  console.error('An error occurred:', error.error.message);
+}
+
 exercise.one = function(){
-    // -----------------------------------------------
-    //   YOUR CODE
-    //
-    //  Return the address of all the html pages in
-    //  the MIT course catalog - string array.
-    //  For example, the first page for Course 1 is:
-    //  http://student.mit.edu/catalog/m1a.html
-    //
-    //  See homework guide document for more info.
-    // -----------------------------------------------
   return ["http://student.mit.edu/catalog/m1a.html",
   "http://student.mit.edu/catalog/m1b.html",
   "http://student.mit.edu/catalog/m1c.html",
@@ -61,18 +61,16 @@ exercise.one = function(){
 };
 
 exercise.two = function(){
-    // -----------------------------------------------
-    //   YOUR CODE
-    //
-    //  Download every course catalog page.
-    //
-    //  You can use the NPM package "request".
-    //  Or curl with the NPM package shelljs.
-    //
-    //  Save every page to "your_folder/catalog"
-    //
-    //  See homework guide document for more info.
-    // -----------------------------------------------
+  if (!fs.existsSync(exercise.catalog_path)) {
+    fs.mkdirSync(exercise.catalog_path)
+  }
+  exercise.one().forEach((url,index)=>{
+    return request
+      .get(url)
+      .on('error', exercise.error_handeler)
+      .pipe(fs.createWriteStream(`./catalog/${zpad(index)}.html`))
+      .on('error', exercise.error_handeler);
+  });
 };
 
 exercise.three = function(){
