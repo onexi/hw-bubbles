@@ -25,49 +25,49 @@ exercise.one = function(){
     ////Instead of pushing urls to an array manually, I chose to scrape the index page
 
     //1. using promises
-    // var flag = 0;
-    // var indexPageUrls = [];
-    // var indexPageRequestOptions = {
-    //     uri: 'http://student.mit.edu/catalog/index.cgi',
-    //     transform: function(body){
-    //         return cheerio.load(body);
-    //     },
-    //     async:false
-    // };
+        // var flag = 0;
+        // var indexPageUrls = [];
+        // var indexPageRequestOptions = {
+        //     uri: 'http://student.mit.edu/catalog/index.cgi',
+        //     transform: function(body){
+        //         return cheerio.load(body);
+        //     },
+        //     async:false
+        // };
 
-    // rp(indexPageRequestOptions)
-    //     .then(function($){
-    //         links = $('a');
+        // rp(indexPageRequestOptions)
+        //     .then(function($){
+        //         links = $('a');
 
-    //         $(links).each(function(index, link){
-    //             if($(link).attr('href').toString().startsWith("m")){
-    //                 urls.push($(link).attr('href').toString());
-    //             }
-    //         });
-    //     })
-    //     .catch(function(){
-    //         console.log("request-promise failed");
-    //     });
+        //         $(links).each(function(index, link){
+        //             if($(link).attr('href').toString().startsWith("m")){
+        //                 urls.push($(link).attr('href').toString());
+        //             }
+        //         });
+        //     })
+        //     .catch(function(){
+        //         console.log("request-promise failed");
+        //     });
     
 
 
      ///2. using callbacks 
 
-    // var indexPageRequest = request('http://student.mit.edu/catalog/index.cgi',function(error, response, body){
-    //     console.log('error:', error);
-    //     console.log('statusCode:', response.statuscode);
-    //     $ = cheerio.load(body);
-    //     links = $('a');
-    //     $(links).each(function(index, link){
-    //         if($(link).attr('href').toString().startsWith("m")){
-    //             urls.push($(link).attr('href').toString());
-    //         }
-    //       });
-    // },function(){passingURLS();});
-     
-    // var passingURLS = function(){
-    //     console.log(urls);
-    // }
+        // var indexPageRequest = request('http://student.mit.edu/catalog/index.cgi',function(error, response, body){
+        //     console.log('error:', error);
+        //     console.log('statusCode:', response.statuscode);
+        //     $ = cheerio.load(body);
+        //     links = $('a');
+        //     $(links).each(function(index, link){
+        //         if($(link).attr('href').toString().startsWith("m")){
+        //             urls.push($(link).attr('href').toString());
+        //         }
+        //       });
+        // },function(){passingURLS();});
+        
+        // var passingURLS = function(){
+        //     console.log(urls);
+        // }
 
     ////3. using sync request  //////
     console.log("problem 1");
@@ -116,27 +116,27 @@ exercise.two = function(){
     });
 
     //aysnc method
-    // const writeFile = (path, data, opts = 'utf8') =>
-    //     new Promise((res, rej) => {
-    //         fs.writeFile(path, data, opts, (err) => {
-    //             if (err) rej(err)
-    //             else res()
-    //     })
-    // })
+        // const writeFile = (path, data, opts = 'utf8') =>
+        //     new Promise((res, rej) => {
+        //         fs.writeFile(path, data, opts, (err) => {
+        //             if (err) rej(err)
+        //             else res()
+        //     })
+        // })
 
-    // var makeRequest = async function (url,counter) {
-    //     var res = await fetch(url);
-    //     var firstcut = "http://student.mit.edu/catalog/".length;
-    //     var name = url.slice(firstcut,url.length);
-    //     await writeFile('catalog/' + name, await res.text());
-    //     return 'done - ' + name;        
-    // };  
+        // var makeRequest = async function (url,counter) {
+        //     var res = await fetch(url);
+        //     var firstcut = "http://student.mit.edu/catalog/".length;
+        //     var name = url.slice(firstcut,url.length);
+        //     await writeFile('catalog/' + name, await res.text());
+        //     return 'done - ' + name;        
+        // };  
 
-    // urls.forEach(function(url,i){
-    //     makeRequest(url,i).then((result) =>{
-    //         console.log(result);
-    //     });    
-    // })
+        // urls.forEach(function(url,i){
+        //     makeRequest(url,i).then((result) =>{
+        //         console.log(result);
+        //     });    
+        // })
 
 };
     
