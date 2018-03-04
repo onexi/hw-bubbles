@@ -236,16 +236,17 @@ exercise.seven = function(titles = exercise.six()){
   });
 };
 
-exercise.eight = function(){
-    // -----------------------------------------------
-    //   YOUR CODE
-    //
-    //  Make an array of words from the titles.
-    //
-    //  Return array of words.
-    //
-    //  See homework guide document for more info.
-    // -----------------------------------------------
+/**
+ * Generate bag of words
+ *
+ * @param {titles=} an array of course titles
+ * @return {array} a array of strings of course titles
+ */
+exercise.eight = function(titles = exercise.seven()){
+  return titles.reduce(function (bag, title){
+    if (title == null){return bag;}
+    return bag.concat(title.split(" "));
+  }, []);
 };
 
 exercise.nine = function(){
