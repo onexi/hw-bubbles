@@ -10,6 +10,11 @@ exercise.error_handeler = function(error){
   console.error('An error occurred:', error.error.message);
 }
 
+/**
+ * Provides an array of URL's from the MIT course catalog
+ *
+ * @return {array} a list of URL's from the MIT catalog
+ */
 exercise.one = function(){
   return ["http://student.mit.edu/catalog/m1a.html",
   "http://student.mit.edu/catalog/m1b.html",
@@ -60,10 +65,21 @@ exercise.one = function(){
   "http://student.mit.edu/catalog/m22c.html"]
 };
 
+/**
+ * Downloads provided catalog of url's and writes the responses to a provided directory.
+ *
+ * @param {urls=} an array of url's to issues HTTP GET requests towards, defaults to `exercise.one()`
+ * @param {directory=} a path of where to store the downloaded files.
+ * @return {void}
+ */
 exercise.two = function(urls = exercise.one(), directory = exercise.catalog_path){
+  // Create directory for catalog if it doesn't exist
+  // fs.createWriteStream will not work unless all directories exist first.
   if (!fs.existsSync(directory)) {
     fs.mkdirSync(directory)
   }
+
+  // Download each catalog file
   urls.forEach((url,index)=>{
     return request
       .get(url)
