@@ -60,11 +60,11 @@ exercise.one = function(){
   "http://student.mit.edu/catalog/m22c.html"]
 };
 
-exercise.two = function(){
-  if (!fs.existsSync(exercise.catalog_path)) {
-    fs.mkdirSync(exercise.catalog_path)
+exercise.two = function(urls = exercise.one(), directory = exercise.catalog_path){
+  if (!fs.existsSync(directory)) {
+    fs.mkdirSync(directory)
   }
-  exercise.one().forEach((url,index)=>{
+  urls.forEach((url,index)=>{
     return request
       .get(url)
       .on('error', exercise.error_handeler)
