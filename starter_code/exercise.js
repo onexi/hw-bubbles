@@ -4,6 +4,7 @@ var zpad = require('zpad');
 
 var exercise = {};
 
+exercise.catalog_file = 'catalog.txt';
 exercise.catalog_path = './catalog';
 exercise.error_handeler = function(error){
   // A client-side or network error occurred. Handle it accordingly.
@@ -88,18 +89,42 @@ exercise.two = function(urls = exercise.one(), directory = exercise.catalog_path
   });
 };
 
-exercise.three = function(){
-    // -----------------------------------------------
-    //   YOUR CODE
-    //
-    //  Combine all files into one,
-    //  save to "your_folder/catalog/catalog.txt"
-    //
-    //  You can use the file system API,
-    //  https://nodejs.org/api/fs.html
-    //
-    //  See homework guide document for more info.
-    // -----------------------------------------------
+/**
+ * Concatenates an entire directory to a large catalog file.
+ *
+ * @param {catalog=} a filename of where to store the catalog file
+ * @param {directory=} a path of where to find the downloaded files.
+ * @return {string} a string of the entire contents written to the catalog
+ */
+exercise.three = function(catalog = exercise.catalog_file, directory = exercise.catalog_path){
+  if (!fs.existsSync(directory)) {
+    throw new Error(`${directory} doesn't exist, no files to catalog.`);
+  }
+
+  // If an existing catalog exists, clear it's contents to start a fresh compilation.
+  let catalog_path = `${directory}/${catalog}`;
+  if (fs.existsSync(catalog_path)) {
+    fs.truncateSync(catalog_path);
+  }
+
+  let contents = [];
+
+  // Append each found file to the catalog file.
+  fs.readdirSync(directory).forEach(file => {
+    if (file !== catalog){
+      try {
+        contents.push(fs.readFileSync(`${directory}/${file}`, 'utf8'));
+      } catch (err) {
+        exercise.error_handeler(err);
+      }
+    }
+  });
+
+  contents = contents.join('\n');
+
+  fs.writeFileSync(catalog_path, contents);
+
+  return contents;
 };
 
 exercise.four = function(){
