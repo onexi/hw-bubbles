@@ -1,4 +1,4 @@
-var fs = require('fs');
+var fs = require('fs-extra');
 var request = require('sync-request');
 var zpad = require('zpad');
 
@@ -75,9 +75,7 @@ exercise.one = function(){
 exercise.two = function(urls = exercise.one(), directory = exercise.catalog_path){
   // Create directory for catalog if it doesn't exist
   // fs.createWriteStream will not work unless all directories exist first.
-  if (!fs.existsSync(directory)) {
-    fs.mkdirSync(directory)
-  }
+  fs.emptyDirSync(directory);
 
   // Download each catalog file
   urls.forEach((url,index)=>{
