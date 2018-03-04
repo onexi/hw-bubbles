@@ -84,7 +84,7 @@ exercise.two = function(urls = exercise.one(), directory = exercise.catalog_path
     return request
       .get(url)
       .on('error', exercise.error_handeler)
-      .pipe(fs.createWriteStream(`./catalog/${zpad(index)}.html`))
+      .pipe(fs.createWriteStream(`${directory}/${zpad(index)}.html`))
       .on('error', exercise.error_handeler);
   });
 };
