@@ -10,6 +10,7 @@ describe('Catalog', function() {
 });
 
 describe('Catalog Files', function() {
+	this.timeout(50000);
 	it('File Count', function() {
 		ex.two();
 		var files = fs.readdirSync('catalog');
@@ -27,6 +28,7 @@ describe('Combined Catalog File', function() {
 });
 
 describe('Whitespace', function() {
+	this.timeout(50000);
 	it('Whitespace and line breaks', function() {
 		ex.four();
 		var flag = false;
