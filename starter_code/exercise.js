@@ -1,10 +1,12 @@
 var fs = require('fs-extra');
+var minify = require('html-minifier').minify;
 var request = require('sync-request');
 var zpad = require('zpad');
 
 var exercise = {};
 
 exercise.catalog_file = 'catalog.txt';
+exercise.catalog_clean_file = 'clean.txt';
 exercise.catalog_path = './catalog';
 exercise.error_handeler = function(error){
   // A client-side or network error occurred. Handle it accordingly.
@@ -127,19 +129,45 @@ exercise.three = function(catalog = exercise.catalog_file, directory = exercise.
   return contents;
 };
 
-exercise.four = function(){
-    // -----------------------------------------------
-    //   YOUR CODE
-    //
-    //  Remove line breaks and whitespaces
-    //  from the file. Return a string of
-    //  scrubbed HTML. In other words, HTML without
-    //  line breaks or whitespaces.
-    //
-    //  You can use the NPM package "html-minifier".
-    //
-    //  See homework guide document for more info.
-    // -----------------------------------------------
+/**
+ * Cleans and minifies the provided catalog HTML file.
+ *
+ * @param {clean=} a filename of where to store the cleaned catalog file
+ * @param {catalog=} a filename of where to find the catalog file
+ * @param {directory=} a path of where to find the downloaded files.
+ * @return {string} a string of the entire contents written to the catalog
+ */
+exercise.four = function(clean = exercise.catalog_clean_file, catalog = exercise.catalog_file, directory = exercise.catalog_path){
+  // Early exit if no existing catalog exists
+  let catalog_path = `${directory}/${catalog}`;
+  if (!fs.existsSync(catalog_path)) {
+    throw new Error(`${catalog_path} doesn't exist, no file to clean up.`);
+  }
+
+  try {
+    let catalog_contents = fs.readFileSync(`${directory}/${catalog}`, 'utf8');
+
+    var cleaned_contents = minify(catalog_contents, {
+      collapseBooleanAttributes: true,
+      collapseWhitespace: true,
+      decodeEntities: true,
+      minifyCSS: true,
+      minifyJS: true,
+      // preserveLineBreaks: true,
+      removeAttributeQuotes: true,
+      removeComments: true,
+      removeEmptyAttributes: true,
+      removeEmptyElements: true,
+      removeOptionalTags: true,
+      removeRedundantAttributes: true
+    });
+  } catch (err) {
+    exercise.error_handeler(err);
+  }
+
+  fs.writeFileSync(`${directory}/${clean}`, cleaned_contents);
+
+  return cleaned_contents;
 };
 
 exercise.five = function(){
