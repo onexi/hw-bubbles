@@ -227,10 +227,11 @@ exercise.six = function(titles = exercise.five(), regex = exercise.course_regex)
  */
 exercise.seven = function(titles = exercise.six()){
   return titles.map(function (title){
+    if (title == null){return null;}
     return title
       .toLowerCase()
       .split(" ")
-      .filter(word => ["to","of","in","for","on","with","at","by","from","up","about","into","over","after", "and"].includes(word))
+      .filter(word => !["to","of","in","for","on","with","at","by","from","up","about","into","over","after", "and", "i", "ii"].includes(word))
       .join(" ");
   });
 };
