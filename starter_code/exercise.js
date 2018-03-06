@@ -48,7 +48,6 @@ exercise.one = function(){
   "http://student.mit.edu/catalog/m9b.html",
   "http://student.mit.edu/catalog/m10a.html",
   "http://student.mit.edu/catalog/m10b.html",
-  "http://student.mit.edu/catalog/m10c.html",
   "http://student.mit.edu/catalog/m11a.html",
   "http://student.mit.edu/catalog/m11b.html",
   "http://student.mit.edu/catalog/m11c.html",
