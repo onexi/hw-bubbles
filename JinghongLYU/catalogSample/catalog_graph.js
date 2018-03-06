@@ -27,7 +27,7 @@ function graph(){
     svg.call(tip);
 
     for (var word in scores) {
-      nodes.push({radius: radius(scores[word]), color: color(word.length), word: word, score: scores[word]});  
+      nodes.push({radius: radius(scores[word]/25), color: color(word.length), word: word, score: scores[word]});  
     }
 
     force = d3.layout.force()

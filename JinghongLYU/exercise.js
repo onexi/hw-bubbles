@@ -265,6 +265,7 @@ exercise.nine = function(){
 
     console.log(scores);
     return scores;
+    
 };
 
 
