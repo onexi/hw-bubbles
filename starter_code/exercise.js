@@ -212,7 +212,9 @@ exercise.six = function(titles = exercise.five(), regex = exercise.course_regex)
   return titles.map(function (title){
     let matches = title.match(regex);
     if (matches){
-      return matches[2];
+      let title = matches[2];
+      title = title.replace('(New)', '');
+      return title;
     } else{
       return null;
     }
@@ -231,7 +233,13 @@ exercise.seven = function(titles = exercise.six()){
     return title
       .toLowerCase()
       .split(" ")
-      .filter(word => !["to","of","in","for","on","with","at","by","from","up","about","into","over","after", "and", "i", "ii"].includes(word))
+      .filter(word => {
+        let is_common = ["to","of","in","for","on","with","at","by","from","up","about","into","over","after", "and", "i", "ii"].includes(word);
+        let has_number = (/\d/.test(word));
+        let has_parenthesis = word.indexOf('(') > 0;
+        let pass = !(is_common || has_number || has_parenthesis);
+        return pass;
+      })
       .join(" ");
   });
 };
