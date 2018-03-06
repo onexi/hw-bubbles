@@ -1,31 +1,24 @@
 var exercise = {};
 
 exercise.one = function(){
-    // -----------------------------------------------
-    //   YOUR CODE
-    //
-    //  Return the address of all the html pages in
-    //  the MIT course catalog - string array.
-    //  For example, the first page for Course 1 is:
-    //  http://student.mit.edu/catalog/m1a.html
-    //
-    //  See homework guide document for more info.
-    // -----------------------------------------------
+    //  Return the address of all the html pages
+    var urls = [
+        'http://student.mit.edu/catalog/m1a.html',
+        'http://student.mit.edu/catalog/m1b.html',
+        'http://student.mit.edu/catalog/m1c.html'
+    ];
+    return urls;
 };
 
 exercise.two = function(){
-    // -----------------------------------------------
-    //   YOUR CODE
-    //
     //  Download every course catalog page.
-    //
-    //  You can use the NPM package "request".
-    //  Or curl with the NPM package shelljs.
-    //
     //  Save every page to "your_folder/catalog"
-    //
-    //  See homework guide document for more info.
-    // -----------------------------------------------
+    var request = require('request');
+        request('http://www.google.com', function (error, response, body) {
+        console.log('error:', error); // Print the error if one occurred
+        console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
+        console.log('body:', body); // Print the HTML for the Google homepage.
+    });
 };
 
 exercise.three = function(){
