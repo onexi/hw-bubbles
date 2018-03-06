@@ -257,16 +257,21 @@ exercise.eight = function(titles = exercise.seven()){
   }, []);
 };
 
-exercise.nine = function(){
-    // -----------------------------------------------
-    //   YOUR CODE
-    //
-    //  Count the word frequency.
-    //
-    //  Return a word count array.
-    //
-    //  See homework guide document for more info.
-    // -----------------------------------------------
+/**
+ * Generate bag of words
+ *
+ * @param {titles=} an array of course titles
+ * @return {array} a array of strings of course titles
+ */
+exercise.nine = function(words = exercise.eight()){
+  return words.reduce(function (bag, word){
+    if (word in bag){
+      bag[word] = bag[word] + 1;
+    }else{
+      bag[word] = 1;
+    }
+    return bag;
+  }, {});
 };
 
 
