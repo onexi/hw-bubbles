@@ -115,34 +115,12 @@ exercise.two = function(){
     console.log('---- Question 2 ----');
     var urls = exercise.one();
     
-    const writeFile = (path, data, opts = 'utf8') =>
-        new Promise((res, rej) => {
-            fs.writeFile(path, data, opts, (err) => {
-                if (err) rej(err)
-                else res()
-        })
-    })
-    
-    var makeRequest = async function (url,counter) {
-        var res = await fetch(url);
-        await writeFile('catalog/' + counter + '.html', await res.text());
-        return 'done - ' + counter;        
-    };  
-    
-    urls.forEach(function(url,i){
-        makeRequest(url,i).then((result) =>{
-            console.log(result);
-        });    
-    })
-
-    /* 
-        urls.forEach(function(url,i){
-            var res = request('GET', url);
-            var filename = 'catalog/' + counter + '.html';
-            fs.writeFileSync(filename, res.getBody().toString());
-        });   
-    
-    */
+    urls.forEach(function(url, counter){
+        var res = request('GET', url);
+        var filename = 'catalog/' + counter + '.html';
+        fs.writeFileSync(filename, res.getBody().toString());
+        console.log('Done writing file - ' + counter + '.html');
+    });    
 }
 
 exercise.three = function(){
@@ -193,11 +171,11 @@ exercise.four = function(){
     });
 
     fs.writeFileSync('./catalog/scrubbedHTML.txt', scrubbedHtml);
-    console.log('adding file - scrubbedHTML.txt - to catalog.txt');
+    console.log('adding file - scrubbedHTML.txt - to catalog');
 
     var finalHtml = scrubbedHtml.replace(/'/g, '');
     fs.writeFileSync('./catalog/cleanHTML.txt', finalHtml);
-    console.log('adding file - cleanHTML.txt - to catalog.txt');
+    console.log('adding file - cleanHTML.txt - to catalog');
 };
 
 exercise.five = function(){
@@ -271,6 +249,10 @@ exercise.seven = function(){
     console.log(words);
 
     return words;
+
+    /* Note - removal of further words such as 'j', 'i', 'ii', 'and', 'the', etc. 
+            has been taken care in exercise.eight function. 
+    */
 };
 
 exercise.eight = function(){
@@ -293,20 +275,19 @@ exercise.eight = function(){
     console.log(wordsFlat);
 
      
-    /* Function to further clean and remove words like 'j', 'i', 'ii', etc. */
+    /* Function to further clean and remove words like 'j', 'i', 'ii', 'and', 'the', etc. */
     function moreClean(element) {
         var comparison = element.toLowerCase() != 'j' 
                         && element.toLowerCase() != 'i' 
-                        && element.toLowerCase() != 'ii';
+                        && element.toLowerCase() != 'ii'
+                        && element.toLowerCase() != 'and'
+                        && element.toLowerCase() != 'the';
           return comparison;  
     }
     
     var filtered = wordsFlat.filter(moreClean);
     //console.log(JSON.stringify(filtered));
-
     console.log(filtered);
-
-
     return filtered;
 };
 
@@ -340,6 +321,7 @@ exercise.nine = function(){
     return scores;
 };
 
+//  Function to write the scores to the catalog-sample/catalog_data.js file 
 exercise.ten = function(){
     // -----------------------------------------------
     //   YOUR CODE
