@@ -27,7 +27,10 @@ function graph(){
     svg.call(tip);
 
     for (var word in scores) {
-      nodes.push({radius: radius(scores[word]), color: color(word.length), word: word, score: scores[word]});  
+      nodes.push({radius: radius((scores[word])/10), color: color(word.length), word: (word + ': ' + scores[word]), score: (scores[word])});  
+    // reduces the overall size of all nodes by factor of 10
+    //added frequency infor in display
+    //added border color in the code below
     }
 
     force = d3.layout.force()
@@ -42,7 +45,8 @@ function graph(){
       .data(nodes)
       .enter().append("circle")
       .attr("r", function(d) { return d.radius; })
-      .style("fill", function(d) { return d.color; })  
+      .style("fill", function(d) { return d.color; }) 
+      .style("stroke","black") 
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
       .call(force.drag);

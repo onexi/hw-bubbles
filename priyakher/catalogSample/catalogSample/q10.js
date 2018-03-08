@@ -1,5 +1,2 @@
-var exercise = require('./priyakher/exercise.js');
 
-var scores= exercise.nine();
-
-console.log(scores);
+var scores= JSON.parse('scores.json');

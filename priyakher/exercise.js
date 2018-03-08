@@ -271,6 +271,8 @@ exercise.nine = function(){
     // -----------------------------------------------
      var list = exercise.eight();
 
+     var fs=require("fs");
+
      var freq= list.reduce(function(previous,current){
 
         if ( current in previous ){
@@ -291,7 +293,10 @@ exercise.nine = function(){
      },{});
 
 
-     console.log(freq);
+    var scores= JSON.stringify(freq, null, 2);
+    scores= 'var scores =' + scores;
+
+    fs.writeFileSync('./catalogSample/catalogSample/scores.js', scores, 'utf-8');
 return freq;
 };
 
