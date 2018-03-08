@@ -175,10 +175,13 @@ exercise.seven = function(){
     var titles = exercise.six();
 
     var words = titles.map(function(title){
-        return title.toLowerCase().match(/([a-z]+)/g);
+        return title.toLowerCase().match(/([a-z]+)/g); 
     });
-    console.log("words"+ words);
+
+    // console.log("words"+ words);
     return words;
+
+
     //  Filter out punctuation, numbers,
     //  and common words like "and", "the", "a", etc.
     //
@@ -189,11 +192,21 @@ exercise.seven = function(){
 
 exercise.eight = function(){
     var words = exercise.seven();
+    var filteredWords = [];
     var wordsFlat = words.reduce(function(previous,current){
         return previous.concat(current);
     },[]);
-    console.log("wordsFlat"+wordsFlat);
-    return wordsFlat;
+    //console.log("wordsFlat"+wordsFlat);
+    wordsFlat.forEach(function(arg,index){
+        if (wordsFlat[index] !=="and" && wordsFlat[index] !=="the" && wordsFlat[index] !=="a"){
+            filteredWords.push(wordsFlat[index]);
+        }
+    });
+    console.log("filteredWords"+filteredWords);
+    // wordsFlat = wordsFlat.filter(wordmatching){
+    //     if(wordmatching !== "and" || wordmatching !== "or" || wordmatching !== "a")
+    // }
+    return filteredWords;
     //  Make an array of words from the titles.
     //
     //  Return array of words.
@@ -213,6 +226,11 @@ exercise.nine = function(){
         }
         return previous;
     },{});
+
+    var data = "var scores = " 
+    + JSON.stringify(scores);
+    fs.writeFileSync('./catalog/catalog_data.js', data);
+    // fs is file system
 
     console.log(scores);
     return scores;

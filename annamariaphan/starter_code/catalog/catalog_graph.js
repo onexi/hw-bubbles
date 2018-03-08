@@ -11,7 +11,7 @@ function graph(){
       .offset([-12, 0])
 
     var padding = 6,
-        radius = d3.scale.log().range([15, 70]).domain([2, 82]),
+        radius = d3.scale.log().range([5, 30]).domain([2, 82]),
         color = d3.scale.category10().domain([0, 15]);
 
     var nodes = [];
