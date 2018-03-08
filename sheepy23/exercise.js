@@ -221,7 +221,25 @@ exercise.seven = function(){
 
     var titles = exercise.six();
     var words = titles.map(function(title){
-        return titles.toLowerCase().match(/[a-z]+/g);
+        return titles.toLowerCase().match(/[a-z]+/g); //filter out all numbers, regular expression
+
+    //filter out common words    
+    var filteredWords = [];
+    wordsFlat = wordsFlat.forEach(function(arg,index){
+        if(wordsFlat[index]!== 'and' && 
+            wordsFlat[index]!=='the' && 
+            wordsFlat[index]!== 'a' && 
+            wordsFlat[index]!=='an' && 
+            wordsFlat[index]!=='in' && 
+            wordsFlat[index]!=='on' && 
+            wordsFlat[index]!=='for' && 
+            wordsFlat[index]!=='from' &&
+            wordsFlat[index]!=='it'){
+           filteredWords.push(wordsFlat[index]) 
+        }
+        return filteredWords
+    })    
+
     });
     return words;
 };
