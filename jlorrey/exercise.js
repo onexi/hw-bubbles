@@ -21,25 +21,31 @@ exercise.one = function(){
     const a_only = [7, 20];
     const ab_only = [3,5,8,9,10,14,16,18];
     const abc_only = [1,2,6,11,12,15,22];
-    const abcdefg = [4];
+    const abcdefg_only = [4];
     
-    var base_string = "'http://student.mit.edu/catalog/m";
+    const base_string = "http://student.mit.edu/catalog/m";
     course_nums.forEach(function(element) {
-        urls.push[base_string+toString(element)+"a.html"];
-        if (a_only.includes(element) != true) { //for all elts but those in a_only
-            urls.push[base_string+toString(element)+"b.html"]
+        if (a_only.includes(element) == true) {  // for all elts in a_only
+            urls.push(base_string+String(element)+"a.html");
         }
-        if (ab_only.includes(element) != true) { //for all elts but those in ab_only
-            urls.push[base_string+toString(element)+"c.html"]
+        if (ab_only.includes(element) == true) { //for all elts in ab_only
+            ['a','b'].forEach(function(letter){
+                urls.push(base_string+String(element)+letter+".html");
+            });
         }
-        if (abc_only.includes(element) != true) { //for all elts but those in abc_only
-            urls.push[base_string+toString(element)+"d.html"];
-            urls.push[base_string+toString(element)+"e.html"];
-            urls.push[base_string+toString(element)+"f.html"];
-            urls.push[base_string+toString(element)+"g.html"];
+        if (abc_only.includes(element) == true) { //for all elts in ab_only
+            ['a','b','c'].forEach(function(letter){
+                urls.push(base_string+String(element)+letter+".html");
+            });
+        }
+        if (abcdefg_only.includes(element) == true) { //for all elts in abcdefg_only
+            ['a','b','c','d','e','f','g'].forEach(function(letter){
+                urls.push(base_string+String(element)+letter+".html");
+            });
         }
     });
-    console.log(urls);
+    // console.log("Exercise 1:")
+    // console.log("urls:", urls);
     return urls;
 };
 
