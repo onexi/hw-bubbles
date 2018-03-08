@@ -425,9 +425,7 @@ var wordCount = compiler(singleArrayOfTitles);
 // var printout = "var scores = " + JSON.stringify(wordCount) + ";";
 // fs.writeFileSync('./word_catalog.js', printout);
 
-return 0;
-
-//return wordCount;
+return wordCount;
 };
 
 
