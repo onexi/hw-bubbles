@@ -11,8 +11,10 @@ function graph(){
       .offset([-12, 0])
 
     var padding = 6,
-        radius = d3.scale.log().range([15, 70]).domain([2, 82]),
-        color = d3.scale.category10().domain([0, 15]);
+        // radius = d3.scale.log().range([15, 70]).domain([2, 82]),
+        radius = d3.scale.log().range([5, 30]).domain([2, 82]),
+        // color = d3.scale.category10().domain([0, 15]);
+        color = d3.scale.category10().domain([0, 200]);
 
     var nodes = [];
     var circle = [];
@@ -21,6 +23,8 @@ function graph(){
     var svg = d3.select("div[id=target]").append("svg")
         .attr("width", 1920)
         .attr("height", 960)
+        // .attr("width", 500)
+        // .attr("height", 400)
         .attr("class", "vis")
       .append("g")
 
@@ -32,9 +36,11 @@ function graph(){
 
     force = d3.layout.force()
       .nodes(nodes)
+      // .size([50, 30])
       .size([1024, 768])
       .gravity(0.01)
-      .charge(-0.01)
+      .charge(5)
+      // .charge(-0.01)
       .on("tick", tick)
       .start();
 
@@ -42,6 +48,7 @@ function graph(){
       .data(nodes)
       .enter().append("circle")
       .attr("r", function(d) { return d.radius; })
+      .attr("r", function(d) { return d.radius/1.4; })
       .style("fill", function(d) { return d.color; })  
       .on('mouseover', tip.show)
       .on('mouseout', tip.hide)
