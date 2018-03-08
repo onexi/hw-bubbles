@@ -1,0 +1,23 @@
+{
+  "name": "hw-bubbles",
+  "version": "1.0.0",
+  "description": "Bubbles, bubbles, and more bubbles",
+  "main": "index.js",
+  "dependencies": {
+    "eslint": "^4.18.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/syu2/hw-bubbles.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/syu2/hw-bubbles/issues"
+  },
+  "homepage": "https://github.com/syu2/hw-bubbles#readme"
+}
