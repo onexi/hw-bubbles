@@ -54,83 +54,39 @@ exercise.one = function(){
     urls.push('http://student.mit.edu/catalog/m22a.html');
     urls.push('http://student.mit.edu/catalog/m22b.html');
     urls.push('http://student.mit.edu/catalog/m22c.html');
-    // GET ACTUAL URLS
-    urls.push('http://student.mit.edu/catalog/m1a.html');
-    urls.push('http://student.mit.edu/catalog/m1b.html');
-    urls.push('http://student.mit.edu/catalog/m1c.html');
-    urls.push('http://student.mit.edu/catalog/m2a.html');
-    urls.push('http://student.mit.edu/catalog/m2b.html');
-    urls.push('http://student.mit.edu/catalog/m2c.html');
-    urls.push('http://student.mit.edu/catalog/m3a.html');
-    urls.push('http://student.mit.edu/catalog/m3b.html');
-    urls.push('http://student.mit.edu/catalog/m4a.html');
-    urls.push('http://student.mit.edu/catalog/m4b.html');
-    urls.push('http://student.mit.edu/catalog/m4c.html');
-    urls.push('http://student.mit.edu/catalog/m4d.html');
-    urls.push('http://student.mit.edu/catalog/m4e.html');
-    urls.push('http://student.mit.edu/catalog/m4f.html');
-    urls.push('http://student.mit.edu/catalog/m4g.html');
-    urls.push('http://student.mit.edu/catalog/m5a.html');
-    urls.push('http://student.mit.edu/catalog/m5b.html');
-    urls.push('http://student.mit.edu/catalog/m6a.html');
-    urls.push('http://student.mit.edu/catalog/m6b.html');
-    urls.push('http://student.mit.edu/catalog/m6c.html');
-    urls.push('http://student.mit.edu/catalog/m7a.html');
-    urls.push('http://student.mit.edu/catalog/m8a.html');
-    urls.push('http://student.mit.edu/catalog/m8b.html');
-    urls.push('http://student.mit.edu/catalog/m9a.html');
-    urls.push('http://student.mit.edu/catalog/m9b.html');
-    urls.push('http://student.mit.edu/catalog/m10a.html');
-    urls.push('http://student.mit.edu/catalog/m10b.html');
-    urls.push('http://student.mit.edu/catalog/m11a.html');
-    urls.push('http://student.mit.edu/catalog/m11b.html');
-    urls.push('http://student.mit.edu/catalog/m11c.html');
-    urls.push('http://student.mit.edu/catalog/m12a.html');
-    urls.push('http://student.mit.edu/catalog/m12b.html');
-    urls.push('http://student.mit.edu/catalog/m12c.html');
-    urls.push('http://student.mit.edu/catalog/m14a.html');
-    urls.push('http://student.mit.edu/catalog/m14b.html');
-    urls.push('http://student.mit.edu/catalog/m15a.html');
-    urls.push('http://student.mit.edu/catalog/m15b.html');
-    urls.push('http://student.mit.edu/catalog/m15c.html');
-    urls.push('http://student.mit.edu/catalog/m16a.html');
-    urls.push('http://student.mit.edu/catalog/m16b.html');
-    urls.push('http://student.mit.edu/catalog/m18a.html');
-    urls.push('http://student.mit.edu/catalog/m18b.html');
-    urls.push('http://student.mit.edu/catalog/m20a.html');
-    urls.push('http://student.mit.edu/catalog/m22a.html');
-    urls.push('http://student.mit.edu/catalog/m22b.html');
-    urls.push('http://student.mit.edu/catalog/m22c.html');
     return urls;
 };
 
 exercise.two = function(){
     //  Download every course catalog page.
     //  Save every page to "your_folder/catalog"
-    // var urls = exercise.one();
-    // urls.forEach((url)=>{
+    var urls = exercise.one();
+    urls.forEach((url, index)=>{
     //     let pgName = url.substr(url.lastIndexOf('/')+1);
-    //     var res = request('GET', url);
-    //     fs.writeFileSync("catalog/"+pgName, res.getBody().toString());
-    //     console.log(pgName);
-    // });
+        var res = request('GET', url);
+        fs.writeFileSync("./catalog/"+index+'.html', res.getBody().toString());
+    });
 };
 
 exercise.three = function(){
     // Delete previous file if it exists
-    fs.exists('catalog/catalog.txt',function(exists){
-        if(exists){
-            fs.unlinkSync('catalog/catalog.txt', (err) => {
-                if (err) throw err;
-                console.log('catalog/catalog.txt was deleted');
-            });
-        }
-    });
-    var urls = exercise.one();
-    urls.forEach((url, i)=>{
-        let pgName = url.substr(url.lastIndexOf('/')+1);
-        let data = fs.readFileSync("catalog/"+pgName);
-        fs.appendFileSync("catalog/catalog.txt", data);
+    // fs.exists('catalog/catalog.txt',function(exists){
+    //     if(exists){
+    //         fs.unlinkSync('catalog/catalog.txt', (err) => {
+    //             if (err) throw err;
+    //             console.log('catalog/catalog.txt was deleted');
+    //         });
+    //     }
+    // });
+    var files = [];
+    for(var i = 0; i < 46; i++){
+        files.push('./catalog/' + i + '.html');
+    }
+
+    files.forEach((file, i)=>{
+        let data = fs.readFileSync('./catalog/' + i + '.html');
+        console.log('+' + file);
+        fs.appendFileSync("./catalog/catalog.txt", data);
     });
 
     // -----------------------------------------------
