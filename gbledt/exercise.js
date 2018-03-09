@@ -253,7 +253,18 @@ exercise.seven = function(){
 
     // Get an array of words 
     var words = titles.map(function(title){
-        return title.toLowerCase().match(/([a-z]+)/g);
+        var titlesTemp = title.toLowerCase().match(/([a-z]+)/g);
+        
+        // Filter out common irrelevant words... these make huge bubbles
+        var filtTitles = titlesTemp.filter(titleWord => titleWord != 'and' && 
+        titleWord != 'the' && 
+        titleWord != 'a' && 
+        titleWord != 'of'&& 
+        titleWord != 'j'&& 
+        titleWord != 'new'&& 
+        titleWord != 's'&& 
+        titleWord != 'i');
+        return  filtTitles;
     });
 
     return words;
