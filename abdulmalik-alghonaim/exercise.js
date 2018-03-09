@@ -241,8 +241,8 @@ exercise.nine = function(){
 exercise.ten = function(){
     console.log('ten');
     var scores = exercise.nine();
-    var data = 'var dictionary =' + JSON.stringify(scores)+';';
-    fs.writeFileSync('./bubles.js',String(data));
+    var data = 'var scores =' + JSON.stringify(scores)+';';
+    fs.writeFileSync('./scores.js',String(data));
 };
 
 
