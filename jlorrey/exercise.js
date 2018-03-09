@@ -16,7 +16,7 @@ exercise.one = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    console.log("Exercise One");
+    // console.log("Exercise One");
     var urls = [];
     const course_nums = [1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,18,20,22];
     const a_only = [7, 20];
@@ -69,7 +69,7 @@ exercise.two = function(){
     //  save resulting http to ./catalog
 
     //Note: I had to create the jlorrey/catalog directory before this would work (seems like it should be able to create the directory on its own)
-    console.log("Exercise Two");
+    // console.log("Exercise Two");
     var urls = exercise.one();
     urls.forEach(function(url, index) {
         var raw_response = request('GET', url);
@@ -90,7 +90,7 @@ exercise.three = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    console.log("Exercise Three");
+    // console.log("Exercise Three");
     var myFiles = [];
     for (var i=0; i<46; i++) { //get files 0 through 45
         myFiles.push('./catalog/'+i+'.html');
@@ -114,7 +114,7 @@ exercise.four = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    console.log("Exercise Four");
+    // console.log("Exercise Four");
     var myData = fs.readFileSync('./catalog/catalog.txt');
     var scrubbed=minify(myData.toString(), {
         collapseWhitespace: true,
@@ -138,7 +138,7 @@ exercise.five = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    console.log("Exercise Five");
+    // console.log("Exercise Five");
     var myData = fs.readFileSync('./catalog/clean.txt');
     var $ = cheerio.load(myData);
    
@@ -161,7 +161,7 @@ exercise.six = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    console.log("Exercise Six");
+    // console.log("Exercise Six");
     var myData = fs.readFileSync('./catalog/clean.txt');
     var $ = cheerio.load(myData);
     var titles = [];
@@ -185,7 +185,7 @@ exercise.seven = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    console.log("Exercise Seven");
+    // console.log("Exercise Seven");
     var titles = exercise.six();
     // gets word array from titles & filters out all non-letters (e.g. punctuation & numbers)
     var words = titles.map(function(title) {
@@ -205,7 +205,7 @@ exercise.eight = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    console.log("Exercise Eight");
+    // console.log("Exercise Eight");
     var words = exercise.seven();
     var wordsFlat = words.reduce(function(previous, current) {
         return previous.concat(current);
@@ -223,7 +223,7 @@ exercise.nine = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    console.log("Exercise Nine");
+    // console.log("Exercise Nine");
     var wordsFlat = exercise.eight();
     //use reduce to count word freq
     var scores = wordsFlat.reduce(function(previous, current){
@@ -241,5 +241,12 @@ exercise.nine = function(){
     return scores;
 };
 
+//Visualization:
+exercise.ten = function(){
+    var word_freq = exercise.nine();
+    var stringwords = "var scores = ".concat(JSON.stringify(word_freq));
+    
+    fs.writeFileSync('./graphing/catalog_data.js', stringwords); 
+};
 
 module.exports = exercise;
