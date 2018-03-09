@@ -20,6 +20,8 @@ exercise.one = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
+    console.log('Exercise 1');
+
     // Initialize the array for the catalog urls
     var catalog_urls = [];
 
@@ -92,6 +94,8 @@ exercise.two = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
+    console.log('Exercise 2');
+
     // Get the catalog urls from exercise one
     var catalog_urls = exercise.one();
 
@@ -121,15 +125,22 @@ exercise.three = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
+    console.log('Exercise 3');
+
+    // Initialize the file names
     var file_names = [];
 
+    // Add each of the file names to the array
     for (var i = 0; i < catalog_length; i++) {
         file_names.push('./catalog/' + i + '.html');
     }
 
+    // Output status
+    console.log('Adding all files to catalog.txt');
+
+    // Write each of the files to the main catalog
     file_names.forEach(function(file, index) {
         var file_data = fs.readFileSync(file);
-        console.log('adding ' + file + ' to catalog.txt');
         fs.appendFileSync('./catalog/catalog.txt',file_data);
     })
 };
@@ -148,15 +159,22 @@ exercise.four = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
+    console.log('Exercise 4');
+
+    // Read the catalog file
     var file_data = fs.readFileSync('./catalog/catalog.txt');
 
+    // Take out the whitespace
     var file_data_scrubbed = minify(file_data.toString(), {
         collapseWhitespace: true,
         minifyJS: true,
         minifyCSS: true
     });
 
+    // Clean the data
     var file_data_clean = file_data_scrubbed.replace(/'/g, '');
+
+    // Write the cleaned data
     fs.writeFileSync('./catalog/clean.txt', file_data_clean);
 };
 
@@ -174,6 +192,9 @@ exercise.five = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
+    console.log('Exercise 5');
+
+    // Read the cleaned catalog files
     var file_data = fs.readFileSync('./catalog/clean.txt');
 
     var $ = cheerio.load(file_data);
@@ -197,6 +218,9 @@ exercise.six = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
+
+    console.log('Exercise 6');
+
     var file_data = fs.readFileSync('./catalog/clean.txt');
 
     var $ = cheerio.load(file_data);
@@ -222,8 +246,12 @@ exercise.seven = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
+    console.log('Exercise 7');
+
+    // Get the titles
     var titles = exercise.six();
 
+    // Get an array of words 
     var words = titles.map(function(title){
         return title.toLowerCase().match(/([a-z]+)/g);
     });
@@ -242,8 +270,11 @@ exercise.eight = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
+    console.log('Exercise 8');
+
     var words = exercise.seven();
 
+    // Make one array
     var words_flat = words.reduce(function(prev, curr){
         return prev.concat(curr);
     },[]);
@@ -262,8 +293,11 @@ exercise.nine = function(){
     //  See homework guide document for more info.
     // -----------------------------------------------
 
+    console.log('Exercise 9');
+
     var words_flat = exercise.eight();
 
+    // Create array with the word counts of each
     var word_freq = words_flat.reduce(function(prev, curr) {
         if (curr in prev) {
             prev[curr] += 1;
@@ -273,7 +307,19 @@ exercise.nine = function(){
         return prev;
     },{});
 
-    console.log(word_freq);
+    // Make the scores array into a string
+    var freq_string = JSON.stringify(word_freq);
+
+    // Add the correct variable initialization
+    freq_string = 'var scores = ' + freq_string;
+
+    // Write the scores to a file called catalog_data.js
+    fs.writeFileSync('./catalog_data.js', freq_string);
+
+    // Output status
+    console.log('Word frequency file written');
+
+    // Return the word frequency
     return word_freq;
 };
 
