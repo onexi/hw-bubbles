@@ -226,8 +226,9 @@ exercise.nine = function(){
     // console.log("Exercise Nine");
     var wordsFlat = exercise.eight();
     //use reduce to count word freq
+    to_ignore = ['and', 'for', 'the', 'an', 'a', 'j', 's', 'i', 'ii', 'in', 'of'];
     var scores = wordsFlat.reduce(function(previous, current){
-        if (current != 'j') { //ignore J (turned lowercase) from joint courses
+        if (!(to_ignore.includes(current))) { 
             if (current in previous) { //we've come across this word before (f>=1)
                 previous[current] += 1;
             }
