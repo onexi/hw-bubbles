@@ -124,6 +124,8 @@ exercise.four = function(){
         minifyCSS         : true
     });
     var cleaned = scrubbed.replace(/'/g, ''); //remove all (/g = global) single quotes you see
+    cleaned = cleaned.replace(/\n/g, '');
+    cleaned = cleaned.replace(/(\r\n|\r|\n)/g,'');
     fs.writeFileSync('./catalog/clean.txt', cleaned); //write the cleaned data to a clean.txt file
 };
 

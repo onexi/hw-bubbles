@@ -5,7 +5,7 @@ var ex = require('../exercise.js');
 describe('Catalog', function() {
 	it('Page Count', function() {
 		var links = ex.one();
-	    expect(links.length).to.be.at.least(80);
+	    expect(links.length).to.be.at.least(40);
 	});
 });
 
@@ -13,7 +13,7 @@ describe('Catalog Files', function() {
 	it('File Count', function() {
 		ex.two();
 		var files = fs.readdirSync('catalog');
-	    expect(files.length).to.be.at.least(80);
+	    expect(files.length).to.be.at.least(40);
 	});
 });
 
@@ -40,20 +40,20 @@ describe('Whitespace', function() {
 describe('Courses', function() {
 	it('Course Count', function() {
 		var courses = ex.five();
-	    expect(courses.length).to.be.at.least(1000);
+	    expect(courses.length).to.be.at.least(100);
 	});
 });
 
 describe('Titles', function() {
 	it('Title Count', function() {
 		var courses = ex.six();
-	    expect(courses.length).to.be.at.least(1000);
+	    expect(courses.length).to.be.at.least(100);
 	});
 });
 
 describe('Clean Titles', function() {
 	it('Clean Count', function() {
 		var courses = ex.seven();
-	    expect(courses.length).to.be.at.least(1000);
+	    expect(courses.length).to.be.at.least(100);
 	});
 });
