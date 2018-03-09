@@ -1,3 +1,7 @@
+// Packages
+var request = require('request');
+var fs = require('fs');
+
 var exercise = {};
 
 exercise.one = function(){
@@ -13,15 +17,47 @@ exercise.one = function(){
 exercise.two = function(){
     //  Download every course catalog page.
     //  Save every page to "your_folder/catalog"
-    // var request = require('request');
-    //     request('http://www.google.com', function (error, response, body) {
-    //     console.log('error:', error); // Print the error if one occurred
-    //     console.log('statusCode:', response && response.statusCode); // Print the response status code if a response was received
-    //     console.log('body:', body); // Print the HTML for the Google homepage.
-    // });
+    var urls = exercise.one();
+    urls.forEach((url)=>{
+        let pgName = url.substr(url.lastIndexOf('/')+1);
+        request(url, function (error, response, body) {
+            fs.writeFile("catalog/"+pgName, body, function(err) {
+                if(err) {return console.log(err);}
+                console.log("The file was saved!");
+            });
+        });
+    });
 };
 
 exercise.three = function(){
+    // Delete previous file if it exists
+    fs.exists('catalog/catalog.txt',function(exists){
+        if(exists){
+            fs.unlinkSync('catalog/catalog.txt', (err) => {
+                if (err) throw err;
+                console.log('catalog/catalog.txt was deleted');
+            });
+        }
+    });
+    var urls = exercise.one();
+    urls.forEach((url, i)=>{
+        let pgName = url.substr(url.lastIndexOf('/')+1);
+        fs.readFile("catalog/"+pgName, {encoding: 'utf-8'}, function(err,data){
+            if (!err) {
+                fs.appendFile('catalog/catalog.txt', data, function (err) {
+                    if (err) throw err;
+                    console.log('Saved!');
+                });
+                if(i===urls.length-1){
+                    console.log(i+1);
+                }
+                //console.log('received data: ' + data);
+            } else {
+                console.log(err);
+            }
+        });
+    });
+
     // -----------------------------------------------
     //   YOUR CODE
     //
