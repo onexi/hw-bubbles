@@ -1,12 +1,12 @@
 var request = require('sync-request');
-var minfy   = require('html-minifuer').minify;
+var minfy   = require('html-minifier').minify;
 var cheerio = require('cheerio');
 var fs      = require('fs');
 
 var exercise = {};
 
 exercise.one = function(){
-
+    console.log('one');
     var urls =[];
     urls.push('http://student.mit.edu/catalog/m1a.html');
     urls.push('http://student.mit.edu/catalog/m1b.html');
@@ -58,6 +58,7 @@ exercise.one = function(){
 };
 
 exercise.two = function(){
+    console.log('two');
     // -----------------------------------------------
     //   YOUR CODE
     //
@@ -72,14 +73,15 @@ exercise.two = function(){
     // -----------------------------------------------
     var urls = exercise.one();
 
-    urls.array.forEach(function(url,index){
+    urls.forEach(function(url,index){
         var res = request('GET',url);
-        var filename = './catalog' + index +'.html';
-        fs.writeFileSync(filename,res.getbody().toString());
+        var filename = './catalog/' + index +'.html';
+        fs.writeFileSync(filename,res.body.toString());
     });
 };
 
 exercise.three = function(){
+    console.log('three');
     // -----------------------------------------------
     //   YOUR CODE
     //
@@ -93,17 +95,18 @@ exercise.three = function(){
     // -----------------------------------------------
     var files = [];
     for (i=0;i<46; i++){
-        files.push('./catalog' + i + '.html');
+        files.push('./catalog/' + i + '.html');
     };
-
+    fs.writeFileSync('./catalog/catalog.txt','')
     files.forEach(function(file,index){
-        var data = fa.readFileSync(file);
-        fs.appendFileSync('/catalog/catalog.txt',data)
+        var data = fs.readFileSync(file);
+        fs.appendFileSync('./catalog/catalog.txt',data)
     });
 
 };
 
 exercise.four = function(){
+    console.log('four');
     // -----------------------------------------------
     //   YOUR CODE
     //
@@ -116,9 +119,9 @@ exercise.four = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-    var data = fs.readFileSync('.catalog/catalog.txt');
+    var data = fs.readFileSync('./catalog/catalog.txt');
 
-    var scrubbed = minify(data.toString(),{
+    var scrubbed = minfy(data.toString(),{
         collapseWhitespace : true,
         minfyJS : true,
         minifyCSS : true
@@ -129,6 +132,7 @@ exercise.four = function(){
 };
 
 exercise.five = function(){
+    console.log('five');
     // -----------------------------------------------
     //   YOUR CODE
     //
@@ -154,6 +158,7 @@ exercise.five = function(){
 };
 
 exercise.six = function(){
+    console.log('six');
     // -----------------------------------------------
     //   YOUR CODE
     //
@@ -163,7 +168,7 @@ exercise.six = function(){
     //
     //  See homework guide document for more info.
     // -----------------------------------------------
-     var data = fs.readFileSunc('./catalog/clean.txt');
+     var data = fs.readFileSync('./catalog/clean.txt');
      var $ = cheerio.load(data);
      var titles = [];
      $('h3').each(function(i,element){
@@ -173,6 +178,7 @@ exercise.six = function(){
 };
 
 exercise.seven = function(){
+    console.log('seven');
     // -----------------------------------------------
     //   YOUR CODE
     //
@@ -187,9 +193,11 @@ exercise.seven = function(){
     var words = titles.map(function(title){
         return title.toLowerCase().match(/([a-z]+)/g);
     });
+    return words;
 };
 
 exercise.eight = function(){
+    console.log('eight');
     // -----------------------------------------------
     //   YOUR CODE
     //
@@ -207,6 +215,7 @@ exercise.eight = function(){
 };
 
 exercise.nine = function(){
+    console.log('nine');
     // -----------------------------------------------
     //   YOUR CODE
     //
@@ -227,6 +236,13 @@ exercise.nine = function(){
         return previous;
     },{});
     return scores;
+};
+
+exercise.ten = function(){
+    console.log('ten');
+    var scores = exercise.nine();
+    var data = 'var dictionary =' + JSON.stringify(scores)+';';
+    fs.writeFileSync('./bubles.js',String(data));
 };
 
 

@@ -29,6 +29,7 @@
     "fs": "0.0.1-security",
     "html-minifier": "^3.5.9",
     "mocha": "^3.2.0",
-    "node-fetch": "^2.0.0"
+    "node-fetch": "^2.0.0",
+    "sync-request": "^6.0.0"
   }
 }
