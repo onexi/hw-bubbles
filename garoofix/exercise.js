@@ -127,6 +127,13 @@ exercise.four = function(){
 };
 
 exercise.five = function(){
+    var data = fs.readFileSync('./catalog/clean.txt');
+    var $ = cheerio.load(data);
+    var courses = [];
+    $('h3').each(function(i,element){
+       courses.push($(element).text());
+    });
+    return courses;
     // -----------------------------------------------
     //   YOUR CODE
     //
@@ -142,6 +149,13 @@ exercise.five = function(){
 };
 
 exercise.six = function(){
+    var data = fs.readFileSync('./catalog/clean.txt');
+    var $ = cheerio.load(data);
+    var titles = [];
+    $('h3').each(function(i,element){
+        titles.push($(element).text());
+    });
+    return titles;
     // -----------------------------------------------
     //   YOUR CODE
     //
@@ -154,6 +168,11 @@ exercise.six = function(){
 };
 
 exercise.seven = function(){
+    var titles = exercise.six();
+    var words = titles.map(function(title){
+       return title.toLowerCase().match(/([a-z]+)/g);
+    });
+    return words;
     // -----------------------------------------------
     //   YOUR CODE
     //
@@ -167,6 +186,12 @@ exercise.seven = function(){
 };
 
 exercise.eight = function(){
+
+    var words = exercise.seven();
+    var wordsFlat = words.reduce(function(previous, current){
+        return previous.concat(current);
+    }, []);
+    return wordsFlat;
     // -----------------------------------------------
     //   YOUR CODE
     //
@@ -179,6 +204,25 @@ exercise.eight = function(){
 };
 
 exercise.nine = function(){
+    var wordsFlat = exercise.eight();
+    var result = {};
+    wordsFlat.forEach((word)=>{
+        if(word in result){
+            result[word] += 1;
+        }else{
+            result[word] = 1;
+        }
+    });
+    return result;
+    // var scores = wordsFlat.reduce(function(previous, current){
+    //      if(current in previous){
+    //    if(previous.hasOwnProperty(current)){
+    //        previous[current] += 1;
+    //    }else{
+    //        previous[current] = 1;
+    //    }
+    // },{});
+
     // -----------------------------------------------
     //   YOUR CODE
     //
