@@ -30,7 +30,7 @@ describe('Whitespace', function() {
 	it('Whitespace and line breaks', function() {
 		ex.four();
 		var flag = false;
-		var file = fs.readFileSync('catalog/catalog.txt', 'utf8');
+		var file = fs.readFileSync('catalog/clean.txt', 'utf8');
 		if (file.includes('\n')) {flag = true; console.log(true);}
 		if (file.includes('\r\n')) {flag = true; console.log(true);}
 	    expect(flag).to.be.false;
