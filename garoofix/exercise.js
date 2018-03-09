@@ -147,6 +147,15 @@ exercise.three = function(){
 };
 
 exercise.four = function(){
+    var data = fs.readFileSync("catalog/catalog.txt");
+    var scrubbed = minify(data.toString(), {
+       collapseWhitespace: true,
+       minifyJS: true,
+       minifyCSS: true
+    });
+
+    var clean = scrubbed.replace(/'/g, '');
+    fs.writeFileSync("catalog/clean.txt", clean);
     // -----------------------------------------------
     //   YOUR CODE
     //
