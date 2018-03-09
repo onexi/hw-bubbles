@@ -70,6 +70,7 @@ exercise.two = function(){
 
     //Note: I had to create the jlorrey/catalog directory before this would work (seems like it should be able to create the directory on its own)
     // console.log("Exercise Two");
+    
     var urls = exercise.one();
     urls.forEach(function(url, index) {
         var raw_response = request('GET', url);
@@ -95,10 +96,11 @@ exercise.three = function(){
     for (var i=0; i<46; i++) { //get files 0 through 45
         myFiles.push('./catalog/'+i+'.html');
     };
+    fs.writeFileSync('./catalog/catalog.txt', '');
     myFiles.forEach(function(file, index) {
         var file_data = fs.readFileSync(file);
         // console.log('Adding'+file+" to catalog.txt");
-        fs.writeFileSync('./catalog/catalog.txt', file_data);
+        fs.appendFileSync('./catalog/catalog.txt', file_data);
     });
 };
 exercise.four = function(){
