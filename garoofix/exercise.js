@@ -1,7 +1,7 @@
 // Packages
 var request = require('request');
 var fs = require('fs');
-
+var minify = require('html-minifier').minify;
 var exercise = {};
 
 exercise.one = function(){
@@ -44,7 +44,8 @@ exercise.three = function(){
         let pgName = url.substr(url.lastIndexOf('/')+1);
         fs.readFile("catalog/"+pgName, {encoding: 'utf-8'}, function(err,data){
             if (!err) {
-                fs.appendFile('catalog/catalog.txt', data, function (err) {
+                var result = minify(data, {});
+                fs.appendFile('catalog/catalog.txt', result, function (err) {
                     if (err) throw err;
                     console.log('Saved!');
                 });
