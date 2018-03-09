@@ -98,7 +98,7 @@ exercise.three = function(){
     myFiles.forEach(function(file, index) {
         var file_data = fs.readFileSync(file);
         // console.log('Adding'+file+" to catalog.txt");
-        fs.appendFileSync('./catalog/catalog.txt', file_data);
+        fs.writeFileSync('./catalog/catalog.txt', file_data);
     });
 };
 exercise.four = function(){
@@ -141,10 +141,12 @@ exercise.five = function(){
     console.log("Exercise Five");
     var myData = fs.readFileSync('./catalog/clean.txt');
     var $ = cheerio.load(myData);
+   
     var courses = [];
     $('h3').each(function(i, element) { //get elements with the h3 tag
         courses.push($(element).text()); //and push them onto the courses array
     });
+    
     // console.log("COURSES:", courses); //prints out all course names (eg. '1.232[J]: The Airline Industry')
     return courses;
 };
