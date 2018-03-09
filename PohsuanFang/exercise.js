@@ -182,7 +182,7 @@ exercise.five = function(){
         return course;
        
 };
-exercise.four();
+exercise.five();
 var course=exercise.five();
 exercise.six = function(){
     // -----------------------------------------------
@@ -204,7 +204,7 @@ exercise.six = function(){
        });  
     return titles;
 };
-exercise.five();
+exercise.six();
 var titles=exercise.six();
 // console.log(titles);
 
@@ -223,9 +223,10 @@ exercise.seven = function(){
     var words=titles.map(function(title){
         return title.toLowerCase().match(/([a-z])+/g);   
     });
+ 
     return words;
 };
-exercise.six();
+exercise.seven();
 var words=exercise.seven();
 console.log(words);
 
@@ -243,7 +244,15 @@ var words=exercise.seven();
 var wordsFlat=words.reduce(function(previous, current){
     return previous.concat(current);
 }, []);
+   // remove common words
+   for (var i=0;i<wordsFlat.length; i++)
+   {if (wordsFlat[i].length==1)
+   {wordsFlat.splice(i,1);}
+   else if (wordsFlat[i]==="and"|| wordsFlat[i]==="the"|| wordsFlat[i]==="or"|| wordsFlat[i]==="of"|| wordsFlat[i]==="to"||wordsFlat[i]==="in")
+   {wordsFlat.splice(i,1);}
+   }
 return wordsFlat;
+
 console.log(wordsFlat);
 };
 exercise.eight();

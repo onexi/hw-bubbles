@@ -20,7 +20,7 @@ function graph(){
 
     var svg = d3.select("div[id=target]").append("svg")
     //change the size of the graph
-        .attr("width", 5000)
+        .attr("width", 6000)
         .attr("height", 8000)
         .attr("class", "vis")
       .append("g")
@@ -28,8 +28,8 @@ function graph(){
     svg.call(tip);
 
     for (var word in scores) {
-      //make the bubbles smaller
-      nodes.push({radius: radius(scores[word]/4), color: color(word.length), word: word, score: scores[word]});  
+      //make the bubbles smaller by divided the original radius by 4 so as to fit in the graph
+      nodes.push({radius: radius(scores[word]/4.0), color: color(word.length), word: word, score: scores[word]});  
     }
 
     force = d3.layout.force()
