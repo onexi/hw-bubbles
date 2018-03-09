@@ -1,7 +1,8 @@
 // Packages
-var request = require('request');
+var request = require('sync-request');
 var fs = require('fs');
 var minify = require('html-minifier').minify;
+var cheerio = require('cheerio');
 var exercise = {};
 
 exercise.one = function(){
@@ -106,16 +107,13 @@ exercise.one = function(){
 exercise.two = function(){
     //  Download every course catalog page.
     //  Save every page to "your_folder/catalog"
-    var urls = exercise.one();
-    urls.forEach((url)=>{
-        let pgName = url.substr(url.lastIndexOf('/')+1);
-        request(url, function (error, response, body) {
-            fs.writeFile("catalog/"+pgName, body, function(err) {
-                if(err) {return console.log(err);}
-                console.log("The file was saved!");
-            });
-        });
-    });
+    // var urls = exercise.one();
+    // urls.forEach((url)=>{
+    //     let pgName = url.substr(url.lastIndexOf('/')+1);
+    //     var res = request('GET', url);
+    //     fs.writeFileSync("catalog/"+pgName, res.getBody().toString());
+    //     console.log(pgName);
+    // });
 };
 
 exercise.three = function(){
@@ -131,21 +129,8 @@ exercise.three = function(){
     var urls = exercise.one();
     urls.forEach((url, i)=>{
         let pgName = url.substr(url.lastIndexOf('/')+1);
-        fs.readFile("catalog/"+pgName, {encoding: 'utf-8'}, function(err,data){
-            if (!err) {
-                var result = minify(data, {});
-                fs.appendFile('catalog/catalog.txt', result, function (err) {
-                    if (err) throw err;
-                    console.log('Saved!');
-                });
-                if(i===urls.length-1){
-                    console.log(i+1);
-                }
-                //console.log('received data: ' + data);
-            } else {
-                console.log(err);
-            }
-        });
+        let data = fs.readFileSync("catalog/"+pgName);
+        fs.appendFileSync("catalog/catalog.txt", data);
     });
 
     // -----------------------------------------------
