@@ -53,6 +53,7 @@ exercise.one = function(){
     urls.push('http://student.mit.edu/catalog/m22a.html');
     urls.push('http://student.mit.edu/catalog/m22b.html');
     urls.push('http://student.mit.edu/catalog/m22c.html');
+    return urls;
 };
 
 exercise.two = function(){
