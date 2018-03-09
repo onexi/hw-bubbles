@@ -13,7 +13,7 @@ var exercise = require('./exercise.js');
 // exercise.six();
 // console.log('finished 6');
 exercise.seven();
-console.log('finished 7');
+// console.log('finished 7');
 
 exercise.eight();
 

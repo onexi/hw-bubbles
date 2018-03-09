@@ -266,6 +266,7 @@ exercise.nine = function(){
     console.log(scores_JS);
     fs.writeFileSync('catalogSample/catalog_data.js', scores_JS);
 
+    
     return scores_JS;
 };
 
