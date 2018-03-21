@@ -8,14 +8,6 @@ var exercise = {};
 exercise.one = function(){
 
 
-
-
-
-
-
-
-
-
     console.log('--- Question 01 ---');
 
     var urls = [];
